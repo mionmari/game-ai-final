@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Doggo",
+        "breed": "Boxer",
+        "traits": {
+        "social": 1,
+        "passAggress": 2,
+        "jealousy": 0,
+        "gluttony": 3,
+        "energy": 5,
+        "houseBroken": 2
+        }
+    },
+    {
+        "name": "Cato",
+        "breed": "Siamese",
+        "traits": {
+        "social": 0,
+        "passAggress": 4,
+        "jealousy": 5,
+        "gluttony": 2,
+        "energy": 0,
+        "houseBroken": 0
+        }
+    }
+]
