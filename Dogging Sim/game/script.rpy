@@ -12,7 +12,13 @@ define DMG = 0
 # $ = ONE-LINE PYTHON STATEMENT
 init python:
     import random as r
+    import json
+    import os
 
+    # Read in dogs from json
+    with open(renpy.loader.transfn("resources/dogs.json")) as json_data:
+        dogs = json.load(json_data, object_hook=as_dog)
+    
 # NEEDS A START LABEL
 label start:
     # YOU CAN ALSO INITIALIZE RPY VARIABLES AT RUNTIME IN LABELS (ALL GLOBAL >:O)
@@ -26,7 +32,7 @@ label start:
     show db
 
     # DIALOGUE
-    b "Welcome to the dog park, u PIECE OF TRASH!"
+    b "Welcome to the dog park, u PIECE OF TRASH! [dogs[0].breed]"
     b "I'm Borkugo!!!! I'm aggressive and I hate everyone!!!!!!!! >:("
 
     menu:
