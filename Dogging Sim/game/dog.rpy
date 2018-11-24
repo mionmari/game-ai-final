@@ -11,8 +11,9 @@ init python:
             self.houseBroken = dct['houseBroken']
 
     class Dog:
-        def __init__ (self, name, breed, traits):
+        def __init__ (self, name, sex, breed, traits):
             self.name = name
+            self.sex = sex
             self.breed = breed
             self.traits = traits
 
@@ -23,7 +24,7 @@ init python:
 
     def as_dog(dct):
         if 'name' in dct:
-            return Dog (dct['name'], dct['breed'], DogTraits(dct['traits']))
+            return Dog (dct['name'], dct['sex'], dct['breed'], DogTraits(dct['traits']))
         return dct
 
 # if __name__ == '__main__':
