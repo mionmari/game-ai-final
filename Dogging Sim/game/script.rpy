@@ -32,7 +32,7 @@ label start:
     show db
 
     # DIALOGUE
-    b "Welcome to the dog park, u PIECE OF TRASH! [dogs[0].breed]"
+    b "Welcome to the dog park, u PIECE OF TRASH! [dogs[0].sex]"
     b "I'm Borkugo!!!! I'm aggressive and I hate everyone!!!!!!!! >:("
 
     menu:
