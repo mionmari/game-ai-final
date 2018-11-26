@@ -16,3 +16,9 @@ bin-release/
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
 # information for Eclipse / Flash Builder.
+
+Dogging Sim/log\.txt
+Dogging Sim/traceback\.txt
+Dogging Sim/game/cache/
+Dogging Sim/game/saves/
+*.rpyc
