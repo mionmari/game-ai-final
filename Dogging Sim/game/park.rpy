@@ -1,4 +1,5 @@
 # DOG PARK FILE
+# TODO: MORE THROWS
 
 # PARK INTRO
 label park_start:
@@ -23,13 +24,13 @@ label park_start:
         "#HER attention is quickly diverted to something new each time, and #SHE leads you up and down the streets."
         d "{i}Heavy panting{/i}"
         "You have a feeling you're gonna get some good exercise today!"
-    else
+    else:
         "[dog.name] briskly walks ahead of you. #SHE occasionally sniffs at the base of a tree, and #HER eyes are caught by the occasional butterfly."
         "It's a beautiful day outside, and the crisp, fresh air smells amazing this time of year. You make it to the dog park in no time."
-    jump park_menu_1
+    jump park_menu_start
 
 # PARK MENU
-label park_menu_1:
+label park_menu_start:
     "It's a pretty busy day at the park. There's a good variety of dogs around, playing with each other and their owners."
     menu:
         "What would you like to do?"
@@ -70,7 +71,7 @@ label park_fetch_start:
 		"#SHE seems pretty hyped already, just by seeing the ball. #SHE might have done this before!"
 		p "Ready, [dog.name]? You ready, #GIRL?!"
 		d "Woof!"
-	else
+	else:
 		"#SHE sniffs the ball inquisitively, then tilts #HER head to the side."
 		p "You want the ball, #GIRL? You want it?"
 		"#SHE blinks."
@@ -95,7 +96,7 @@ label park_fetch_throw_1
 				"#SHE dashes back with the ball in #HER mouth, and tilts #HER head to one side."
 				p "Good #GIRL!"
 				"#SHE drops the ball at your feet and quickly wags her tail from side to side, looking at you expectantly."
-			else
+			else:
 				"[dog.name] turns back and stares at you for a moment. #SHE calmly walks to the ball and places it in #HER jaw."
 				p "Come on! Bring it back, #GIRL!"
 				"#SHE stares at you again and puts #HER jaw loosely around the ball. #SHE trots over to you, drops the ball, and drops to the floor #HERSELF."
@@ -116,7 +117,7 @@ label park_fetch_throw_1
 				p "Gooooood #GIRL!!! You did so well!!"
 				"You give #HER a nice big rub all over the top of #HER fur coat. #HER tail waggles happily."
 				$ dog.traits.housebroken += #HOUSEBROKEN_INCR
-			else
+			else:
 				"You throw the ball a good distance away. It becomes a speck in the distance."
 				"[dog.name] looks at the ball a little sadly. #SHE turns back to look at you, and sits down."
 				p "Okay, mood."
@@ -226,4 +227,5 @@ label park_meet_pepper
 label park_end
 	"That's probably good enough for now. You got some good walking in, and you learned more about your new friend."
 	p "Thanks for spending some time with me, [dog.name]. It was fun."
+	d "Arf!"
 	"[dog.name] tilts #HER head at you and sits down by your feet."
