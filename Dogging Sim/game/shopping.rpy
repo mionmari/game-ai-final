@@ -4,9 +4,14 @@
 
 # SHOPPING INTRO
 label shopping_start:
-    $ shopping_done = []
-    $ shopping_petcoo_done = []
-    $ shopping_yummy_done = []
+    python:
+        shopping_done = []
+        shopping_petcoo_done = []
+        shopping_yummy_done = []
+        petcoo_employee = Character("Part-Time PetCoo Employee")
+        yummy_employee = Character("Yummy Bone Employee")
+        grocery_employee = Character("OK-Mart Employee")
+
     "You decide to do a little shopping today for some doggy goods. You don't really have anything better to do!"
     p "Wanna pick up some stuff? Come with me, I wanna see how you like them."
     d "Woof!"

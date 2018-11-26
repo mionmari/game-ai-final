@@ -3,12 +3,14 @@
 
 # WALK INTRO
 label walk_start:
-    $ walk_done = []    
+    $ walk_done = []
+    $ cream = Character("Cream")
+
     p "Let's go for a little walk today, [dog.name]. Come see the neighborhood!"
     p "But... let's get a leash on you first, just in case."
     "You walk towards [dog.name] with the leash."
 
-    if dog.traits.housebroken <= 1:
+    if dog.traits.houseBroken <= 1:
         d "Ruff!"
         "[dog.name] looks up at your imposing figure, and drops to the ground, putting #HER tail between #HER legs."
         p "Don't worry, it's completely safe..."

@@ -3,8 +3,14 @@
 
 # PARK INTRO
 label park_start:
-    $ park_fetched = 0
-    $ park_met = []
+    python:
+        park_fetched = 0
+        park_met = []
+        cocoa = Character("Cocoa")
+        blogger = Character("Blogger")
+        trainer = Character("Trainer")
+        pepper = Character("Pepper")
+        trucker = Character("trucker")
 
     "What better way to bond with [dog.name] than taking #HER to the park? There’s one pretty close to your house!"
     if dog.traits.social <= 2:

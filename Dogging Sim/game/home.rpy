@@ -108,7 +108,7 @@ label home_tug:
     p "Alright, let's do it!!"
     menu:
         "Tug the rope gently.":
-            if dog.traits.aggression >= 4:
+            if dog.traits.passAggress >= 4:
                 "[dog.name] notices you trying to take #HER rope away from #HER. #SHE grabs the rope and runs away!"
                 p "Good job!! Please come back!!!"
                 "You chase [dog.name] across the house for a couple minutes, until you both get tired out."
@@ -122,7 +122,7 @@ label home_tug:
                 d "Arf! Arf!"
                 "You give [dog.name] a nice little treat."
         "Tug the rope hard.":
-            if dog.traits.aggression >= 4:
+            if dog.traits.passAggress >= 4:
                 "[dog.name] notices you trying to take #HER rope away from #HER. #SHE pulls back with all #HER might, digging #HER feet into the ground."
                 d "GRRRR!!!"
                 "You begin to feel a little bad for #HER. You loosen her grip, and the rope flies out of your hands."

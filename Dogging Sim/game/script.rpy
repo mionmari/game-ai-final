@@ -20,6 +20,8 @@ init python:
 
     # ALWAYS CHOOSES FIRST DOG
     dog = dogs[0]
+    d = Character(dog.name)
+    owner = Owner()
     
 # NEEDS A START LABEL
 label start:
@@ -31,7 +33,7 @@ label start:
 label new_day:
     "What do you want to do today?"
     menu:
-        "Stay at home." if not "home" in day_done:
+        "Stay at home." if not "home" in day_done and owner.traits.kindness > 2:
             $ day_done.append("home")
             jump home_start
         "Go to the park." if not "park" in day_done:
