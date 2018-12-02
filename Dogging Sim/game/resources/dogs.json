@@ -24,7 +24,7 @@
         "energy": 0,
         "houseBroken": 0
         }
-    }
+    },
 	{
         "name": "Cyka Blyat",
         "sex": "Female",
@@ -37,7 +37,7 @@
         "energy": 3,
         "houseBroken": 1
         }
-    }
+    },
 	{
         "name": "Lion",
         "sex": "Female",
@@ -50,7 +50,7 @@
         "energy": 4,
         "houseBroken": 5
         }
-    }
+    },
 	{
         "name": "Dane",
         "sex": "Male",
@@ -63,7 +63,7 @@
         "energy": 5,
         "houseBroken": 0
         }
-    }
+    },
 	{
         "name": "Sausage",
         "sex": "Male",
@@ -76,7 +76,7 @@
         "energy": 3,
         "houseBroken": 2
         }
-    }
+    },
 	{
         "name": "Teddy",
         "sex": "Feale",
@@ -89,7 +89,7 @@
         "energy": 5,
         "houseBroken": 0
         }
-    }
+    },
 	{
         "name": "Anger",
         "sex": "Male",
