@@ -180,7 +180,7 @@ label park_fetch_throw_1:
                 "[dog.name], doesn't seem to mind the distance at all, and keeps bounding towards the ball."
                 "You consider running after [dog.name] too, because #SHE is starting to get out of sight." 
                 p "Hey, [dog.name] where are you?"
-                "Eventually, [dog.name] comes back with the ball proudly in #HER jaw."
+                "Eventually, however, [dog.name] comes back with the ball proudly in #HER jaw."
                 d "Bark! Bark!"
                 p "You're such... a GOOD #GIRL!!!"
             else:
@@ -241,6 +241,7 @@ label park_meet_cocoa:
                     "The blogger gives you a poop-eating grin, picks up Cocoa, and walks away."
             "Smile charmingly at Cocoa":
                 "You smile at Cocoa. Cocoa smiles back."
+                $if owner.traits.loyalty < 5: owner.traits.loyalty += 0.5 
                 if dog.traits.social >= 3:
                     "[dog.name] sniffs curiously at Cocoa. Cocoa turns his head to the side, and stands up."
                     cocoa "Yip!"

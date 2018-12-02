@@ -33,7 +33,7 @@ label start:
 label new_day:
     "What do you want to do today?"
     menu:
-        "Stay at home." if not "home" in day_done and owner.traits.kindness > 2:
+        "Stay at home." if not "home" in day_done:
             $ day_done.append("home")
             jump home_start
         "Go to the park." if not "park" in day_done:
@@ -46,4 +46,9 @@ label new_day:
             $ day_done.append("walk")
             jump walk_start
         "Nothing else!":
-            "nice demo end"
+            "nice demo end - dog [dog.traits.training]"
+            "kindness [owner.traits.kindness]"
+            "loyalty [owner.traits.loyalty]"
+            "patience [owner.traits.patience]"
+            "discipline [owner.traits.discipline]"
+

@@ -5,7 +5,8 @@
 label home_start:
     $ home_done = []
     "You decide to stay at home today. Hopefully, that'll give [dog.name] time to adjust!!"
-    
+    $if owner.traits.kindness < 5: owner.traits.kindness += 0.5 
+
     if dog.traits.social <= 2:
         "You don't see [dog.name] anywhere."
         p "Hello? [dog.name]?"
@@ -13,7 +14,7 @@ label home_start:
         p "Hey there, [dog.name]... You're a shy little one, aren't you..."
         "You waggle a dog treat in front of #HER and manage to coax her out. You eventually lead #HER back to your kitchen."
     else:
-        "You find [dog.name] sitting on your kithen floor. You're pretty excited to get some quality time in!"
+        "You find [dog.name] sitting on your kitchen floor. You're pretty excited to get some quality time in!"
 
     jump home_menu_start
 
@@ -69,12 +70,12 @@ label home_cup:
             if dog.traits.energy <= 2:
                 "[dog.name] stares at you, and slowly places #HER paw on a cup."
                 if r.random() < 0.3:
-                    $ if dog.traits.houseBroken < 5: dog.traits.houseBroken += 0.5
+                    $ if dog.traits.training < 5: dog.traits.training += 0.5
                     jump home_cup_win
                 else:
                     jump home_cup_lose
             elif r.random() < 0.3:
-                $ if dog.traits.houseBroken < 5: dog.traits.houseBroken += 0.5
+                $ if dog.traits.training < 5: dog.traits.training += 0.5
                 jump home_cup_win
             else:
                 jump home_cup_lose
@@ -84,6 +85,7 @@ label home_cup_win:
     p "Good #GIRL! That's amazing!"
     d "Woof! Woof!!!"
     "You feed her another treat as a prize."
+    $if owner.traits.kindness < 5: owner.traits.kindness += 0.5 
     jump home_menu
 
 label home_cup_lose:
@@ -108,6 +110,7 @@ label home_tug:
     p "Alright, let's do it!!"
     menu:
         "Tug the rope gently.":
+            $if owner.traits.patience < 5: owner.traits.patience += 0.5 
             if dog.traits.passAggress >= 4:
                 "[dog.name] notices you trying to take #HER rope away from #HER. #SHE grabs the rope and runs away!"
                 p "Good job!! Please come back!!!"
@@ -125,9 +128,19 @@ label home_tug:
             if dog.traits.passAggress >= 4:
                 "[dog.name] notices you trying to take #HER rope away from #HER. #SHE pulls back with all #HER might, digging #HER feet into the ground."
                 d "GRRRR!!!"
-                "You begin to feel a little bad for #HER. You loosen her grip, and the rope flies out of your hands."
-                "[dog.name] stares at you intensely, saliva dripping from #HER maw, grinning slightly."
-                p "{i}Sigh...{/i} Great work."
+                menu:
+                    "Let #HER win.":
+                        "You begin to feel a little bad for #HER. You loosen her grip, and the rope flies out of your hands."
+                        "[dog.name] stares at you intensely, saliva dripping from #HER maw, grinning slightly."
+                        p "{i}Sigh...{/i} Great work."
+                        $if owner.traits.kindness < 5: owner.traits.kindness += 0.5 
+                    "Keep pulling hard.":
+                        "You continue tugging until you both get tired."
+                        d "{i} Pant, pant. {\i}"
+                        p "Ha... good work."
+                        "It's a draw."
+                        $if owner.traits.patience < 5: owner.traits.patience += 0.5 
+                        $ if dog.traits.training < 5: dog.traits.training += 0.5
             elif dog.traits.energy <= 1:
                 "The rope immediately flies out of [dog.name]'s mouth."
                 p "Yeah, fair. Gotcha."
@@ -144,7 +157,7 @@ label home_tug:
                 p "Gooood #GIRL."
                 "You give her a well-earned treat."
                 d "Woof!"
-                $ if dog.traits.houseBroken < 5: dog.traits.houseBroken += 0.5
+                $ if dog.traits.training < 5: dog.traits.training += 0.5
     jump home_menu
 
 label home_end:

@@ -2,9 +2,25 @@
 errors listed below, and try again.
 
 
-File "game/shopping.rpy", line 170: menu statement expects a non-empty block.
-    menu: "no thanks."
-        ^
+File "game/script.rpy", line 50: invalid syntax
+    "kindness " + (str)owner.traits.kindness
+                            ^
+    
+
+File "game/script.rpy", line 51: invalid syntax
+    "loyalty " + (str)owner.traits.loyalty
+                           ^
+    
+
+File "game/script.rpy", line 52: invalid syntax
+    "patience " + (str)owner.traits.patience
+                            ^
+    
+
+File "game/script.rpy", line 53: invalid syntax
+    "discipline " + (str)owner.traits.discipline
+                              ^
+    
 
 Ren'Py Version: Ren'Py 7.1.1.929
-Sun Dec 02 14:57:49 2018
+Sun Dec 02 18:09:50 2018
