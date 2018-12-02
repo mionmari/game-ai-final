@@ -2,7 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 81: Tab characters are not allowed in Ren'Py scripts.
+File "game/shopping.rpy", line 170: menu statement expects a non-empty block.
+    menu: "no thanks."
+        ^
 
 Ren'Py Version: Ren'Py 7.1.1.929
-Mon Nov 19 17:29:26 2018
+Sun Dec 02 14:57:49 2018

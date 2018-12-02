@@ -11,6 +11,7 @@ label shopping_start:
         petcoo_employee = Character("Part-Time PetCoo Employee")
         yummy_employee = Character("Yummy Bone Employee")
         grocery_employee = Character("OK-Mart Employee")
+        puppy = Character("Curious Puppy")
 
     "You decide to do a little shopping today for some doggy goods. You don't really have anything better to do!"
     p "Wanna pick up some stuff? Come with me, I wanna see how you like them."
@@ -67,8 +68,17 @@ label shopping_petcoo_menu:
             $ shopping_petcoo_done.append("chew")
             if dog.traits.passAggress >= 3:
                 "[dog.name] gnashes viciously into the chew toy!"
+                p "No!! Bad #GIRL!"
+                petcoo_employee "Um..."
+                "Looks like you have to buy the chew toy now."
+            elif dogs.traits.energy >= 3:
+                "[dog.name] runs around excitedly as you give #HER the toy."
+                d "Woof! Woof!"
+                "[dog.name] does a backflip! 10 out of 10!"
+                p "Woah! You {i} really {/i} like this!"
             else:
-                "[dog.name] sniffs the chew toy and plays with it a little. #SHE doesn't seem entirely impressed, though"
+                "[dog.name] sniffs the chew toy and plays with it a little. #SHE doesn't seem entirely impressed, though."
+                p "Well... it was work a shot."
         "Some super expensive dog treats." if not "treats" in shopping_petcoo_done:
             $ shopping_petcoo_done.append("treats")
             if dog.traits.gluttony >= 4:
@@ -79,6 +89,32 @@ label shopping_petcoo_menu:
             else:
                 "[dog.name] seems to love the new treats a lot!!!"
                 d "{i}Arf! Arf! Arf!{/i}"
+                p "Aww, so cute!"
+        "Check out the puppy window." if not "puppyWindow" in shopping_petcoo_done:
+             $ shopping_petcoo_done.append("puppyWindow")
+             "Let's check out the puppies, [dog.name]!"
+             d "Woof?" 
+             "A small puppy comes close to the glass. It stares curiously at [dog.name]."
+             p "Wow, I think this one likes you, [dog.name]."
+             if dog.traits.jealousy >= 3:
+                "[dog.name] looks a completely disinterested and tries to pull you away from the glass."     
+                d "Bark! Bark!"
+                p "Haha, okay, I'm done."
+             else:
+                if dog.traits.passAggress >= 3:                    
+                    "[dog.name] looks up and down at the puppy."
+                    puppy "Arf?"
+                    d "{i} Hiss! {/i}"
+                    puppy "{b} *whimper* {/b}"
+                    p "Hey! That wasn't nice!"
+                    "[dog.name] starts hissing at you now."
+                    p "Sigh... [dog.name] when will you learn?"
+                else:
+                    "[dog.name] looks pretty interested in the puppy."
+                    d "Bark! Bark!"
+                    puppy "Arf!"
+                    "[dog.name] runs around in a circle and wags #HER tail playfully."
+                    "You and [dog.name] feel warm and fuzzy inside."
         "Nothing else interests you here at PetCoo.":
             "You thank the employees and take your leave."
             jump shopping_menu
@@ -97,7 +133,7 @@ label shopping_yummy:
     else:
         "The woman reaches down and pets [dog.name]."
         yummy_employee "Let me know if you need anything!"
-        jump shopping_petcoo_menu
+        jump shopping_yummy_menu
 
 label shopping_yummy_menu:
     "What would you like to look at?"
@@ -106,8 +142,10 @@ label shopping_yummy_menu:
             $ shopping_yummy_done.append("hamster")
             if dog.traits.passAggress <= 2:
                 "[dog.name] lovingly hugs the plush hamster. #SHE seems to really love it."
+                d "Woof!"
             else:
-                "[dog.name] doesn't seem entirely impressed."
+                "[dog.name] looks ready to rip the stuffed hamster into shreds."
+                "You quickly put back the toy on the shelf."
         "A very large, fluffy dog bed." if not "bed" in shopping_yummy_done:
             $ shopping_yummy_done.append("bed")
             d "{i}Arf! Arf! Arf!{/i}"
@@ -119,6 +157,30 @@ label shopping_yummy_menu:
                 "After a little while, [dog.name] eventually comes to."
             else:
                 "It seems like #SHE really likes it!"
+                if dog.traits.houseBroken < 3:
+                    "[dog.name] has a suspicious glimmer in #HER eyes."
+                    p "Having one of these would nice ... wait a minute!"
+                    "You quickly scoop up [dog.name] and take her outside before #SHE can do #HER business."
+                    p "Bad dog!"
+                    $if dog.traits.houseBroken < 5: dog.traits.houseBroken += 0.5;
+                    d "{b}*whimper*{/b}"
+                    yummy_employee "Sorry sweetie, but you can't go wherever you please."
+        "Yummy Bone™ dog food." if not "food" in shopping_yummy_done:
+            yummy_employee "Ooh! Yes, we do sell your favorite dog food brands, but we also sell our own organic dog mix! Want to try a sample?"
+            "[dog.name] looks at you expectantly."
+            d "Woof! Woof! Woof!"
+            p "Sure, we'd like to try!"
+            if dog.traits.gluttony >= 4:
+                "As soon as the employee finishes pouring out the sample, [dog.name] has already eaten all of it."
+                yummy_employee "Aww, do you want more?"
+                d "Arf!"
+                yummy_employee "Sorry, this is all we're allowed to give per customer... But since you're so sweet, I'll give you a little extra {b} *wink* {\b}."
+                "[dog.name] runs around in circles."
+            else:
+                "[dog.name] patiently waits for the employee to finish pouring before starting to eat."
+                p "Does it taste good?"
+                d "Woof!"
+
         "Nothing else interests you here at Yummy Bone.":
             "You thank the employees and take your leave."
             jump shopping_menu

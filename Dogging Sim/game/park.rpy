@@ -97,7 +97,12 @@ label park_fetch_throw_1:
     menu:
         "Lightly toss the ball in front of you.":
             "Probably best to start out light!"
-            if dog.traits.energy >= 2:
+            if dog.traits.energy <= 2  and dog.traits.passAggress >= 4:
+                "Seems like [dog.name] is in a bad mood. Maybe we should try asking #HER nicely."
+                p "[dog.name] do you want to play?"
+                "[dog.name] lets out a nasty snarl."
+                p "Okay, nevermind."
+            elif dog.traits.energy >= 2:
                 "[dog.name] bolts out immediately from beneath you. #SHE makes her way there in no time at all, leaping onto the ball."
                 "#SHE dashes back with the ball in #HER mouth, and tilts #HER head to one side."
                 p "Good #GIRL!"
@@ -132,22 +137,78 @@ label park_fetch_throw_1:
     $ park_fetched += 1
     jump park_menu
 
+    label park_fetch_throw_2:
+    "We've still got time. Let's play more!"
+    p "Hey, [dog.name], come here!"
+
+    if dog.traits.energy <= 2  and dog.traits.passAggress >= 4:
+        "[dog.name] gives you a sharp glare."
+        p "Haha, I'm joking, I'm joking."
+    elif dog.traits.energy >= 3:
+        "[dog.name] bounces up and down, wagging #HER tail vigorously."
+
+    menu:
+        "Go for a light throw.":
+            "[dog.name] might be tired. Let's give them an easy throw."
+            if dog.traits.energy >= 4:
+                p "Fet-"
+                "Before you can even finish, you see that [dog.name] has already returned with the ball in #HER mouth."
+                p "Oh, wow! Good #GIRL!"
+            elif dog.traits.energy < 2:
+                "[dog.name] makes another runs towards the ball, but at a noticeably slower pace.  #SHE slowly makes #HER way back towards you and plops the ball at your feet."
+                p "Thanks, [dog.name]!"
+                b "Woof!"
+                "[dog.name] stretches out #HER front paws and lies down on the grass."
+            else:
+                "The ball rolls to a halt. With #HER tail still wagging, [dog.name] looks at the ball and then back at you."
+                p "You can do it, [dog.name]!"
+                b "Arf!"
+                "[dog.name] lets out a yawn and curls up into a ball. #SHE looks ready to take nap."
+                p "Oh.. huh.."
+                "You walk over to pick up the ball, feeling a bit tired yourself."
+        "Wind up for a pitch.":
+            "[dog.name] still seems to be full of energy. #SHE can handle a far throw."
+            if dog.traits.passAggress >= 4:
+                "[dog.name] eyes the ball in your hand, ready to pounce at any moment."
+                p "Fetch this! Haaah!"
+                "[dog.name] zooms towards the ball at great speed."
+                "You wrestle with [dog.name] again to retrieve the ball. You manage to pick up a soppy wet mess."
+                p "Gross."                
+            elif dog.traits.energy >= 4:
+                "You throw the ball so far away that you can't even tell where it landed."
+                p "Okay, so I might have overdone it just a bit."
+                "[dog.name], doesn't seem to mind the distance at all, and keeps bounding towards the ball."
+                "You consider running after [dog.name] too, because #SHE is starting to get out of sight." 
+                p "Hey, [dog.name] where are you?"
+                "Eventually, [dog.name] comes back with the ball proudly in #HER jaw."
+                d "Bark! Bark!"
+                p "You're such... a GOOD #GIRL!!!"
+            else:
+                "You start to wind up, but [dog.name] is just rollling around in the grass."
+                d "Woof!"
+                "You decide to put away the ball."
+
+
+    $ park_fetched += 1
+    jump park_menu
+
+
 label park_menu:
     "What would you like to do now?"
     menu:
         "Play some fetch." if park_fetched == 0:
             jump park_fetch_throw_1
-        "Play some more fetch." if park_fetched < 2:
-            jump park_fetch_throw_1
+        "Play some more fetch." if park_fetched == 1:
+            jump park_fetch_throw_2
         "Meet other dogs." if len(park_met) < 3:
-            jump park_meet_start
+            jump park_meet_menu
         "Call it a day." if park_fetched != 0 and len(park_met) != 0:
             jump park_end
 
 label park_meet_menu:
     "You look around. There are a couple of dogs and owners you can talk to."
     menu:
-        "Adorable dog getting its picture taken." if not "cocoa" in park_met:
+        "Adorable dog getting its picture taken" if not "cocoa" in park_met:
             jump park_meet_cocoa
         "Obedient dog doing tricks" if not "roxy" in park_met:
             jump park_meet_roxy

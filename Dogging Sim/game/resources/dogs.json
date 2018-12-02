@@ -4,8 +4,8 @@
         "sex": "Female",
         "breed": "Boxer",
         "traits": {
-        "social": 1,
-        "passAggress": 2,
+        "social": 4,
+        "passAggress": 5,
         "jealousy": 0,
         "gluttony": 3,
         "energy": 5,

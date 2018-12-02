@@ -1,72 +1,30 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 35, in script
-    b "Welcome to the dog park, u PIECE OF TRASH! [dogs[0].traits]"
-Exception: Unknown text tag u"'houseBroken': 2, 'gluttony': 3, 'passAggress': 2, 'energy': 5, 'jealousy': 0, 'social': 1"
+  File "game/home.rpy", line 32, in script
+    menu:
+  File "game/home.rpy", line 33, in <module>
+    "Play the three-cup game with [dog.name]" if not "cup" in home_done:
+NameError: name 'home_done' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 35, in script
-    b "Welcome to the dog park, u PIECE OF TRASH! [dogs[0].traits]"
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\ast.py", line 678, in execute
-    renpy.exports.say(who, what, interact=self.interact, *args, **kwargs)
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\exports.py", line 1204, in say
-    who(what, *args, **kwargs)
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\character.py", line 1031, in __call__
-    self.do_display(who, what, cb_args=self.cb_args, **display_args)
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\character.py", line 823, in do_display
-    **display_args)
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\character.py", line 572, in display_say
-    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\ui.py", line 289, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\display\core.py", line 2662, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\display\core.py", line 3148, in interact_core
-    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\display\core.py", line 2065, in draw_screen
-    renpy.config.screen_height,
-  File "render.pyx", line 487, in renpy.display.render.render_screen
-  File "render.pyx", line 235, in renpy.display.render.render
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\display\layout.py", line 719, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 147, in renpy.display.render.render
-  File "render.pyx", line 235, in renpy.display.render.render
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\display\layout.py", line 719, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 147, in renpy.display.render.render
-  File "render.pyx", line 235, in renpy.display.render.render
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\display\layout.py", line 719, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 147, in renpy.display.render.render
-  File "render.pyx", line 235, in renpy.display.render.render
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\display\screen.py", line 669, in render
-    child = renpy.display.render.render(self.child, w, h, st, at)
-  File "render.pyx", line 147, in renpy.display.render.render
-  File "render.pyx", line 235, in renpy.display.render.render
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\display\layout.py", line 719, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 147, in renpy.display.render.render
-  File "render.pyx", line 235, in renpy.display.render.render
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\display\layout.py", line 1121, in render
-    st, at)
-  File "render.pyx", line 147, in renpy.display.render.render
-  File "render.pyx", line 235, in renpy.display.render.render
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\display\layout.py", line 719, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 147, in renpy.display.render.render
-  File "render.pyx", line 235, in renpy.display.render.render
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\text\text.py", line 1845, in render
-    virtual_layout = Layout(self, width, height, renders, drawable_res=False, size_only=True)
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\text\text.py", line 558, in __init__
-    self.paragraphs = self.segment(text.tokens, style, renders, text)
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\text\text.py", line 1083, in segment
-    raise Exception("Unknown text tag %r" % text)
-Exception: Unknown text tag u"'houseBroken': 2, 'gluttony': 3, 'passAggress': 2, 'energy': 5, 'jealousy': 0, 'social': 1"
+  File "game/home.rpy", line 32, in script
+    menu:
+  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\ast.py", line 1562, in execute
+    choice = renpy.exports.menu(choices, self.set)
+  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\exports.py", line 878, in menu
+    if renpy.python.py_eval(condition) ]
+  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\python.py", line 1944, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\python.py", line 1937, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/home.rpy", line 33, in <module>
+    "Play the three-cup game with [dog.name]" if not "cup" in home_done:
+NameError: name 'home_done' is not defined
 
 Windows-8-6.2.9200
 Ren'Py 7.1.1.929
 Dogging Sim 1.0
-Tue Nov 20 15:37:15 2018
+Sun Dec 02 15:21:45 2018

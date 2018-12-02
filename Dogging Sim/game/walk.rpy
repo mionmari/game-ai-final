@@ -29,10 +29,10 @@ label walk_menu_start:
     menu:
         "Go to the crepe stand.":
             $ walk_done.append("crepe")
-            jump home_cup
+            jump walk_crepe
         "Just wander around for some time.":
             $ walk_done.append("walk")
-            jump home_tug
+            jump walk_wander
 
 label walk_menu:
     "What would you like to go next?"
