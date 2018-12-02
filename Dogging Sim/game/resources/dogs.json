@@ -25,4 +25,82 @@
         "houseBroken": 0
         }
     }
+	{
+        "name": "Cyka Blyat",
+        "sex": "Female",
+        "breed": "Caucasian",
+        "traits": {
+        "social": 3,
+        "passAggress": 5,
+        "jealousy": 1,
+        "gluttony": 5,
+        "energy": 3,
+        "houseBroken": 1
+        }
+    }
+	{
+        "name": "Lion",
+        "sex": "Female",
+        "breed": "Chow Chow",
+        "traits": {
+        "social": 0,
+        "passAggress": 5,
+        "jealousy": 5,
+        "gluttony": 3,
+        "energy": 4,
+        "houseBroken": 5
+        }
+    }
+	{
+        "name": "Dane",
+        "sex": "Male",
+        "breed": "Great Dane",
+        "traits": {
+        "social": 5,
+        "passAggress": 2,
+        "jealousy": 2,
+        "gluttony": 5,
+        "energy": 5,
+        "houseBroken": 0
+        }
+    }
+	{
+        "name": "Sausage",
+        "sex": "Male",
+        "breed": "Basset",
+        "traits": {
+        "social": 3,
+        "passAggress": 2,
+        "jealousy": 3,
+        "gluttony": 3,
+        "energy": 3,
+        "houseBroken": 2
+        }
+    }
+	{
+        "name": "Teddy",
+        "sex": "Feale",
+        "breed": "Zuchon",
+        "traits": {
+        "social": 2,
+        "passAggress": 2,
+        "jealousy": 2,
+        "gluttony": 1,
+        "energy": 5,
+        "houseBroken": 0
+        }
+    }
+	{
+        "name": "Anger",
+        "sex": "Male",
+        "breed": "Chihuahua",
+        "traits": {
+        "social": 5,
+        "passAggress": 5,
+        "jealousy": 5,
+        "gluttony": 0,
+        "energy": 5,
+        "houseBroken": 5
+        }
+    }
 ]
