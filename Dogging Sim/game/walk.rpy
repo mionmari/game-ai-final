@@ -12,7 +12,7 @@ label walk_start:
 
     if dog.traits.training <= 1:
         d "Ruff!"
-        "[dog.name] looks up at your imposing figure, and drops to the ground, putting [objPronoun] tail between [objPronoun] legs."
+        "[dog.name] looks up at your imposing figure, and drops to the ground, putting [possPronoun] tail between [possPronoun] legs."
         menu:
             "Calmy put the collar on.":         
                 p "Don't worry, it's completely safe..."
@@ -22,7 +22,7 @@ label walk_start:
                 "You manage to calm [objPronoun] down enough to attach the collar."
             "Give some treats.":
                 if dog.traits.gluttony >= 3:
-                    "[dog.name]'s ears perk up when she sees you pull out a puppy snack."
+                    "[dog.name]'s ears perk up when [subjPronoun] sees you pull out a puppy snack."
                     $if owner.traits.kindness < 5: owner.traits.kindness += 0.5
                 "With a couple dog treats in hand, you manage to calm [objPronoun] down enough to attach the collar."
 
@@ -143,7 +143,7 @@ label walk_wander:
         d "{i}Pants happily{/i}"
     else:
         "You make your way around the neighborhood, pointing out your favorite locations along the way."
-        "[dog.name] appears to be enjoying [objPronoun]SELF. It's a nice, calming walk the whole way through."
+        "[dog.name] appears to be enjoying [reflPronoun]. It's a nice, calming walk the whole way through."
         p "You like my town, [dog.name]?"
         "[subjPronoun] looks back at you inquisitively."
         p "You'll learn to love it."

@@ -15,7 +15,7 @@ label park_start:
     "What better way to bond with [dog.name] than taking [objPronoun] to the park? There’s one pretty close to your house!"
     if dog.traits.social <= 2:
         "Along the way, [dog.name] puts [possPronoun] nose in the air and silently whips [possPronoun] head left and right. [possPronoun] ears are pointed straight up."
-        "You notice a lot of slack on the leash as she walks closely in front of you, checking [possPronoun] surroundings."
+        "You notice a lot of slack on the leash as [subjPronoun] walks closely in front of you, checking [possPronoun] surroundings."
     elif dog.traits.energy <= 1:
         "[dog.name] walks a couple blocks with you, and then sits down on a street corner."
         d "{i}Whimpers{/i}"
@@ -26,7 +26,7 @@ label park_start:
         "[dog.name] leaps forward, pulling you into a brisk jog."
         d "Woof! Woof!"
         p "Hey!! Slow down, [personPRonoun]! I can't keep up like this!"
-        "[dog.name] jumps around, trotting around trees and sniffing the ground. [possPronoun] ears point straight up and her tail flicks left and right."
+        "[dog.name] jumps around, trotting around trees and sniffing the ground. [possPronoun] ears point straight up and [possPronoun] tail flicks left and right."
         "[possPronoun] attention is quickly diverted to something new each time, and [subjPronoun] leads you up and down the streets."
         d "{i}Heavy panting{/i}"
         "You have a feeling you're gonna get some good exercise today!"
@@ -68,7 +68,7 @@ label park_fetch_start:
                 p "Well, I guess that works too..."
                 "You pick the ball back up."
                 $ if dog.traits.gluttony < 5: dog.traits.gluttony += 0.5
-            "Wait for her to finish.":
+            "Wait for [objPronoun] to finish.":
                 "A gentle breeze blows by. [dog.name]'s beautiful coat is highlighted in the afternoon glow."
                 d "{i}Panting heavily{/i}"
                 "After about a minute, [subjPronoun] puts the ball back into your outstretched hand."
@@ -103,10 +103,10 @@ label park_fetch_throw_1:
                 "[dog.name] lets out a nasty snarl."
                 p "Okay, nevermind."
             elif dog.traits.energy >= 2:
-                "[dog.name] bolts out immediately from beneath you. [subjPronoun] makes her way there in no time at all, leaping onto the ball."
+                "[dog.name] bolts out immediately from beneath you. [subjPronoun] makes [possPronoun] way there in no time at all, leaping onto the ball."
                 "[subjPronoun] dashes back with the ball in [possPronoun] mouth, and tilts [possPronoun] head to one side."
                 p "Good [personPRonoun]!"
-                "[subjPronoun] drops the ball at your feet and quickly wags her tail from side to side, looking at you expectantly."
+                "[subjPronoun] drops the ball at your feet and quickly wags [possPronoun] tail from side to side, looking at you expectantly."
             else:
                 "[dog.name] turns back and stares at you for a moment. [subjPronoun] calmly walks to the ball and places it in [possPronoun] jaw."
                 p "Come on! Bring it back, [personPRonoun]!"
@@ -116,7 +116,7 @@ label park_fetch_throw_1:
             if dog.traits.passAggress >= 4:
                 "[dog.name] senses your energy. You throw the ball as hard as you can and [subjPronoun] darts off, kicking up dirt as [subjPronoun] goes."
                 d "Arf! Arf!"
-                "[subjPronoun] practically trips over herself trying to get to the ball. You see [dog.name] gnash [possPronoun] teeth through the ball in the distance."
+                "[subjPronoun] practically trips over [reflPronoun] trying to get to the ball. You see [dog.name] gnash [possPronoun] teeth through the ball in the distance."
                 "[subjPronoun] stays there and starts shaking [possPronoun] head viciously with the ball still in [possPronoun] jaws."
                 p "Whoah there!! Let go, [dog.name], come on!"
                 "You run over to [possPronoun], and after some time, you manage to get [possPronoun] to drop the ball again."

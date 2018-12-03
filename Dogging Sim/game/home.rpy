@@ -13,7 +13,7 @@ label home_start:
         p "Hello? [dog.name]?"
         "No answer. You walk around the house, upturning furniture, until you see a fuzzy little paw under your bed."
         p "Hey there, [dog.name]... You're a shy little one, aren't you..."
-        "You waggle a dog treat in front of [objPronoun] and manage to coax her out. You eventually lead [objPronoun] back to your kitchen."
+        "You waggle a dog treat in front of [objPronoun] and manage to coax [objPronoun] out. You eventually lead [objPronoun] back to your kitchen."
     else:
         "You find [dog.name] sitting on your kitchen floor. You're pretty excited to get some quality time in!"
 
@@ -85,7 +85,7 @@ label home_cup_win:
     "[dog.name] chooses the correct cup!"
     p "Good [personPronoun]! That's amazing!"
     d "Woof! Woof!!!"
-    "You feed her another treat as a prize."
+    "You feed [objPronoun] another treat as a prize."
     $if owner.traits.kindness < 5: owner.traits.kindness += 0.5 
     jump home_menu
 
@@ -131,7 +131,7 @@ label home_tug:
                 d "GRRRR!!!"
                 menu:
                     "Let [objPronoun] win.":
-                        "You begin to feel a little bad for [objPronoun]. You loosen her grip, and the rope flies out of your hands."
+                        "You begin to feel a little bad for [objPronoun]. You loosen [possPronoun] grip, and the rope flies out of your hands."
                         "[dog.name] stares at you intensely, saliva dripping from [possPronoun] jaw, grinning slightly."
                         p "{i}Sigh...{/i} Great work."
                         $if owner.traits.kindness < 5: owner.traits.kindness += 0.5 
@@ -156,7 +156,7 @@ label home_tug:
                     "You pull hard enough, and [dog.name] gets pulled towards you!"
                 "You collapse into a single, heartwarming pile."
                 p "Gooood [personPronoun]."
-                "You give her a well-earned treat."
+                "You give [objPronoun] a well-earned treat."
                 d "Woof!"
                 $ if dog.traits.training < 5: dog.traits.training += 0.5
     jump home_menu

@@ -131,7 +131,7 @@ label shopping_petcoo_menu:
                     "[dog.name] looks pretty interested in the puppy."
                     d "Bark! Bark!"
                     puppy "Arf!"
-                    "[dog.name] runs around in a circle and wags [objPronoun] tail playfully."
+                    "[dog.name] runs around in a circle and wags [possPronoun] tail playfully."
                     "You and [dog.name] feel warm and fuzzy inside."
         "Nothing else interests you here at PetCoo.":
             "You thank the employees and take your leave."
@@ -175,7 +175,7 @@ label shopping_yummy_menu:
         "A very large, fluffy dog bed." if not "bed" in shopping_yummy_done:
             $ shopping_yummy_done.append("bed")
             d "{i}Arf! Arf! Arf!{/i}"
-            "[dog.name] lies down into the bed, snuggling [objPronoun] snout deep into the fuzz."
+            "[dog.name] lies down into the bed, snuggling [possPronoun] snout deep into the fuzz."
             if dog.traits.energy <= 2:
                 "[dog.name] falls asleep."
                 menu: 
@@ -192,17 +192,17 @@ label shopping_yummy_menu:
             else:
                 "It seems like [subjPronoun] really likes it!"
                 if dog.traits.training < 3:
-                    "[dog.name] has a suspicious glimmer in [objPronoun] eyes. You have a weird feeling that [dog.name] might drop a log in the bed."
+                    "[dog.name] has a suspicious glimmer in [possPronoun] eyes. You have a weird feeling that [dog.name] might drop a log in the bed."
                     menu:
                         "Ignore. [dog.name] is just being playful.":
                             "You shrug off your suspicions. After all, [dog.name] just used the bathroom before coming inside the store."
                             p "Hey! Wait!"
-                            "[dog.name] rolls over with [objPronoun] stomach exposed."
+                            "[dog.name] rolls over with [possPronoun] stomach exposed."
                             p "Hmm... so you just wanted belly rubs, huh?"
                             d "Yip!"
                             $if owner.traits.patience < 5: owner.traits.patience += 0.5
                         "Remove [dog.name] from bed.":
-                            "You quickly scoop up [dog.name] and take her outside before [subjPronoun] can do [objPronoun] business."
+                            "You quickly scoop up [dog.name] and take her outside before [subjPronoun] can do [possPronoun] business."
                             $if dog.traits.training < 5: dog.traits.training += 0.5;
                             $if owner.traits.discipline < 5: owner.traits.discipline += 0.5
                     p "Phew, that was a close one."
@@ -240,7 +240,7 @@ label shopping_grocery:
     "You get a little ways into the store before an employee notices."
     grocery_employee "Excuse me!! No pets in the store, please! It's company policy- we have a lot of food items out in the open."
     if dog.traits.gluttony >= 4:
-        "[dog.name] appears to smell something good in the store, and tries to push [objPronoun] way in."
+        "[dog.name] appears to smell something good in the store, and tries to push [possPronoun] way in."
         p "I'm sorry!!"
         "You manage to shove [dog.name] back out the door with a little effort."
         grocery_employee "It's... it's no problem."
