@@ -127,11 +127,11 @@ label home_tug:
                 "You give [dog.name] a nice little treat."
         "Tug the rope hard.":
             if dog.traits.passAggress >= 4:
-                "[dog.name] notices you trying to take [possPronoun] rope away from [objPronoun]. [subjPronoun] pulls back with all [possPronoun] might, digging [objPronoun] feet into the ground."
+                "[dog.name] notices you trying to take [possPronoun] rope away from [objPronoun]. [subjPronoun] pulls back with all [possPronoun] might, digging [possPronoun] feet into the ground."
                 d "GRRRR!!!"
                 menu:
                     "Let [objPronoun] win.":
-                        "You begin to feel a little bad for [objPronoun]. You loosen [possPronoun] grip, and the rope flies out of your hands."
+                        "You begin to feel a little bad for [objPronoun]. You loosen your grip, and the rope flies out of your hands."
                         "[dog.name] stares at you intensely, saliva dripping from [possPronoun] jaw, grinning slightly."
                         p "{i}Sigh...{/i} Great work."
                         $if owner.traits.kindness < 5: owner.traits.kindness += 0.5 
