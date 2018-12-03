@@ -72,7 +72,7 @@ label walk_crepe_strawberry:
         "Yes.":
             cream "That's fine. Dogs can eat strawberries and peanut butter. I'll cut the strawberries extra thin for [objPronoun]!"
             p "Thank you!"
-            "You feed a couple slices of peanut butter-covered strawberries to [dog.name]. [possPronoun] tail wags happily."
+            "You feed a couple slices of peanut butter-covered strawberries to [dog.name]. [possPronoun_upper] tail wags happily."
             d "Yip!"
         "No.":
             cream "Ooh, then I'd feel sorry for [objPronoun]. Here, let me get [objPronoun] a treat, so you can eat together!"
@@ -115,7 +115,7 @@ label walk_crepe_chocolate:
             "Cream stares daggers at you, and slowly hands over your crepe. As you walk, you feel the weight of your sins crawling down your back."
             $if owner.traits.discipline > 0.5: owner.traits.discipline -= 0.5
         "No.":
-            cream "Good. [subjPronoun] can't eat that stuff, you know! I feel bad for [objPronoun]. Be careful not to drop any."
+            cream "Good. [subjPronoun_upper] can't eat that stuff, you know! I feel bad for [objPronoun]. Be careful not to drop any."
             "Cream reaches behind the counter and pulls out a nice-looking treat."
             d "Woof! Woof!"
             "You continue walking with your sweet crepe in hand."
@@ -145,9 +145,9 @@ label walk_wander:
         "You make your way around the neighborhood, pointing out your favorite locations along the way."
         "[dog.name] appears to be enjoying [reflPronoun]. It's a nice, calming walk the whole way through."
         p "You like my town, [dog.name]?"
-        "[subjPronoun] looks back at you inquisitively."
+        "[subjPronoun_upper] looks back at you inquisitively."
         p "You'll learn to love it."
-        "[subjPronoun] turns around and keeps going."
+        "[subjPronoun_upper] turns around and keeps going."
     $if dog.traits.training < 5: dog.traits.training += 0.5
     jump walk_menu
 

@@ -78,7 +78,7 @@ label shopping_petcoo_menu:
                 p "Woah! You {i} really {/i} like this!"
                 $if owner.traits.kindness < 5: owner.traits.kindness += 0.5
             else:
-                "[dog.name] sniffs the chew toy and plays with it a little. [subjPronoun] doesn't seem entirely impressed, though."
+                "[dog.name] sniffs the chew toy and plays with it a little. [subjPronoun_upper] doesn't seem entirely impressed, though."
                 p "Well... it was work a shot."
         "Some super expensive dog treats." if not "treats" in shopping_petcoo_done:
             $ shopping_petcoo_done.append("treats")
@@ -159,7 +159,7 @@ label shopping_yummy_menu:
         "A large, round stuffed hamster." if not "hamster" in shopping_yummy_done:
             $ shopping_yummy_done.append("hamster")
             if dog.traits.passAggress <= 2:
-                "[dog.name] lovingly hugs the plush hamster. [subjPronoun] seems to really love it."
+                "[dog.name] lovingly hugs the plush hamster. [subjPronoun_upper] seems to really love it."
                 d "Woof!"
                 $if owner.traits.kindness < 5: owner.traits.kindness += 0.5
             else:
@@ -183,7 +183,7 @@ label shopping_yummy_menu:
                         "Hey, c'mon [dog.name] we can't sleep here. It's not ours."
                         d "Woof?"
                         $if owner.traits.discipline < 5: owner.traits.discipline += 0.5
-                    "Let [dog.name] sleep. [subjPronoun] looks exhausted.":
+                    "Let [dog.name] sleep. [subjPronoun_upper] looks exhausted.":
                         yummy_employee "Aww, what a sweet child!! Here, if you'd like it, I'll give you a special discount."
                         "The lady takes out a camera and takes a picture of [dog.name] sleeping."
                         "After a little while, [dog.name] eventually comes to."

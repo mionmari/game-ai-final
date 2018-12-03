@@ -25,13 +25,13 @@ label park_start:
     elif dog.traits.energy >= 4 and dog.traits.passAggress >= 3:
         "[dog.name] leaps forward, pulling you into a brisk jog."
         d "Woof! Woof!"
-        p "Hey!! Slow down, [personPRonoun]! I can't keep up like this!"
-        "[dog.name] jumps around, trotting around trees and sniffing the ground. [possPronoun] ears point straight up and [possPronoun] tail flicks left and right."
-        "[possPronoun] attention is quickly diverted to something new each time, and [subjPronoun] leads you up and down the streets."
+        p "Hey!! Slow down, [personPronoun]! I can't keep up like this!"
+        "[dog.name] jumps around, trotting around trees and sniffing the ground. [possPronoun_upper] ears point straight up and [possPronoun] tail flicks left and right."
+        "[possPronoun_upper] attention is quickly diverted to something new each time, and [subjPronoun] leads you up and down the streets."
         d "{i}Heavy panting{/i}"
         "You have a feeling you're gonna get some good exercise today!"
     else:
-        "[dog.name] briskly walks ahead of you. [subjPronoun] occasionally sniffs at the base of a tree, and [possPronoun] eyes are caught by the occasional butterfly."
+        "[dog.name] briskly walks ahead of you. [subjPronoun_upper] occasionally sniffs at the base of a tree, and [possPronoun] eyes are caught by the occasional butterfly."
         "It's a beautiful day outside, and the crisp, fresh air smells amazing this time of year. You make it to the dog park in no time."
     jump park_menu_start
 
@@ -53,18 +53,18 @@ label park_fetch_start:
 
     if dog.traits.gluttony >= 4:
         d "{i}Whiiine!{/i}"
-        "[dog.name] snatches the ball from you, saliva getting all over your hand. [subjPronoun] begins gnawing on it ravenously."
+        "[dog.name] snatches the ball from you, saliva getting all over your hand. [subjPronoun_upper] begins gnawing on it ravenously."
         d "{i}Loud and adorable chewing noises{/i}"
         "You wanted to get some exercise in, but you also feel a sort of spiritual connection to [possPronoun]."
         menu:
             "Admonish [dog.name] and take it away from [possPronoun].":
                 p "[dog.name], NO! Tennis balls are for {i}fetch{/i}, not {i}food{/i}!!"
                 "With a little bit of stern talking and some force, you manage to pry it away from [possPronoun]."
-                "[subjPronoun] looks at the ground silently."
+                "[subjPronoun_upper] looks at the ground silently."
                 $ if dog.traits.houseBroken < 5: dog.traits.houseBroken += 0.5
             "Feed [possPronoun] a dog treat.":
                 p "{i}Sigh...{/i}"
-                "You pull out a dog treat and hold it near [possPronoun] nose. [subjPronoun] immediately drops the sopping wet ball onto the ground and licks the treat out of your hand."
+                "You pull out a dog treat and hold it near [possPronoun] nose. [subjPronoun_upper] immediately drops the sopping wet ball onto the ground and licks the treat out of your hand."
                 p "Well, I guess that works too..."
                 "You pick the ball back up."
                 $ if dog.traits.gluttony < 5: dog.traits.gluttony += 0.5
@@ -74,13 +74,13 @@ label park_fetch_start:
                 "After about a minute, [subjPronoun] puts the ball back into your outstretched hand."
     elif dog.traits.social > 4:
         d "Arf! Arf! Arf!"
-        "[subjPronoun] seems pretty hyped already, just by seeing the ball. [subjPronoun] might have done this before!"
-        p "Ready, [dog.name]? You ready, [personPRonoun]?!"
+        "[subjPronoun_upper] seems pretty hyped already, just by seeing the ball. [subjPronoun_upper] might have done this before!"
+        p "Ready, [dog.name]? You ready, [personPronoun]?!"
         d "Woof!"
     else:
-        "[subjPronoun] sniffs the ball inquisitively, then tilts [possPronoun] head to the side."
-        p "You want the ball, [personPRonoun]? You want it?"
-        "[subjPronoun] blinks."
+        "[subjPronoun_upper] sniffs the ball inquisitively, then tilts [possPronoun] head to the side."
+        p "You want the ball, [personPronoun]? You want it?"
+        "[subjPronoun_upper] blinks."
 
     jump park_fetch_throw_1
 
@@ -103,34 +103,34 @@ label park_fetch_throw_1:
                 "[dog.name] lets out a nasty snarl."
                 p "Okay, nevermind."
             elif dog.traits.energy >= 2:
-                "[dog.name] bolts out immediately from beneath you. [subjPronoun] makes [possPronoun] way there in no time at all, leaping onto the ball."
-                "[subjPronoun] dashes back with the ball in [possPronoun] mouth, and tilts [possPronoun] head to one side."
-                p "Good [personPRonoun]!"
-                "[subjPronoun] drops the ball at your feet and quickly wags [possPronoun] tail from side to side, looking at you expectantly."
+                "[dog.name] bolts out immediately from beneath you. [subjPronoun_uppper] makes [possPronoun] way there in no time at all, leaping onto the ball."
+                "[subjPronoun_upper] dashes back with the ball in [possPronoun] mouth, and tilts [possPronoun] head to one side."
+                p "Good [personPronoun]!"
+                "[subjPronoun_upper] drops the ball at your feet and quickly wags [possPronoun] tail from side to side, looking at you expectantly."
             else:
-                "[dog.name] turns back and stares at you for a moment. [subjPronoun] calmly walks to the ball and places it in [possPronoun] jaw."
-                p "Come on! Bring it back, [personPRonoun]!"
-                "[subjPronoun] stares at you again and puts [possPronoun] jaw loosely around the ball. [subjPronoun] trots over to you, drops the ball, and drops to the floor [possPronoun]SELF."
+                "[dog.name] turns back and stares at you for a moment. [subjPronoun_upper] calmly walks to the ball and places it in [possPronoun] jaw."
+                p "Come on! Bring it back, [personPronoun]!"
+                "[subjPronoun_upper] stares at you again and puts [possPronoun] jaw loosely around the ball. [subjPronoun_upper] trots over to you, drops the ball, and drops to the floor [possPronoun]SELF."
         "Chuck it a good distance forward.":
             "Let's get this exercise!"
             if dog.traits.passAggress >= 4:
                 "[dog.name] senses your energy. You throw the ball as hard as you can and [subjPronoun] darts off, kicking up dirt as [subjPronoun] goes."
                 d "Arf! Arf!"
-                "[subjPronoun] practically trips over [reflPronoun] trying to get to the ball. You see [dog.name] gnash [possPronoun] teeth through the ball in the distance."
-                "[subjPronoun] stays there and starts shaking [possPronoun] head viciously with the ball still in [possPronoun] jaws."
+                "[subjPronoun_upper] practically trips over [reflPronoun] trying to get to the ball. You see [dog.name] gnash [possPronoun] teeth through the ball in the distance."
+                "[subjPronoun_upper] stays there and starts shaking [possPronoun] head viciously with the ball still in [possPronoun] jaws."
                 p "Whoah there!! Let go, [dog.name], come on!"
                 "You run over to [possPronoun], and after some time, you manage to get [possPronoun] to drop the ball again."
                 p "Jeez..."
             elif dog.traits.energy >= 2:
-                "[dog.name] darts out from under you in a blur. [subjPronoun] grasps the ball and gracefully turns towards you."
-                "[subjPronoun] dashes back towards you proudly, a certain twinkle in [possPronoun] eye. [subjPronoun] drops the ball at your feet."
+                "[dog.name] darts out from under you in a blur. [subjPronoun_upper] grasps the ball and gracefully turns towards you."
+                "[subjPronoun_upper] dashes back towards you proudly, a certain twinkle in [possPronoun] eye. [subjPronoun_upper] drops the ball at your feet."
                 d "{i}Pants gently{/i}"
-                p "Gooooood [personPRonoun]!!! You did so well!!"
-                "You give [possPronoun] a nice big rub all over the top of [possPronoun] fur coat. [possPronoun] tail waggles happily."
+                p "Gooooood [personPronoun]!!! You did so well!!"
+                "You give [possPronoun] a nice big rub all over the top of [possPronoun] fur coat. [possPronoun_upper] tail waggles happily."
                 $ if dog.traits.houseBroken < 5: dog.traits.houseBroken += 0.5
             else:
                 "You throw the ball a good distance away. It becomes a speck in the distance."
-                "[dog.name] looks at the ball a little sadly. [subjPronoun] turns back to look at you, and sits down."
+                "[dog.name] looks at the ball a little sadly. [subjPronoun_upper] turns back to look at you, and sits down."
                 p "Okay, mood."
                 "You stroll over and pick up the ball. [dog.name] follows you."
 
@@ -153,9 +153,9 @@ label park_fetch_throw_1:
             if dog.traits.energy >= 4:
                 p "Fet-"
                 "Before you can even finish, you see that [dog.name] has already returned with the ball in [possPronoun] mouth."
-                p "Oh, wow! Good [personPRonoun]!"
+                p "Oh, wow! Good [personPronoun]!"
             elif dog.traits.energy < 2:
-                "[dog.name] makes another runs towards the ball, but at a noticeably slower pace.  [subjPronoun] slowly makes [possPronoun] way back towards you and plops the ball at your feet."
+                "[dog.name] makes another runs towards the ball, but at a noticeably slower pace. [subjPronoun_upper] slowly makes [possPronoun] way back towards you and plops the ball at your feet."
                 p "Thanks, [dog.name]!"
                 b "Woof!"
                 "[dog.name] stretches out [possPronoun] front paws and lies down on the grass."
@@ -163,11 +163,11 @@ label park_fetch_throw_1:
                 "The ball rolls to a halt. With [possPronoun] tail still wagging, [dog.name] looks at the ball and then back at you."
                 p "You can do it, [dog.name]!"
                 b "Arf!"
-                "[dog.name] lets out a yawn and curls up into a ball. [subjPronoun] looks ready to take nap."
+                "[dog.name] lets out a yawn and curls up into a ball. [subjPronoun_upper] looks ready to take nap."
                 p "Oh.. huh.."
                 "You walk over to pick up the ball, feeling a bit tired yourself."
         "Wind up for a pitch.":
-            "[dog.name] still seems to be full of energy. [subjPronoun] can handle a far throw."
+            "[dog.name] still seems to be full of energy. [subjPronoun_upper] can handle a far throw."
             if dog.traits.passAggress >= 4:
                 "[dog.name] eyes the ball in your hand, ready to pounce at any moment."
                 p "Fetch this! Haaah!"
@@ -182,7 +182,7 @@ label park_fetch_throw_1:
                 p "Hey, [dog.name] where are you?"
                 "Eventually, however, [dog.name] comes back with the ball proudly in [possPronoun] jaw."
                 d "Bark! Bark!"
-                p "You're such... a GOOD [personPRonoun]!!!"
+                p "You're such... a GOOD [personPronoun]!!!"
             else:
                 "You start to wind up, but [dog.name] is just rollling around in the grass."
                 d "Woof!"

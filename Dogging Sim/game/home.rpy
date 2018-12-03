@@ -51,7 +51,7 @@ label home_cup:
         p "I'm going to switch up these cu-"
         "In a flash, [dog.name] nuzzles the cup over and snatches the treat up."
         p "You...."
-        "[subjPronoun] licks [possPronoun] lips contentedly."
+        "[subjPronoun_upper] licks [possPronoun] lips contentedly."
         p "Let's try that again."
         "You place a treat under the cup and immediately start moving."
 
@@ -60,7 +60,7 @@ label home_cup:
             "You slowly move the cup to the middle, then swap the outer cups, staring at [dog.name] the entire time."
             if dog.traits.energy >= 3:
                 "[dog.name] immediately shoves [possPronoun] nose into the correct cup, sniffing a little."
-                "[subjPronoun] seems to know exactly what [subjPronoun] was doing, and whips [possPronoun] tail back and forth."
+                "[subjPronoun_upper] seems to know exactly what [subjPronoun] was doing, and whips [possPronoun] tail back and forth."
                 jump home_cup_win
             elif r.random() < 0.7:
                 jump home_cup_win
@@ -113,7 +113,7 @@ label home_tug:
         "Tug the rope gently.":
             $if owner.traits.patience < 5: owner.traits.patience += 0.5 
             if dog.traits.passAggress >= 4:
-                "[dog.name] notices you trying to take [possPronoun] rope away from [objPronoun]. [subjPronoun] grabs the rope and runs away!"
+                "[dog.name] notices you trying to take [possPronoun] rope away from [objPronoun]. [subjPronoun_upper] grabs the rope and runs away!"
                 p "Good job!! Please come back!!!"
                 "You chase [dog.name] across the house for a couple minutes, until you both get tired out."
             elif dog.traits.energy <= 1:
@@ -127,7 +127,7 @@ label home_tug:
                 "You give [dog.name] a nice little treat."
         "Tug the rope hard.":
             if dog.traits.passAggress >= 4:
-                "[dog.name] notices you trying to take [possPronoun] rope away from [objPronoun]. [subjPronoun] pulls back with all [possPronoun] might, digging [possPronoun] feet into the ground."
+                "[dog.name] notices you trying to take [possPronoun] rope away from [objPronoun]. [subjPronoun_upper] pulls back with all [possPronoun] might, digging [possPronoun] feet into the ground."
                 d "GRRRR!!!"
                 menu:
                     "Let [objPronoun] win.":

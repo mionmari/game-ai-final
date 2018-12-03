@@ -32,7 +32,9 @@ init python:
     # Evaluate pronouns
     objPronoun = obj[dog.sex]
     subjPronoun = subj[dog.sex]
+    subjPronoun_upper = subjPronoun.capitalize()
     possPronoun = poss[dog.sex]
+    possPronoun_upper = possPronoun.capitalize()
     reflPronoun = refl[dog.sex]
     personPronoun = person[dog.sex]
     
