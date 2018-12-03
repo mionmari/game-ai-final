@@ -2,10 +2,7 @@
 
 # DEFS
 define p = Character("You", color = "#FFA500")
-
-define b_aff =  0
-define b2_aff =  10000000
-define DMG = 0
+define ds = Character("Dogging Sim Employee")
 
 define subj = {"Male": "he", "Female": "she", "Nonbinary": "they" }
 define obj = {"Male": "him", "Female": "her", "Nonbinary": "them" }
@@ -43,7 +40,19 @@ label start:
     # BACKGROUND SCENE / DOG PARK.PNG
     scene dog park
 
+    "Dogs. Perfect, fuzzy little bundles of joy and happiness. Why not adopt a dog?"
+    "Maybe you're feeling lonely. Maybe you want someone to play fetch with. Maybe you want someone to guard your door."
+    "It doesn't matter- people are different. And there's a perfect dog out there for everyone."
+    ds "Welcome, new potential dog owner! To the Dogging Sim shelter."
+    ds "We give our clients five days with a potential pup to get to know each other."
+    ds "If, after those five days are up, it doesn't work out, then you are free to bring them back!"
+    ds "But, if all goes well, you'll gain a lifelong friend to stand by your side and love you no matter what."
+
     $ day_done = []
+    if len(day_done) < 5:
+        jump new_day
+    else:
+        jump end_true
 
 label new_day:
     "What do you want to do today?"
@@ -66,4 +75,5 @@ label new_day:
             "loyalty [owner.traits.loyalty]"
             "patience [owner.traits.patience]"
             "discipline [owner.traits.discipline]"
+            jump end_true
 
