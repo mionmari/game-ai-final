@@ -7,6 +7,12 @@ define b_aff =  0
 define b2_aff =  10000000
 define DMG = 0
 
+define subj = {"Male": "he", "Female": "she", "Nonbinary": "they" }
+define obj = {"Male": "him", "Female": "her", "Nonbinary": "them" }
+define poss = {"Male": "his", "Female": "her", "Nonbinary": "their" }
+define refl = {"Male": "himself", "Female": "herself", "Nonbinary": "themself" }
+define person = {"Male": "Boy", "Female": "Girl", "Nonbinary": "They" }
+
 # INITIALIZE PYTHON
 # $ = ONE-LINE PYTHON STATEMENT
 init python:
@@ -23,6 +29,15 @@ init python:
     d = Character(dog.name)
     owner = Owner()
     
+    # Evaluate pronouns
+    objPronoun = obj[dog.sex]
+    subjPronoun = subj[dog.sex]
+    subjPronoun_upper = subjPronoun.capitalize()
+    possPronoun = poss[dog.sex]
+    possPronoun_upper = possPronoun.capitalize()
+    reflPronoun = refl[dog.sex]
+    personPronoun = person[dog.sex]
+    
 # NEEDS A START LABEL
 label start:
     # BACKGROUND SCENE / DOG PARK.PNG
@@ -33,9 +48,6 @@ label start:
 label new_day:
     "What do you want to do today?"
     menu:
-        "Stay at home." if not "home" in day_done and owner.traits.kindness > 2:
-            $ day_done.append("home")
-            jump home_start
         "Go to the park." if not "park" in day_done:
             $ day_done.append("park")
             jump park_start
@@ -45,5 +57,13 @@ label new_day:
         "Take a walk." if not "walk" in day_done:
             $ day_done.append("walk")
             jump walk_start
+        "Stay at home." if not "home" in day_done:
+            $ day_done.append("home")
+            jump home_start
         "Nothing else!":
-            "nice demo end"
+            "nice demo end - dog [dog.traits.training]"
+            "kindness [owner.traits.kindness]"
+            "loyalty [owner.traits.loyalty]"
+            "patience [owner.traits.patience]"
+            "discipline [owner.traits.discipline]"
+

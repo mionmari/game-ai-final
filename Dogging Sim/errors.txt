@@ -2,7 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 81: Tab characters are not allowed in Ren'Py scripts.
+File "game/park.rpy", line 303: Line is indented, but the preceding one-line python statement statement does not expect a block. Please check this line's indentation.
+    $if owner.traits.loyalty < 5: owner.traits.loyalty += 0.5
+    ^
 
 Ren'Py Version: Ren'Py 7.1.1.929
-Mon Nov 19 17:29:26 2018
+Mon Dec 03 01:07:28 2018
