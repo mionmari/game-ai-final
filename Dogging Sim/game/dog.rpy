@@ -8,7 +8,7 @@ init python:
             self.jealousy = dct['jealousy']
             self.gluttony = dct['gluttony']
             self.energy = dct['energy']
-            self.houseBroken = dct['houseBroken']
+            self.training = dct['training']
 
     class Dog:
         def __init__ (self, name, sex, breed, traits):

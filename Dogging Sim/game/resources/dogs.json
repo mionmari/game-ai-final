@@ -1,15 +1,15 @@
 [
     {
         "name": "Doggo",
-        "sex": "Female",
+        "sex": "Male",
         "breed": "Boxer",
         "traits": {
-        "social": 1,
-        "passAggress": 2,
-        "jealousy": 0,
+        "social": 4,
+        "passAggress": 1,
+        "jealousy": 5,
         "gluttony": 3,
         "energy": 5,
-        "houseBroken": 2
+        "training": 0
         }
     },
     {
@@ -22,7 +22,7 @@
         "jealousy": 5,
         "gluttony": 2,
         "energy": 0,
-        "houseBroken": 0
+        "training": 0
         }
     },
 	{
@@ -35,7 +35,7 @@
         "jealousy": 1,
         "gluttony": 5,
         "energy": 3,
-        "houseBroken": 1
+        "training": 1
         }
     },
 	{
@@ -48,7 +48,7 @@
         "jealousy": 5,
         "gluttony": 3,
         "energy": 4,
-        "houseBroken": 5
+        "training": 5
         }
     },
 	{
@@ -61,7 +61,7 @@
         "jealousy": 2,
         "gluttony": 5,
         "energy": 5,
-        "houseBroken": 0
+        "training": 0
         }
     },
 	{
@@ -74,12 +74,12 @@
         "jealousy": 3,
         "gluttony": 3,
         "energy": 3,
-        "houseBroken": 2
+        "training": 2
         }
     },
 	{
         "name": "Teddy",
-        "sex": "Feale",
+        "sex": "Female",
         "breed": "Zuchon",
         "traits": {
         "social": 2,
@@ -87,7 +87,7 @@
         "jealousy": 2,
         "gluttony": 1,
         "energy": 5,
-        "houseBroken": 0
+        "training": 0
         }
     },
 	{
@@ -100,7 +100,7 @@
         "jealousy": 5,
         "gluttony": 0,
         "energy": 5,
-        "houseBroken": 5
+        "training": 5
         }
     }
 ]
