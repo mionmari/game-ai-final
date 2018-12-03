@@ -299,6 +299,6 @@ label park_end:
     "[dog.name] tilts [possPronoun] head at you and sits down by your feet."
 
     # Don't meet other dogs
-    if dog.traits.jealousy >= 3 and park_met == []:
+    if dog.traits.jealousy >= 3 and len(park_met) == 0:
         $if owner.traits.loyalty < 5: owner.traits.loyalty += 0.5
     jump new_day
