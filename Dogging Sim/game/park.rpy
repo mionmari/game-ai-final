@@ -61,7 +61,7 @@ label park_fetch_start:
                 p "[dog.name], NO! Tennis balls are for {i}fetch{/i}, not {i}food{/i}!!"
                 "With a little bit of stern talking and some force, you manage to pry it away from [possPronoun]."
                 "[subjPronoun_upper] looks at the ground silently."
-                $ if dog.traits.houseBroken < 5: dog.traits.houseBroken += 0.5
+                $ if dog.traits.training < 5: dog.traits.training += 0.5
             "Feed [possPronoun] a dog treat.":
                 p "{i}Sigh...{/i}"
                 "You pull out a dog treat and hold it near [possPronoun] nose. [subjPronoun_upper] immediately drops the sopping wet ball onto the ground and licks the treat out of your hand."
@@ -127,7 +127,7 @@ label park_fetch_throw_1:
                 d "{i}Pants gently{/i}"
                 p "Gooooood [personPronoun]!!! You did so well!!"
                 "You give [possPronoun] a nice big rub all over the top of [possPronoun] fur coat. [possPronoun_upper] tail waggles happily."
-                $ if dog.traits.houseBroken < 5: dog.traits.houseBroken += 0.5
+                $ if dog.traits.training < 5: dog.traits.training += 0.5
             else:
                 "You throw the ball a good distance away. It becomes a speck in the distance."
                 "[dog.name] looks at the ball a little sadly. [subjPronoun_upper] turns back to look at you, and sits down."

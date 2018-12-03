@@ -1,32 +1,26 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/park.rpy", line 108, in script
-    p "Good [personPRonoun]!"
-KeyError: u'personPRonoun'
+  File "game/park.rpy", line 130, in script
+    $ if dog.traits.houseBroken < 5: dog.traits.houseBroken += 0.5
+  File "game/park.rpy", line 130, in <module>
+    $ if dog.traits.houseBroken < 5: dog.traits.houseBroken += 0.5
+AttributeError: 'DogTraits' object has no attribute 'houseBroken'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/park.rpy", line 108, in script
-    p "Good [personPRonoun]!"
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\ast.py", line 678, in execute
-    renpy.exports.say(who, what, interact=self.interact, *args, **kwargs)
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\exports.py", line 1204, in say
-    who(what, *args, **kwargs)
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\character.py", line 1018, in __call__
-    what = what_pattern.replace("[what]", sub(what, translate=True))
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\character.py", line 1007, in sub
-    return renpy.substitutions.substitute(s, scope=scope, force=force, translate=translate)[0]
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\substitutions.py", line 244, in substitute
-    s = formatter.vformat(s, (), kwargs)
-  File "/home/tom/ab/x64lucid-deps/install/lib/python2.7/string.py", line 563, in vformat
-  File "/home/tom/ab/x64lucid-deps/install/lib/python2.7/string.py", line 585, in _vformat
-  File "/home/tom/ab/x64lucid-deps/install/lib/python2.7/string.py", line 646, in get_field
-  File "/home/tom/ab/x64lucid-deps/install/lib/python2.7/string.py", line 605, in get_value
-KeyError: u'personPRonoun'
+  File "game/park.rpy", line 130, in script
+    $ if dog.traits.houseBroken < 5: dog.traits.houseBroken += 0.5
+  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\ast.py", line 882, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\python.py", line 1913, in py_exec_bytecode
+    exec bytecode in globals, locals
+  File "game/park.rpy", line 130, in <module>
+    $ if dog.traits.houseBroken < 5: dog.traits.houseBroken += 0.5
+AttributeError: 'DogTraits' object has no attribute 'houseBroken'
 
 Windows-8-6.2.9200
 Ren'Py 7.1.1.929
 Dogging Sim 1.0
-Sun Dec 02 22:15:23 2018
+Sun Dec 02 22:27:50 2018
