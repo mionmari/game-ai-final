@@ -103,7 +103,7 @@ label park_fetch_throw_1:
                 "[dog.name] lets out a nasty snarl."
                 p "Okay, nevermind."
             elif dog.traits.energy >= 2:
-                "[dog.name] bolts out immediately from beneath you. [subjPronoun_uppper] makes [possPronoun] way there in no time at all, leaping onto the ball."
+                "[dog.name] bolts out immediately from beneath you. [subjPronoun_upper] makes [possPronoun] way there in no time at all, leaping onto the ball."
                 "[subjPronoun_upper] dashes back with the ball in [possPronoun] mouth, and tilts [possPronoun] head to one side."
                 p "Good [personPronoun]!"
                 "[subjPronoun_upper] drops the ball at your feet and quickly wags [possPronoun] tail from side to side, looking at you expectantly."
@@ -127,7 +127,6 @@ label park_fetch_throw_1:
                 d "{i}Pants gently{/i}"
                 p "Gooooood [personPronoun]!!! You did so well!!"
                 "You give [possPronoun] a nice big rub all over the top of [possPronoun] fur coat. [possPronoun_upper] tail waggles happily."
-                $ if dog.traits.training < 5: dog.traits.training += 0.5
             else:
                 "You throw the ball a good distance away. It becomes a speck in the distance."
                 "[dog.name] looks at the ball a little sadly. [subjPronoun_upper] turns back to look at you, and sits down."
@@ -135,6 +134,9 @@ label park_fetch_throw_1:
                 "You stroll over and pick up the ball. [dog.name] follows you."
 
     $ park_fetched += 1
+    # Boost for playing fetch
+    if not (dog.traits.energy <= 2  and dog.traits.passAggress >= 4):
+        $if dog.traits.training < 5: dog.traits.training += 0.5
     jump park_menu
 
     label park_fetch_throw_2:
@@ -190,6 +192,9 @@ label park_fetch_throw_1:
 
 
     $ park_fetched += 1
+     # Boost for playing fetch
+    if not (dog.traits.energy <= 2  and dog.traits.passAggress >= 4):
+        $if dog.traits.training < 5: dog.traits.training += 0.5
     jump park_menu
 
 
@@ -286,9 +291,7 @@ label park_meet_pepper:
     trucker "Whoa there, Pepper, old girl! Easy there!"
     "A large, tattooed gentleman tugs on her leash and turns towards you."
     trucker "Careful there! Pepper here's been trained as a guard dog, and isn't very good at calming down."
-
     p "I can tell. Best of luck to you!"
-
     $ park_met.append("pepper")
     jump park_menu
 
@@ -301,4 +304,5 @@ label park_end:
     # Don't meet other dogs
     if dog.traits.jealousy >= 3 and len(park_met) == 0:
         $if owner.traits.loyalty < 5: owner.traits.loyalty += 0.5
+
     jump new_day

@@ -10,7 +10,7 @@ label walk_start:
     p "But... let's get a leash on you first, just in case."
     "You walk towards [dog.name] with the leash."
 
-    if dog.traits.training <= 1:
+    if dog.traits.training <= 2:
         d "Ruff!"
         "[dog.name] looks up at your imposing figure, and drops to the ground, putting [possPronoun] tail between [possPronoun] legs."
         menu:
@@ -150,6 +150,7 @@ label walk_wander:
         "[subjPronoun_upper] looks back at you inquisitively."
         p "You'll learn to love it."
         "[subjPronoun_upper] turns around and keeps going."
+    # Boost for exercising
     $if dog.traits.training < 5: dog.traits.training += 0.5
     jump walk_menu
 
@@ -157,4 +158,5 @@ label walk_end:
     "It's been a long day, and both of you have done a lot of good walking."
     p "You know, [dog.name], all things considered, I'm glad you pulled me out of bed to take a walk with you today."
     d "Woof!"
+    
     jump new_day
