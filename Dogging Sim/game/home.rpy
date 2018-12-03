@@ -151,7 +151,7 @@ label home_tug:
                         p "Ha... good work."
                         "It's a draw."
                         $if owner.traits.patience < 5: owner.traits.patience += 0.5 
-                        $ if dog.traits.training < 5: dog.traits.training += 0.5
+                        $if dog.traits.training < 5: dog.traits.training += 0.5
             elif dog.traits.energy <= 1:
                 "The rope immediately flies out of [dog.name]'s mouth."
                 p "Yeah, fair. Gotcha."
