@@ -7,6 +7,12 @@ define b_aff =  0
 define b2_aff =  10000000
 define DMG = 0
 
+define subj = {"Male": "he", "Female": "she", "Nonbinary": "they" }
+define obj = {"Male": "him", "Female": "her", "Nonbinary": "them" }
+define poss = {"Male": "his", "Female": "her", "Nonbinary": "their" }
+define refl = {"Male": "himself", "Female": "herself", "Nonbinary": "themself" }
+define person = {"Male": "Boy", "Female": "Girl", "Nonbinary": "They" }
+
 # INITIALIZE PYTHON
 # $ = ONE-LINE PYTHON STATEMENT
 init python:
@@ -22,6 +28,13 @@ init python:
     dog = dogs[0]
     d = Character(dog.name)
     owner = Owner()
+    
+    # Evaluate pronouns
+    objPronoun = obj[dog.sex]
+    subjPronoun = subj[dog.sex]
+    possPronoun = poss[dog.sex]
+    reflPronoun = refl[dog.sex]
+    personPronoun = person[dog.sex]
     
 # NEEDS A START LABEL
 label start:

@@ -1,11 +1,11 @@
 [
     {
         "name": "Doggo",
-        "sex": "Female",
+        "sex": "Male",
         "breed": "Boxer",
         "traits": {
         "social": 4,
-        "passAggress": 5,
+        "passAggress": 1,
         "jealousy": 5,
         "gluttony": 3,
         "energy": 5,
@@ -79,7 +79,7 @@
     },
 	{
         "name": "Teddy",
-        "sex": "Feale",
+        "sex": "Female",
         "breed": "Zuchon",
         "traits": {
         "social": 2,

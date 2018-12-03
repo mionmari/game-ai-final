@@ -12,23 +12,23 @@ label walk_start:
 
     if dog.traits.training <= 1:
         d "Ruff!"
-        "[dog.name] looks up at your imposing figure, and drops to the ground, putting #HER tail between #HER legs."
+        "[dog.name] looks up at your imposing figure, and drops to the ground, putting [objPronoun] tail between [objPronoun] legs."
         menu:
             "Calmy put the collar on.":         
                 p "Don't worry, it's completely safe..."
                 "[dog.name] backs up slowly as you approach."
                 p "{i}Sigh...{/i} It's fine, I guarantee it!"
                 $if owner.traits.patience < 5: owner.traits.patience += 0.5
-                "You manage to calm #HER down enough to attach the collar."
+                "You manage to calm [objPronoun] down enough to attach the collar."
             "Give some treats.":
                 if dog.traits.gluttony >= 3:
                     "[dog.name]'s ears perk up when she sees you pull out a puppy snack."
                     $if owner.traits.kindness < 5: owner.traits.kindness += 0.5
-                "With a couple dog treats in hand, you manage to calm #HER down enough to attach the collar."
+                "With a couple dog treats in hand, you manage to calm [objPronoun] down enough to attach the collar."
 
     else:
         "[dog.name] waits patiently and politely for you to finish putting the leash on."
-        p "Oooh, good #GIRL!"
+        p "Oooh, good [personPronoun]!"
         d "Arf!"
 
     jump walk_menu_start
@@ -70,12 +70,12 @@ label walk_crepe_strawberry:
     cream "One strawberry peanut butter crepe coming right up! Now will you be sharing some with your dog today?"
     menu:
         "Yes.":
-            cream "That's fine. Dogs can eat strawberries and peanut butter. I'll cut the strawberries extra thin for #HER!"
+            cream "That's fine. Dogs can eat strawberries and peanut butter. I'll cut the strawberries extra thin for [objPronoun]!"
             p "Thank you!"
-            "You feed a couple slices of peanut butter-covered strawberries to [dog.name]. #HER tail wags happily."
+            "You feed a couple slices of peanut butter-covered strawberries to [dog.name]. [possPronoun] tail wags happily."
             d "Yip!"
         "No.":
-            cream "Ooh, then I'd feel sorry for #HER. Here, let me get #HER a treat, so you can eat together!"
+            cream "Ooh, then I'd feel sorry for [objPronoun]. Here, let me get [objPronoun] a treat, so you can eat together!"
             "Cream reaches behind the counter and pulls out a nice-looking treat."
             d "Woof! Woof!"
     "You continue walking with your delicious, fruity crepe in hand. [dog.name] also seems highly satisfied."
@@ -93,7 +93,7 @@ label walk_crepe_cheese:
             d "Yip!"
             p "Delicious, isn't it? Thanks, Cream!"
         "No.":
-            cream "Ooh, that's probably for the best; don't feed dogs too much cheese! Here, let me get #HER a treat, so you can eat together!"
+            cream "Ooh, that's probably for the best; don't feed dogs too much cheese! Here, let me get [objPronoun] a treat, so you can eat together!"
             "Cream reaches behind the counter and pulls out a nice-looking treat."
             d "Woof! Woof!"
     "You continue walking with your filling, warm lunchtime crepe in hand. [dog.name] also seems happy."
@@ -109,13 +109,13 @@ label walk_crepe_chocolate:
             cream "..you're gonna."
             cream ".feed your dog.."
             cream ",,.,.,...,,a chocolate, macademia,,,, ice cream crepe."
-            cream "DON'T YOU KNOW THAT CHOCOLATE CONTAINS THEOBROMINE, WHICH CAN BE HIGHLY TOXIC TO DOGS? THAT'S JUST COMMON SENSE! SO ARE MACADAMIA NUTS AND ICE CREAM. DO YOU WANT #HER TO HAVE HORRIFYING DIARRHEA ALL OVER YOUR BATHROOM FLOOR? DO YOU WANT #HER TO DIE? YOU ABSOLUTE MONSTER."
+            cream "DON'T YOU KNOW THAT CHOCOLATE CONTAINS THEOBROMINE, WHICH CAN BE HIGHLY TOXIC TO DOGS? THAT'S JUST COMMON SENSE! SO ARE MACADAMIA NUTS AND ICE CREAM. DO YOU WANT [objPronoun] TO HAVE HORRIFYING DIARRHEA ALL OVER YOUR BATHROOM FLOOR? DO YOU WANT [objPronoun] TO DIE? YOU ABSOLUTE MONSTER."
             cream "Please don't even joke about this kind of stuff. It's not funny!!"
             p "I... I got it, Cream. I'm sorry."
             "Cream stares daggers at you, and slowly hands over your crepe. As you walk, you feel the weight of your sins crawling down your back."
             $if owner.traits.discipline > 0.5: owner.traits.discipline -= 0.5
         "No.":
-            cream "Good. #SHE can't eat that stuff, you know! I feel bad for #HER. Be careful not to drop any."
+            cream "Good. [subjPronoun] can't eat that stuff, you know! I feel bad for [objPronoun]. Be careful not to drop any."
             "Cream reaches behind the counter and pulls out a nice-looking treat."
             d "Woof! Woof!"
             "You continue walking with your sweet crepe in hand."
@@ -131,23 +131,23 @@ label walk_wander:
         p "We'll get there. Both you and I."
     elif dog.traits.energy >= 4:
         "[dog.name] pulls you along a little faster than you're used to walking."
-        p "Whoah there, #GIRL! You've got some energy in you!"
+        p "Whoah there, [personPronoun]! You've got some energy in you!"
         d "Ruff!"
         p "You rascal!! You wanna race?"
         "You make your way to a local park and begin jogging through it, [dog.name] right beside you."
         p "Phew.... I can barely keep up!!"
         d "Ruff! Ruff!"
-        "You spend some time running around, in perfect tandem, with [dog.name]. In fact, you start breathing heavily a little before #SHE does."
+        "You spend some time running around, in perfect tandem, with [dog.name]. In fact, you start breathing heavily a little before [subjPronoun] does."
         "As the sun makes its way across the sky, you slow down gracefully into a walk."
         p "Huff.... that was fun, [dog.name]. Let's do that again sometime."
         d "{i}Pants happily{/i}"
     else:
         "You make your way around the neighborhood, pointing out your favorite locations along the way."
-        "[dog.name] appears to be enjoying #HERSELF. It's a nice, calming walk the whole way through."
+        "[dog.name] appears to be enjoying [objPronoun]SELF. It's a nice, calming walk the whole way through."
         p "You like my town, [dog.name]?"
-        "#SHE looks back at you inquisitively."
+        "[subjPronoun] looks back at you inquisitively."
         p "You'll learn to love it."
-        "#SHE turns around and keeps going."
+        "[subjPronoun] turns around and keeps going."
     $if dog.traits.training < 5: dog.traits.training += 0.5
     jump walk_menu
 
