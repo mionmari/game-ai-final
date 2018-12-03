@@ -202,7 +202,7 @@ label park_menu:
             jump park_fetch_throw_2
         "Meet other dogs." if len(park_met) < 3:
             jump park_meet_menu
-        "Call it a day." if park_fetched != 0 and len(park_met) != 0:
+        "Call it a day." if park_fetched != 0 or len(park_met) > 0:
             jump park_end
 
 label park_meet_menu:
@@ -241,6 +241,7 @@ label park_meet_cocoa:
                     "The blogger gives you a poop-eating grin, picks up Cocoa, and walks away."
             "Smile charmingly at Cocoa":
                 "You smile at Cocoa. Cocoa smiles back."
+                # Don't pet Cocoa
                 $if owner.traits.loyalty < 5: owner.traits.loyalty += 0.5 
                 if dog.traits.social >= 3:
                     "[dog.name] sniffs curiously at Cocoa. Cocoa turns his head to the side, and stands up."
@@ -296,4 +297,8 @@ label park_end:
     p "Thanks for spending some time with me, [dog.name]. It was fun."
     d "Arf!"
     "[dog.name] tilts [possPronoun] head at you and sits down by your feet."
+
+    # Don't meet other dogs
+    if dog.traits.jealousy >= 3 and park_met == []:
+        $if owner.traits.loyalty < 5: owner.traits.loyalty += 0.5
     jump new_day

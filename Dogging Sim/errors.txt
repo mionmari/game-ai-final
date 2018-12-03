@@ -2,25 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 50: invalid syntax
-    "kindness " + (str)owner.traits.kindness
-                            ^
-    
-
-File "game/script.rpy", line 51: invalid syntax
-    "loyalty " + (str)owner.traits.loyalty
-                           ^
-    
-
-File "game/script.rpy", line 52: invalid syntax
-    "patience " + (str)owner.traits.patience
-                            ^
-    
-
-File "game/script.rpy", line 53: invalid syntax
-    "discipline " + (str)owner.traits.discipline
-                              ^
-    
+File "game/park.rpy", line 303: Line is indented, but the preceding one-line python statement statement does not expect a block. Please check this line's indentation.
+    $if owner.traits.loyalty < 5: owner.traits.loyalty += 0.5
+    ^
 
 Ren'Py Version: Ren'Py 7.1.1.929
-Sun Dec 02 18:09:50 2018
+Mon Dec 03 01:07:28 2018

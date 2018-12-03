@@ -18,8 +18,11 @@ label walk_start:
                 p "Don't worry, it's completely safe..."
                 "[dog.name] backs up slowly as you approach."
                 p "{i}Sigh...{/i} It's fine, I guarantee it!"
-                $if owner.traits.patience < 5: owner.traits.patience += 0.5
                 "You manage to calm [objPronoun] down enough to attach the collar."
+                $if owner.traits.patience < 5: owner.traits.patience += 0.5
+                # Doesn't offer treats
+                if dog.traits.gluttony >= 3:
+                    $if owner.traits.discipline < 5: owner.traits.discipline += 0.5
             "Give some treats.":
                 if dog.traits.gluttony >= 3:
                     "[dog.name]'s ears perk up when [subjPronoun] sees you pull out a puppy snack."
@@ -74,12 +77,12 @@ label walk_crepe_strawberry:
             p "Thank you!"
             "You feed a couple slices of peanut butter-covered strawberries to [dog.name]. [possPronoun_upper] tail wags happily."
             d "Yip!"
+            $if owner.traits.kindness < 5: owner.traits.kindness += 0.5
         "No.":
             cream "Ooh, then I'd feel sorry for [objPronoun]. Here, let me get [objPronoun] a treat, so you can eat together!"
             "Cream reaches behind the counter and pulls out a nice-looking treat."
             d "Woof! Woof!"
     "You continue walking with your delicious, fruity crepe in hand. [dog.name] also seems highly satisfied."
-    $if owner.traits.kindness < 5: owner.traits.kindness += 0.5
     jump walk_menu
 
 label walk_crepe_cheese:
@@ -92,12 +95,12 @@ label walk_crepe_cheese:
             "You share a couple bits of salmon with [dog.name]."
             d "Yip!"
             p "Delicious, isn't it? Thanks, Cream!"
+            $if owner.traits.kindness < 5: owner.traits.kindness += 0.5
         "No.":
             cream "Ooh, that's probably for the best; don't feed dogs too much cheese! Here, let me get [objPronoun] a treat, so you can eat together!"
             "Cream reaches behind the counter and pulls out a nice-looking treat."
             d "Woof! Woof!"
-    "You continue walking with your filling, warm lunchtime crepe in hand. [dog.name] also seems happy."
-    $if owner.traits.kindness < 5: owner.traits.kindness += 0.5
+    "You continue walking with your filling, warm lunchtime crepe in hand. [dog.name] also seems happy."  
     jump walk_menu
 
 label walk_crepe_chocolate:
@@ -113,7 +116,6 @@ label walk_crepe_chocolate:
             cream "Please don't even joke about this kind of stuff. It's not funny!!"
             p "I... I got it, Cream. I'm sorry."
             "Cream stares daggers at you, and slowly hands over your crepe. As you walk, you feel the weight of your sins crawling down your back."
-            $if owner.traits.discipline > 0.5: owner.traits.discipline -= 0.5
         "No.":
             cream "Good. [subjPronoun_upper] can't eat that stuff, you know! I feel bad for [objPronoun]. Be careful not to drop any."
             "Cream reaches behind the counter and pulls out a nice-looking treat."

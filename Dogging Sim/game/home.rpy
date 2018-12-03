@@ -3,7 +3,11 @@
 
 # HOME INTRO
 label home_start:
-    $ home_done = []
+    python:
+        home_done = []
+        tv_done = []
+        cooking_host = Character("Cooking Host")
+
     "You decide to stay at home today. Hopefully, that'll give [dog.name] time to adjust!!"
     $if owner.traits.kindness < 5: owner.traits.kindness += 0.5 
     $if dog.traits.social <= 2 or dog.traits.jealousy >= 4: owner.traits.loyalty += 0.5
@@ -28,6 +32,9 @@ label home_menu_start:
         "Play tug-of-war with [objPronoun].":
             $ home_done.append("tug")
             jump home_tug
+        "Petflix and chill.":
+            $ home_done.append("tv")
+            jump home_tv
 
 label home_menu:
     "You gather the supplies you have. What would you like to do?"
@@ -38,6 +45,9 @@ label home_menu:
         "Play tug-of-war with [objPronoun]." if not "tug" in home_done:
             $ home_done.append("tug")
             jump home_tug
+        "Petflix and chill."if not "tv" in home_done:
+            $ home_done.append("tv")
+            jump home_tv
         "That's enough play for today.":
             jump home_end
 
@@ -161,9 +171,66 @@ label home_tug:
                 $ if dog.traits.training < 5: dog.traits.training += 0.5
     jump home_menu
 
+label home_tv:
+    "You on turn on TV. Maybe you and [dog.name] can watch something interesting. [dog.name] watches carefully."
+    menu:
+        "The 11th Annual Dog Show" if not "dogShow" in tv_done:
+            $tv_done.append("dogShow")
+            "You switch over to the dog show. You might be able to learn a thing or two about dog training."
+            "A short haired dog dashes through the agility obstacle course."
+            d "Woof! Woof! Woof!"
+            if dog.traits.jealousy >= 3:
+                "[dog.name] keeps jumping in front of the screen, looking at you expectantly."
+                p "Hmm... I think we should see a different show."
+            elif dog.traits.energy >= 3:
+                "[dog.name] starts running and bouncing around excitedly."
+                p "You think you can compete too?"
+                d "Arf!"
+                $if dog.traits.training < 5: dog.traits.training += 0.5
+            else:
+                "[dog.name] seems invested in the competition."
+                p "These dogs are the best of the best!"
+                $if dog.traits.training < 5: dog.traits.training += 0.5
+            jump home_tv
+        "Apex Canines" if not "wolf" in tv_done:
+            $tv_done.append("wolf")
+            "A large intimidating wolf appears on screen."
+            if dog.traits.passAggress >= 4:
+                d "{b} Growl... {\b}"
+            elif dog.traits.social >= 4:
+                "[dog.name] starts barking at the TV excitedly. [subjPronoun] seems to think the wolf is just a giant dog."
+                p "Friends with a wolf, huh?"
+            else: 
+                "[dog.name] looks a little scared and pulls close to you."
+            jump home_tv
+        "Dogs and Desserts" if not "cooking" in tv_done:
+            $tv_done.append("cooking")
+            cooking_host "And today we're making some delicious apple ice cream. Perfect for dogs of all sizes."
+            if dog.traits.gluttony >= 4:
+                "[dog.name] is drooling uncontrollably."
+                p "That ice cream looks pretty good. Even I'd like to try some!"
+                $if owner.traits.kindness < 5: owner.traits.kindness += 0.5
+            else:
+                "[dog.name] tries to sniff the TV screen, but it doesn't smell anything like ice cream."
+                d "Woof?"
+                "[dog.name] feels betrayed."
+            jump home_tv
+        "Turn off TV." if len(tv_done) > 0:
+            p "I think we learned some new things today!"
+            d "Bark!"
+            
+            # Doesn't pick the dog show channel
+            if not "dogShow" in tv_done and dog.traits.jealousy >= 3:
+                $if owner.traits.loyalty < 5: owner.traits.loyalty += 0.5
+            # Doesn't pick the cooking channel
+            if not "cooking" in tv_done and dog.traits.gluttony >= 3:
+                $if owner.traits.discipline < 5: owner.traits.discipline += 0.5
+
+            jump home_menu
 label home_end:
     "It was a surprisingly tiring day today."
     p "I hope you grew more accustomed to my house, [dog.name]!"
     d "Arf!"
     "[dog.name] closes [possPronoun] eyes and takes a little nap by your side."
     jump new_day
+
