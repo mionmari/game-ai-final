@@ -185,6 +185,7 @@ label park_fetch_throw_1:
                 "Eventually, however, [dog.name] comes back with the ball proudly in [possPronoun] jaw."
                 d "Bark! Bark!"
                 p "You're such... a GOOD [personPronoun]!!!"
+                $if dog.traits.training < 5: dog.traits.training += 1.5
             else:
                 "You start to wind up, but [dog.name] is just rollling around in the grass."
                 d "Woof!"
@@ -247,7 +248,9 @@ label park_meet_cocoa:
             "Smile charmingly at Cocoa":
                 "You smile at Cocoa. Cocoa smiles back."
                 # Don't pet Cocoa
-                $if owner.traits.loyalty < 5: owner.traits.loyalty += 0.5 
+                $if owner.traits.loyalty < 5: 
+                $   if dog.traits.jealousy <= 3: owner.traits.loyalty += 0.5 
+                $   else: owner.traits.loyalty += 1
                 if dog.traits.social >= 3:
                     "[dog.name] sniffs curiously at Cocoa. Cocoa turns his head to the side, and stands up."
                     cocoa "Yip!"
@@ -303,6 +306,6 @@ label park_end:
 
     # Don't meet other dogs
     if dog.traits.jealousy >= 3 and len(park_met) == 0:
-        $if owner.traits.loyalty < 5: owner.traits.loyalty += 0.5
+        $if owner.traits.loyalty < 5: owner.traits.loyalty += 1.5
 
     jump new_day

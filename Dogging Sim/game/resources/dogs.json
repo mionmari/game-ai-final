@@ -1,6 +1,6 @@
 [
     {
-        "name": "Doggo",
+        "name": "Lupin",
         "sex": "Male",
         "breed": "Boxer",
         "traits": {
@@ -13,7 +13,7 @@
         }
     },
     {
-        "name": "Cato",
+        "name": "Rascal",
         "sex": "Male",
         "breed": "Siamese",
         "traits": {
@@ -26,9 +26,9 @@
         }
     },
 	{
-        "name": "Cyka Blyat",
+        "name": "Buddy",
         "sex": "Female",
-        "breed": "Caucasian",
+        "breed": "Caucasian Shepherd",
         "traits": {
         "social": 3,
         "passAggress": 5,
@@ -52,7 +52,7 @@
         }
     },
 	{
-        "name": "Dane",
+        "name": "Duke",
         "sex": "Male",
         "breed": "Great Dane",
         "traits": {
@@ -91,7 +91,7 @@
         }
     },
 	{
-        "name": "Anger",
+        "name": "Daisy",
         "sex": "Male",
         "breed": "Chihuahua",
         "traits": {
