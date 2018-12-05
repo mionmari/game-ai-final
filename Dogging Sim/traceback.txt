@@ -1,32 +1,24 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/park.rpy", line 106, in script
-    "[dog.name] bolts out immediately from beneath you. [subjPronoun_uppper] makes [possPronoun] way there in no time at all, leaping onto the ball."
-KeyError: u'subjPronoun_uppper'
+  File "game/park.rpy", line 241, in script
+    if dog.traits.passAggress >= 4:
+SyntaxError: invalid syntax (game/park.rpy, line 249)
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/park.rpy", line 106, in script
-    "[dog.name] bolts out immediately from beneath you. [subjPronoun_uppper] makes [possPronoun] way there in no time at all, leaping onto the ball."
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\ast.py", line 678, in execute
-    renpy.exports.say(who, what, interact=self.interact, *args, **kwargs)
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\exports.py", line 1204, in say
-    who(what, *args, **kwargs)
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\character.py", line 1018, in __call__
-    what = what_pattern.replace("[what]", sub(what, translate=True))
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\character.py", line 1007, in sub
-    return renpy.substitutions.substitute(s, scope=scope, force=force, translate=translate)[0]
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\substitutions.py", line 244, in substitute
-    s = formatter.vformat(s, (), kwargs)
-  File "/home/tom/ab/x64lucid-deps/install/lib/python2.7/string.py", line 563, in vformat
-  File "/home/tom/ab/x64lucid-deps/install/lib/python2.7/string.py", line 585, in _vformat
-  File "/home/tom/ab/x64lucid-deps/install/lib/python2.7/string.py", line 646, in get_field
-  File "/home/tom/ab/x64lucid-deps/install/lib/python2.7/string.py", line 605, in get_value
-KeyError: u'subjPronoun_uppper'
+  File "game/park.rpy", line 241, in script
+    if dog.traits.passAggress >= 4:
+  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\ast.py", line 1760, in execute
+    if renpy.python.py_eval(condition):
+  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\python.py", line 1942, in py_eval
+    code = py_compile(code, 'eval')
+  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\python.py", line 674, in py_compile
+    raise e
+SyntaxError: invalid syntax (game/park.rpy, line 249)
 
 Windows-8-6.2.9200
 Ren'Py 7.1.1.929
 Dogging Sim 1.0
-Mon Dec 03 10:05:56 2018
+Tue Dec 04 23:16:24 2018

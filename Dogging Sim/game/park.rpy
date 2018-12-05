@@ -50,28 +50,42 @@ label park_fetch_start:
     "You pull out a tennis ball you found at home. Dogs like these, right? Probably."
     p "Over here, [dog.name]! Come sniff this ball."
     "You hold it out to [possPronoun]."
+    d "{i}Whiiine!{/i}"
+    "[dog.name] snatches the ball from you, saliva getting all over your hand. [subjPronoun_upper] begins gnawing on it ravenously."
 
-    if dog.traits.gluttony >= 4:
-        d "{i}Whiiine!{/i}"
-        "[dog.name] snatches the ball from you, saliva getting all over your hand. [subjPronoun_upper] begins gnawing on it ravenously."
-        d "{i}Loud and adorable chewing noises{/i}"
+    if dog.traits.passAggress >= 4 or dog.traits.gluttony >= 4 or dog.traits.energy >= 4:
+        if dog.traits.passAggress >= 4:
+            d "{i}Predatorial slobbering{/i}"
+        elif dog.traits.gluttony >= 4 or dog.traits.energy >= 4:
+            d "{i}Loud and adorable chewing noises{/i}"
+        
         "You wanted to get some exercise in, but you also feel a sort of spiritual connection to [possPronoun]."
         menu:
             "Admonish [dog.name] and take it away from [possPronoun].":
-                p "[dog.name], NO! Tennis balls are for {i}fetch{/i}, not {i}food{/i}!!"
+                "[dog.name] starts growling when you try to grab it back."
+
+                if dog.traits.gluttony >= 4:
+                    p "[dog.name], NO! Tennis balls are for {i}fetch{/i}, not {i}food{/i}!!"
+                else:
+                    p "Bad [personPronoun]! We need this to play fetch!"
+
                 "With a little bit of stern talking and some force, you manage to pry it away from [possPronoun]."
                 "[subjPronoun_upper] looks at the ground silently."
-                $ if dog.traits.training < 5: dog.traits.training += 0.5
-            "Feed [possPronoun] a dog treat.":
+                $ owner.traits.discipline += 1
+                $ if owner.traits.discipline > 5: owner.traits.discipline = 5
+            "Feed [objPronoun] a dog treat.":
                 p "{i}Sigh...{/i}"
                 "You pull out a dog treat and hold it near [possPronoun] nose. [subjPronoun_upper] immediately drops the sopping wet ball onto the ground and licks the treat out of your hand."
                 p "Well, I guess that works too..."
                 "You pick the ball back up."
-                $ if dog.traits.gluttony < 5: dog.traits.gluttony += 0.5
+                $ owner.traits.kindness += 1
+                $ if owner.traits.kindness > 5: owner.traits.kindness = 5
             "Wait for [objPronoun] to finish.":
-                "A gentle breeze blows by. [dog.name]'s beautiful coat is highlighted in the afternoon glow."
+                "A gentle breeze blows by. [possPronoun] beautiful coat is highlighted in the afternoon glow."
                 d "{i}Panting heavily{/i}"
                 "After about a minute, [subjPronoun] puts the ball back into your outstretched hand."
+                $ owner.traits.patience += 1
+                $ if owner.traits.patience > 5: owner.traits.patience = 5
     elif dog.traits.social > 4:
         d "Arf! Arf! Arf!"
         "[subjPronoun_upper] seems pretty hyped already, just by seeing the ball. [subjPronoun_upper] might have done this before!"
@@ -85,6 +99,8 @@ label park_fetch_start:
     jump park_fetch_throw_1
 
 label park_fetch_throw_1:
+    $ dog.traits.training += 0.5
+    $ if dog.traits.training > 5: dog.traits.training = 5
     "You get up and look down at [dog.name]."
     p "Let's give it a shot!"
 
@@ -97,11 +113,9 @@ label park_fetch_throw_1:
     menu:
         "Lightly toss the ball in front of you.":
             "Probably best to start out light!"
-            if dog.traits.energy <= 2  and dog.traits.passAggress >= 4:
-                "Seems like [dog.name] is in a bad mood. Maybe we should try asking [possPronoun] nicely."
-                p "[dog.name] do you want to play?"
-                "[dog.name] lets out a nasty snarl."
-                p "Okay, nevermind."
+            if dog.traits.passAggress >= 4:
+                "[dog.name] dashes towards the ball, still gnawing at it until you take it away from [subjPronoun]."
+                p "Thanks?"
             elif dog.traits.energy >= 2:
                 "[dog.name] bolts out immediately from beneath you. [subjPronoun_upper] makes [possPronoun] way there in no time at all, leaping onto the ball."
                 "[subjPronoun_upper] dashes back with the ball in [possPronoun] mouth, and tilts [possPronoun] head to one side."
@@ -134,29 +148,28 @@ label park_fetch_throw_1:
                 "You stroll over and pick up the ball. [dog.name] follows you."
 
     $ park_fetched += 1
-    # Boost for playing fetch
-    if not (dog.traits.energy <= 2  and dog.traits.passAggress >= 4):
-        $if dog.traits.training < 5: dog.traits.training += 0.5
     jump park_menu
 
-    label park_fetch_throw_2:
+label park_fetch_throw_2:
+    $ dog.traits.training += 0.5
+    $ if dog.traits.training > 5: dog.traits.training = 5
     "We've still got time. Let's play more!"
     p "Hey, [dog.name], come here!"
 
-    if dog.traits.energy <= 2  and dog.traits.passAggress >= 4:
-        "[dog.name] gives you a sharp glare."
-        p "Haha, I'm joking, I'm joking."
-    elif dog.traits.energy >= 3:
+    if dog.traits.energy >= 3:
         "[dog.name] bounces up and down, wagging [possPronoun] tail vigorously."
 
     menu:
         "Go for a light throw.":
-            "[dog.name] might be tired. Let's give them an easy throw."
-            if dog.traits.energy >= 4:
+            "[dog.name] might be tired. Let's give them an easy throw."            
+            if dog.traits.passAggress >= 4:
+                "[dog.name] lunges towards the ball and pounces on it, but allows you to take the ball from [subjPronoun]."
+                p "An improvement."
+            elif dog.traits.energy >= 4:
                 p "Fet-"
                 "Before you can even finish, you see that [dog.name] has already returned with the ball in [possPronoun] mouth."
                 p "Oh, wow! Good [personPronoun]!"
-            elif dog.traits.energy < 2:
+            elif dog.traits.energy >= 2:
                 "[dog.name] makes another runs towards the ball, but at a noticeably slower pace. [subjPronoun_upper] slowly makes [possPronoun] way back towards you and plops the ball at your feet."
                 p "Thanks, [dog.name]!"
                 b "Woof!"
@@ -190,11 +203,7 @@ label park_fetch_throw_1:
                 d "Woof!"
                 "You decide to put away the ball."
 
-
     $ park_fetched += 1
-     # Boost for playing fetch
-    if not (dog.traits.energy <= 2  and dog.traits.passAggress >= 4):
-        $if dog.traits.training < 5: dog.traits.training += 0.5
     jump park_menu
 
 
@@ -229,32 +238,46 @@ label park_meet_cocoa:
     cocoa "Woof!!"
     "You feel your hand drawn towards his stomach."
 
-    if dog.traits.passAggress >= 5:
+    if dog.traits.passAggress >= 4:
         d "Grrrr!!"
         "[dog.name] jumps out and tries to bite Cocoa!"
         p "Whoah!!!! [dog.name]!!!!!!!!!!"
         "You manage to pull [objPronoun] back before [subjPronoun] gets there."
         blogger "Hey, watch it! You gotta train your dog before you go to the park!"
         "Cocoa whimpers and cowers behind the blogger, who scowls at you. He picks up Cocoa and walks away."
+    
+    elif dog.traits.social >= 4 and dog.traits.social > dog.traits.jealousy:
+            "[dog.name] sniffs curiously at Cocoa. Cocoa turns his head to the side, and stands up."
+            cocoa "Yip!"
+            d "Yip!"
+            "They walk in a circle around each other and begin sniffing each other's butts."
+            blogger "Wow, they really seem to like each other. Cocoa doesn't have many genuine friends, so that's nice!"
+            "They spend some time playing with each other. It's a very wholesome time!"
     else:
         menu:
             "Pet Cocoa":
-                if dog.traits.jealousy >= 3:
+                if dog.traits.jealousy >= 4:
+                    "[dog.name] is a little clingy at times, but you can't always let [objPronoun] get what [subjPronoun] wants."
                     d "Whiiiiine..."
                     "[dog.name] looks at you, ears flat against [possPronoun] head, and lowers [possPronoun] body to the ground."
                     blogger "Hey, your dog doesn't seem to like that. Some dogs are just naturally jealous of Cocoa's beauty! Sorry, babe!"
                     "The blogger gives you a poop-eating grin, picks up Cocoa, and walks away."
-            "Smile charmingly at Cocoa":
+                    $ owner.traits.discipline += 1
+                    $ if owner.traits.discipline > 5: owner.traits.discipline = 5
+            "Smile at Cocoa":
                 "You smile at Cocoa. Cocoa smiles back."
-                # Don't pet Cocoa
-                $if owner.traits.loyalty < 5: owner.traits.loyalty += 0.5 
-                if dog.traits.social >= 3:
-                    "[dog.name] sniffs curiously at Cocoa. Cocoa turns his head to the side, and stands up."
-                    cocoa "Yip!"
-                    d "Yip!"
-                    "They walk in a circle around each other and begin sniffing each other's butts."
-                    blogger "Wow, they really seem to like each other. Cocoa doesn't have many genuine friends, so that's nice!"
-                    "They spend some time playing with each other. It's a very wholesome time!"
+                if dog.traits.jealousy >= 4:
+                    "[dog.name] looks pleased."
+                    $ owner.traits.loyalty += 1
+                    $ if owner.traits.loyalty > 5: owner.traits.loyalty = 5
+            "Let [dog.name] pet Cocoa":
+                "You gesture [dog.name] to place [possPronoun] paw on Cocoa's belly."
+                d "Arf?"
+                "[dog.name] looks very confused, but when you place [possPronoun] paw on Cocoa's belly, [subjPronoun] seems to enjoy it alot."
+                blogger "Dogs petting other DOGS???!!! I'm posting this right now!"
+                $ owner.traits.kindness += 1
+                $ if owner.traits.kindness > 5: owner.traits.kindness = 5
+
 
     $ park_met.append("cocoa")
     jump park_menu
@@ -266,7 +289,7 @@ label park_meet_roxy:
     p "Sorry to bother you, but what an amazing trick that was! How did you get her to do that?"
     trainer "Thank you. My name is Ashe Trainem, and this is Roxy. It takes a lot of practice, but with time, you can train any dog new tricks!"
 
-    if dog.traits.passAggress >= 5:
+    if dog.traits.passAggress >= 4:
         d "Grrrr!!"
         "[dog.name] jumps out and tries to bite Roxy!"
         p "Whoah!!!! [dog.name]!!!!!!!!!!"
@@ -276,10 +299,27 @@ label park_meet_roxy:
         trainer "$500? Ohohoho!! Oh no, I meant $500,000, of course. What a silly joke."
         "You walk away."
     else:
-        "Roxy walks up to [dog.name] and carefully sniffs at [objPronoun]. [dog.name] looks back, tilting [possPronoun] head to the side."
+        "Roxy walks up to [dog.name] and carefully sniffs at [objPronoun]."
+        if dog.traits.social <= 2:
+            "[dog.name] hides behind your legs."
+            trainer "Awww, is someone a little shy? Maybe you should encourage [dog.name] a bit more."
+            menu:
+                "Lure [dog.name] out with a treat.":
+                    $ owner.traits.kindness += 1
+                    $ if owner.traits.kindness > 5: owner.traits.kindness = 5
+                    p "Heyyyy [dog.name], would ya come out for a puppy snack?"
+                    "[possPronoun] ears perk up."
+                    d "Arf?"
+                    "Sure enough, [dog.name] comes right out and gobbles up the puppy snack."
+                "Get [dog.name] to come out on [subjPronoun] own.":
+                    "You calmly stroke [possPronoun] fur and slowly encourage [subjPronoun] to come out."
+                    "With enough time, [dog.name] comes out."
+                    $ owner.traits.patience += 1
+                    $ if owner.traits.patience > 5: owner.traits.patience = 5
+
+        "[dog.name] looks at Roxy, tilting [possPronoun] head to the side."
         trainer "Roxy's really good at making friends. I trained her to do that as well!"
         "You watch as Roxy and [dog.name] slowly warm up to each other. They seem to be getting along just fine!"
-        $ if dog.traits.social < 5: dog.traits.social += 0.5
 
     $ park_met.append("roxy")
     jump park_menu
@@ -303,6 +343,7 @@ label park_end:
 
     # Don't meet other dogs
     if dog.traits.jealousy >= 3 and len(park_met) == 0:
-        $if owner.traits.loyalty < 5: owner.traits.loyalty += 0.5
+        $ owner.traits.loyalty += 1
+        $ if owner.traits.loyalty > 5: owner.traits.loyalty = 5
 
     jump new_day
