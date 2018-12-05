@@ -320,7 +320,6 @@ label park_meet_roxy:
         "[dog.name] looks at Roxy, tilting [possPronoun] head to the side."
         trainer "Roxy's really good at making friends. I trained her to do that as well!"
         "You watch as Roxy and [dog.name] slowly warm up to each other. They seem to be getting along just fine!"
-        $ if dog.traits.social < 5: dog.traits.social += 0.5
 
     $ park_met.append("roxy")
     jump park_menu

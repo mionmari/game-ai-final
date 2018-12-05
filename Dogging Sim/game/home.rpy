@@ -5,10 +5,7 @@
 label home_start:
     $home_done = []
 
-
     "You decide to stay at home today. Hopefully, that'll give [dog.name] time to adjust!!"
-    $if owner.traits.kindness < 5: owner.traits.kindness += 0.5 
-    $if dog.traits.social <= 2 or dog.traits.jealousy >= 4: owner.traits.loyalty += 0.5
 
     if dog.traits.social <= 2:
         "You don't see [dog.name] anywhere."

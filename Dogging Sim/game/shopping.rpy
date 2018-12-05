@@ -161,13 +161,13 @@ label shopping_petcoo_menu:
                         p "Hmm, what was that puppy? Oh yes, see [dog.name] doesn't like to meet new dogs."
                         d "*annoyed bark*"
                         $ owner.traits.discipline += 1
-                        $if owner.traits.discipline < 5: owner.traits.discipline = 5
+                        $if owner.traits.discipline > 5: owner.traits.discipline = 5
                     "Try to get [dog.name] to play with puppy.":
                         p "Look, this is [dog.name]. [dog.name] say \"hi\"!"  
                         d "Bark! Bark!"
                         p "Haha, okay, I'm done."
                         $ owner.traits.kindness += 1
-                        $if owner.traits.kindness < 5: owner.traits.kindness = 5
+                        $if owner.traits.kindness > 5: owner.traits.kindness = 5
                     "Look at something else.":
                         "[dog.name] looks content."
                         $ owner.traits.loyalty += 1
@@ -230,7 +230,7 @@ label shopping_yummy_menu:
                         "Hey, c'mon [dog.name] we can't sleep here. It's not ours."
                         d "Woof?"
                         $ owner.traits.discipline += 0.5
-                        $ if owner.traits.discipline < 5: owner.traits.discipline = 5
+                        $ if owner.traits.discipline > 5: owner.traits.discipline = 5
                     "Let [dog.name] sleep. [subjPronoun_upper] looks exhausted.":
                         yummy_employee "Aww, what a sweet child!! Here, if you'd like it, I'll give you a special discount."
                         "The lady takes out a camera and takes a picture of [dog.name] sleeping."
@@ -257,9 +257,9 @@ label shopping_yummy_menu:
                         "Remove [dog.name] from bed.":
                             "You quickly scoop up [dog.name] and take her outside before [subjPronoun] can do [possPronoun] business."
                             $ dog.traits.training += 0.5
-                            $ if dog.traits.training < 5: dog.traits.training = 5
+                            $ if dog.traits.training > 5: dog.traits.training = 5
                             $ owner.traits.discipline += 0.5
-                            $ if owner.traits.discipline < 5: owner.traits.discipline = 5
+                            $ if owner.traits.discipline > 5: owner.traits.discipline = 5
                     p "Phew, that was a close one."
 
         "Yummy Bone™ dog food." if not "food" in shopping_yummy_done:
