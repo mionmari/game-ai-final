@@ -54,7 +54,9 @@ label home_cup:
     p "Now watch carefully!"
     "You take out a dog treat and carefully place it under the left cup."
     if dog.traits.gluttony >= 3:
+        show dogImage
         d "Whiiiiine!"
+        hide dogImage
         p "I'm going to switch up these cu-"
         "In a flash, [dog.name] nuzzles the cup over and snatches the treat up."
         p "You...."
@@ -99,7 +101,9 @@ label home_cup_win:
     $ if dog.traits.training > 5: dog.traits.training = 5
     "[dog.name] chooses the correct cup!"
     p "Good [personPronoun]! That's amazing!"
+    show dogImage
     d "Woof! Woof!!!"
+    hide dogImage
     "You feed [objPronoun] another treat as a prize."
     jump home_menu
 
@@ -142,7 +146,9 @@ label home_tug:
             else:
                 "[dog.name] manages to quickly yank the rope from your hands."
                 p "Whoah there! Good [personPronoun]!!"
+                show dogImage
                 d "Arf! Arf!"
+                hide dogImage
                 "You give [dog.name] a nice little treat."
         "Tug the rope hard.":
             $ owner.traits.patience += 0.5
@@ -151,7 +157,9 @@ label home_tug:
             $ if owner.traits.discipline > 5: owner.traits.discipline = 5
             if dog.traits.passAggress >= 4:
                 "[dog.name] notices you trying to take [possPronoun] rope away from [objPronoun]. [subjPronoun_upper] pulls back with all [possPronoun] might, digging [possPronoun] feet into the ground."
-                d "GRRRR!!!"               
+                show dogImage
+                d "GRRRR!!!" 
+                hide dogImage              
                 "You begin to feel a little bad for [objPronoun]. You loosen your grip, and the rope flies out of your hands."
                 "[dog.name] stares at you intensely, saliva dripping from [possPronoun] jaw, grinning slightly."
                 p "{i}Sigh...{/i} Great work."
@@ -164,7 +172,9 @@ label home_tug:
             else:
                 "You are engaged in a fierce battle for a good minute."
                 p "Putting up a great fight, huh!!! I won't lose to the likes of you!!"
+                show dogImage
                 d "{i}Panting heavily{/i}"
+                hide dogImage
                 if r.random() < 0.5:
                     "Your hand slips, and you fall forward towards [dog.name]!"
                     $ dog.traits.training += 0.5
@@ -174,7 +184,9 @@ label home_tug:
                 "You collapse into a single, heartwarming pile."
                 p "Gooood [personPronoun]."
                 "You give [objPronoun] a well-earned treat."
+                show dogImage
                 d "Woof!"
+                hide dogImage
     jump home_menu
 
 label home_tv:
@@ -195,7 +207,9 @@ label home_tv:
                     $ if owner.traits.loyalty > 5: owner.traits.loyalty = 5
                 "Keep watching.":
                     p "Not now, [dog.name]. I gotta pay attention."
+                    show dogImage
                     d "*Sad woof*"
+                    hide dogImage
                     if dog.traits.energy <= 2:
                         "[dog.name] starts doozing off after a while."
                     "You watch the episode until it finishes."
@@ -214,7 +228,9 @@ label home_tv:
                     $ if owner.traits.loyalty > 5: owner.traits.loyalty = 5
                 "Keep watching.":
                     p "Not now, [dog.name]. I gotta pay attention."
+                    show dogImage
                     d "*Sad woof*"
+                    hide dogImage
                     if dog.traits.energy <= 2:
                         "[dog.name] starts doozing off after a while."
                     "You watch the episode until it finishes."
@@ -226,7 +242,9 @@ label home_tv:
 label home_end:
     "It was a surprisingly tiring day today."
     p "I hope you grew more accustomed to my house, [dog.name]!"
+    show dogImage
     d "Arf!"
+    hide dogImage
     "[dog.name] closes [possPronoun] eyes and takes a little nap by your side."
     jump new_day
 

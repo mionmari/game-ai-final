@@ -10,6 +10,7 @@ define poss = {"Male": "his", "Female": "her", "Nonbinary": "their" }
 define refl = {"Male": "himself", "Female": "herself", "Nonbinary": "themself" }
 define person = {"Male": "Boy", "Female": "Girl", "Nonbinary": "They" }
 
+
 # INITIALIZE PYTHON
 # $ = ONE-LINE PYTHON STATEMENT
 init python:
@@ -25,7 +26,7 @@ init python:
     dog = dogs[0]
     d = Character(dog.name)
     owner = Owner()
-    
+
     # Evaluate pronouns
     objPronoun = obj[dog.sex]
     subjPronoun = subj[dog.sex]
@@ -34,7 +35,9 @@ init python:
     possPronoun_upper = possPronoun.capitalize()
     reflPronoun = refl[dog.sex]
     personPronoun = person[dog.sex]
-    
+
+
+
 # NEEDS A START LABEL
 label start:
     # BACKGROUND SCENE / DOG PARK.PNG
@@ -47,6 +50,10 @@ label start:
     ds "We give our clients five days with a potential pup to get to know each other."
     ds "If, after those five days are up, it doesn't work out, then you are free to bring them back!"
     ds "But, if all goes well, you'll gain a lifelong friend to stand by your side and love you no matter what."
+
+    # A dog was picked
+    # This is their image
+    image dogImage = "dogs/[dog.name].png"
 
     $ day_done = []
     if len(day_done) < 5:
