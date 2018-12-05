@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/park.rpy", line 303: Line is indented, but the preceding one-line python statement statement does not expect a block. Please check this line's indentation.
-    $if owner.traits.loyalty < 5: owner.traits.loyalty += 0.5
+File "game/shopping.rpy", line 97: expected menuitem
+    $ dog.traits.training += 0.5
     ^
 
 Ren'Py Version: Ren'Py 7.1.1.929
-Mon Dec 03 01:07:28 2018
+Tue Dec 04 23:07:02 2018

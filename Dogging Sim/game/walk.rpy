@@ -10,24 +10,36 @@ label walk_start:
     p "But... let's get a leash on you first, just in case."
     "You walk towards [dog.name] with the leash."
 
-    if dog.traits.training <= 2:
-        d "Ruff!"
-        "[dog.name] looks up at your imposing figure, and drops to the ground, putting [possPronoun] tail between [possPronoun] legs."
+    if dog.traits.training <= 2 or dog.traits.social <= 2 or dog.traits.passAggress >= 4 or dog.traits.energy >= 4:
+        if dog.traits.passAggress >= 4:
+            "[dog.name] starts hissing at you."
+        elif dog.traits.energy >= 4:
+            "[dog.name] is too excited and keeps moving around."
+        else:
+            d "Ruff!"
+            "[dog.name] looks up at your imposing figure, and drops to the ground, putting [possPronoun] tail between [possPronoun] legs."
         menu:
-            "Calmy put the collar on.":         
-                p "Don't worry, it's completely safe..."
-                "[dog.name] backs up slowly as you approach."
-                p "{i}Sigh...{/i} It's fine, I guarantee it!"
-                "You manage to calm [objPronoun] down enough to attach the collar."
-                $if owner.traits.patience < 5: owner.traits.patience += 0.5
-                # Doesn't offer treats
-                if dog.traits.gluttony >= 3:
-                    $if owner.traits.discipline < 5: owner.traits.discipline += 0.5
+            "Calmy put the collar on.":
+                if dog.traits.passAggress >= 4:
+                    "You slowly attach the collar onto [dog.name]."
+                    d "Bark! Bark! Bark!"
+                    p "Ssssh... It's fine, trust me."
+                elif dog.traits.energy >= 4:
+                    p "Hey, hey [dog.name] look at me! Yes, that's it."
+                    "You stroke [possPronoun] fur slowly."
+                else:         
+                    p "Don't worry, it's completely safe..."
+                    "[dog.name] backs up slowly as you approach."
+                    p "{i}Sigh...{/i} It's fine, I guarantee it!"
+                "Eventually, you manage to calm [objPronoun] down enough to attach the collar."
+                $ owner.traits.patience += 1
+                $ if owner.traits.patience > 5: owner.traits.patience = 5
             "Give some treats.":
                 if dog.traits.gluttony >= 3:
                     "[dog.name]'s ears perk up when [subjPronoun] sees you pull out a puppy snack."
-                    $if owner.traits.kindness < 5: owner.traits.kindness += 0.5
                 "With a couple dog treats in hand, you manage to calm [objPronoun] down enough to attach the collar."
+                $ owner.traits.kindness += 1
+                $ if owner.traits.kindness > 5: owner.traits.kindness = 5
 
     else:
         "[dog.name] waits patiently and politely for you to finish putting the leash on."
@@ -77,11 +89,14 @@ label walk_crepe_strawberry:
             p "Thank you!"
             "You feed a couple slices of peanut butter-covered strawberries to [dog.name]. [possPronoun_upper] tail wags happily."
             d "Yip!"
-            $if owner.traits.kindness < 5: owner.traits.kindness += 0.5
+            $ owner.traits.kindness += 0.5
+            $ if owner.traits.kindness > 5: owner.traits.kindness = 5
         "No.":
             cream "Ooh, then I'd feel sorry for [objPronoun]. Here, let me get [objPronoun] a treat, so you can eat together!"
             "Cream reaches behind the counter and pulls out a nice-looking treat."
             d "Woof! Woof!"
+            $ owner.traits.discipline += 1
+            $ if owner.traits.discipline > 5: owner.traits.discipline = 5
     "You continue walking with your delicious, fruity crepe in hand. [dog.name] also seems highly satisfied."
     jump walk_menu
 
@@ -95,11 +110,14 @@ label walk_crepe_cheese:
             "You share a couple bits of salmon with [dog.name]."
             d "Yip!"
             p "Delicious, isn't it? Thanks, Cream!"
-            $if owner.traits.kindness < 5: owner.traits.kindness += 0.5
+            $ owner.traits.kindness += 0.5
+            $ if owner.traits.kindness > 5: owner.traits.kindness = 5
         "No.":
             cream "Ooh, that's probably for the best; don't feed dogs too much cheese! Here, let me get [objPronoun] a treat, so you can eat together!"
             "Cream reaches behind the counter and pulls out a nice-looking treat."
             d "Woof! Woof!"
+            $ owner.traits.discipline += 1
+            $ if owner.traits.discipline > 5: owner.traits.discipline = 5
     "You continue walking with your filling, warm lunchtime crepe in hand. [dog.name] also seems happy."  
     jump walk_menu
 
@@ -116,15 +134,20 @@ label walk_crepe_chocolate:
             cream "Please don't even joke about this kind of stuff. It's not funny!!"
             p "I... I got it, Cream. I'm sorry."
             "Cream stares daggers at you, and slowly hands over your crepe. As you walk, you feel the weight of your sins crawling down your back."
+            $ owner.traits.kindness += 0.5
+            $ if owner.traits.kindness > 5: owner.traits.kindness = 5
         "No.":
             cream "Good. [subjPronoun_upper] can't eat that stuff, you know! I feel bad for [objPronoun]. Be careful not to drop any."
             "Cream reaches behind the counter and pulls out a nice-looking treat."
             d "Woof! Woof!"
             "You continue walking with your sweet crepe in hand."
-            $if owner.traits.discipline < 5: owner.traits.discipline += 0.5
+            $ owner.traits.discipline += 1
+            $ if owner.traits.discipline > 5: owner.traits.discipline = 5
     jump walk_menu
 
 label walk_wander:
+    $ dog.traits.training += 1
+    $ if dog.traits.training > 5: dog.traits.training = 5
     "It's a nice, warm day out. From time to time, the sun peeks out from behind the clouds."
     if dog.traits.energy <= 1:
         "[dog.name] slows down in the middle of the walk, panting a little."
@@ -150,8 +173,6 @@ label walk_wander:
         "[subjPronoun_upper] looks back at you inquisitively."
         p "You'll learn to love it."
         "[subjPronoun_upper] turns around and keeps going."
-    # Boost for exercising
-    $if dog.traits.training < 5: dog.traits.training += 0.5
     jump walk_menu
 
 label walk_end:
