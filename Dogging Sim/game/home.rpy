@@ -3,6 +3,7 @@
 
 # HOME INTRO
 label home_start:
+    scene home
     $home_done = []
 
     "You decide to stay at home today. Hopefully, that'll give [dog.name] time to adjust!!"

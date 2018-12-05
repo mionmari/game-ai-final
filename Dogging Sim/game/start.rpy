@@ -40,8 +40,20 @@ init python:
 
 # NEEDS A START LABEL
 label start:
+    
+    # Load all background images
+    image dogShelter = "scenes/dog shelter.png"
+    image dogPark = "scenes/dog park.png"
+    image home = "scenes/home.png"
+    image petStore = "scenes/pet store.png"
+    image petCoo = "scenes/petcoo.png"
+    image outsideHouse = "scenes/outside house.png"
+    image walkPath = "scenes/walk path.png"
+    image shopping = "scenes/shopping.png"
+
     # BACKGROUND SCENE / DOG PARK.PNG
-    scene dog park
+    # scene dog park
+    scene dogShelter
 
     "Dogs. Perfect, fuzzy little bundles of joy and happiness. Why not adopt a dog?"
     "Maybe you're feeling lonely. Maybe you want someone to play fetch with. Maybe you want someone to guard your door."
@@ -62,6 +74,7 @@ label start:
         jump end_true
 
 label new_day:
+    scene outsideHouse
     "What do you want to do today?"
     menu:
         "Go to the park." if not "park" in day_done:

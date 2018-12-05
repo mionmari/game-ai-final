@@ -4,6 +4,7 @@
 
 # SHOPPING INTRO
 label shopping_start:
+    scene shopping
     python:
         shopping_done = []
         shopping_petcoo_done = []
@@ -35,6 +36,7 @@ label shopping_menu_start:
             jump shopping_grocery
 
 label shopping_menu:
+    scene shopping
     "Which store would you like to go to next?"
     menu:
         "PetCoo, a retail chain pet supply store." if not "petcoo" in shopping_done:
@@ -50,6 +52,7 @@ label shopping_menu:
             jump shopping_end
 
 label shopping_petcoo:
+    scene petcoo
     "You walk into PetCoo and are immediately greeted by a harmony of zealous employees."
     petcoo_employee "Hey, welcome to PetCoo!!! How can I help you today?? Are you looking for something in particular? Your dog is so cute!!"
     if dog.traits.social <= 2:
@@ -153,6 +156,7 @@ label shopping_petcoo_menu:
     jump shopping_petcoo_menu
 
 label shopping_yummy:
+    scene petStore
     "You walk into Yummy Bone and are greeted by an elderly woman at the counter."
     yummy_employee "Welcome to the store, dearie!! What would you like?"
     p "Oh, I'm just browsing-"

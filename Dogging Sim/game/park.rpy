@@ -3,6 +3,7 @@
 
 # PARK INTRO
 label park_start:
+    scene dogPark
     python:
         park_fetched = 0
         park_met = []

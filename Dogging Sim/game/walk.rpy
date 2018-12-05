@@ -3,6 +3,7 @@
 
 # WALK INTRO
 label walk_start:
+    scene walkPath
     $ walk_done = []
     $ cream = Character("Cream")
 
