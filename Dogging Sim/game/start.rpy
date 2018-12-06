@@ -10,6 +10,7 @@ define poss = {"Male": "his", "Female": "her", "Nonbinary": "their" }
 define refl = {"Male": "himself", "Female": "herself", "Nonbinary": "themself" }
 define person = {"Male": "Boy", "Female": "Girl", "Nonbinary": "They" }
 
+
 # INITIALIZE PYTHON
 # $ = ONE-LINE PYTHON STATEMENT
 init python:
@@ -21,20 +22,11 @@ init python:
     with open(renpy.loader.transfn("resources/dogs.json")) as json_data:
         dogs = json.load(json_data, object_hook=as_dog)
 
-    # ALWAYS CHOOSES FIRST DOG
-    dog = dogs[0]
-    d = Character(dog.name)
+    # Intialize owner
     owner = Owner()
-
-    # Evaluate pronouns
-    objPronoun = obj[dog.sex]
-    subjPronoun = subj[dog.sex]
-    subjPronoun_upper = subjPronoun.capitalize()
-    possPronoun = poss[dog.sex]
-    possPronoun_upper = possPronoun.capitalize()
-    reflPronoun = refl[dog.sex]
-    personPronoun = person[dog.sex]
-
+    
+    days = 0
+    day_done = []
 
 
 # NEEDS A START LABEL
@@ -50,6 +42,16 @@ label start:
     image walkPath = "scenes/walk path.png"
     image shopping = "scenes/shopping.png"
 
+    # Load dog cards
+    image buddyCard = "images/dog_cards/buddy_card.png"
+    image daisyCard = "images/dog_cards/daisy_card.png"
+    image dukeCard =  "images/dog_cards/duke_card.png"
+    image lionCard = "images/dog_cards/lion_card.png"
+    image lupinCard = "images/dog_cards/lupin_card.png"
+    image rascalCard = "images/dog_cards/rascal_card.png"
+    image sausageCard = "images/dog_cards/sausage_card.png"
+    image teddyCard = "images/dog_cards/teddy_card.png"
+
     # BACKGROUND SCENE / DOG PARK.PNG
     # scene dog park
     scene dogShelter
@@ -62,19 +64,139 @@ label start:
     ds "If, after those five days are up, it doesn't work out, then you are free to bring them back!"
     ds "But, if all goes well, you'll gain a lifelong friend to stand by your side and love you no matter what."
 
-    # A dog was picked
-    # This is their image
-    image dogImage = "dogs/[dog.name].png"
+    ds "We have 8 lovable dogs available for adoption. Who would you like to bring home?"
 
-    $ days = 0
-    $ day_done = []
-    if len(day_done) < 5:
-        jump new_day
-    else:
-        jump end_true
+    jump dog_menu1
+
+label dog_menu1:
+    menu:
+        "Lupin":
+            show lupinCard
+            ds "Ooh, yes Lupin is a very good boy! He's full of energy, but can get a bit clingy at times."
+            ds "Will you adopt Lupin?"
+            menu:
+                "Yes, I want to pick Lupin.":
+                    $dog = dogs[0]
+                    jump dog_picked
+                "Hmm, not sure... Show me other dogs first.":
+                    hide lupinCard
+                    jump dog_menu1       
+        "Rascal":
+            show rascalCard
+            ds "Rascal is the CUTEST DOG!! He likes cuddles and long naps. Do be careful, though, sometimes he can get a bit moody."
+            ds "Will you adopt Rascal?"
+            menu:
+                "Yes, I want to pick Rascal.":
+                    $dog = dogs[1]
+                    hide rascalCard
+                    jump dog_picked
+                "Hmm, not sure... Show me other dogs first.":
+                    hide rascalCard
+                    jump dog_menu1
+        "Buddy":
+            show buddyCard
+            ds "Aww, Buddy is such a good girl! She looooves to eat, and gets a little upset if she hasn't eaten."
+            ds "Will you adopt Buddy?"
+            menu:
+                "Yes, I want to pick Buddy.":
+                    $dog = dogs[2]
+                    hide buddyCard
+                    jump dog_picked
+                "Hmm, not sure... Show me other dogs first.":
+                    hide buddyCard
+                    jump dog_menu1    
+        "Lion":
+            show lionCard
+            ds "Lion is a great dog!! She's is a bit of a diva and can get very attached to you!"
+            ds "Will you adopt Lion?"
+            menu:
+                "Yes, I want to pick Lion.":
+                    $dog = dogs[3]
+                    hide lionCard
+                    jump dog_picked
+                "Hmm, not sure... Show me other dogs first.":
+                    hide lionCard
+                    jump dog_menu1
+        "Show me more dogs":
+            jump dog_menu2   
+label dog_menu2:
+    menu:
+        "Duke":
+            show dukeCard
+            ds "Duke is the nicest dog!! He's got so much energy and eats a lot!"
+            ds "Will you adopt Duke?"
+            menu:
+                "Yes, I want to pick Duke.":
+                    $dog = dogs[4]
+                    hide dukeCard
+                    jump dog_picked
+                "Hmm, not sure... Show me other dogs first.":
+                    hide dukeCard
+                    jump dog_menu2   
+        "Sausage":
+            show sausageCard
+            ds "Sausage is our most well-behaved dogs! He's a sweetheart all-around!!"
+            ds "Will you adopt Sausage?"
+            menu:
+                "Yes, I want to pick Sausage.":
+                    $dog = dogs[5]
+                    hide sausageCard
+                    jump dog_picked
+                "Hmm, not sure... Show me other dogs first.":
+                    hide sausageCard
+                    jump dog_menu2 
+        "Teddy":
+            show teddyCard
+            ds "Okay, so Teddy is also the cutest dog!! She's got the most energy a small dog can ever get!"
+            ds "Will you adopt Teddy?"
+            menu:
+                "Yes, I want to pick Teddy.":
+                    $dog = dogs[6]
+                    hide teddyCard
+                    jump dog_picked
+                "Hmm, not sure... Show me other dogs first.":
+                    hide teddyCard
+                    jump dog_menu2 
+        "Daisy":
+            show daisyCard
+            ds "Daisy is our most expressive dog! He is very well-trained but can get a little moody."
+            ds "Will you adopt Daisy?"
+            menu:
+                "Yes, I want to pick Daisy.":
+                    $dog = dogs[7]
+                    hide daisyCard
+                    jump dog_picked
+                "Hmm, not sure... Show me other dogs first.":
+                    hide daisyCard
+                    jump dog_menu2 
+        "Show me the other dogs again":
+            jump dog_menu1   
+
+
+label dog_picked:
+    python:
+        # Evaluate pronouns
+        objPronoun = obj[dog.sex]
+        subjPronoun = subj[dog.sex]
+        subjPronoun_upper = subjPronoun.capitalize()
+        possPronoun = poss[dog.sex]
+        possPronoun_upper = possPronoun.capitalize()
+        reflPronoun = refl[dog.sex]
+        personPronoun = person[dog.sex]
+        d = Character(dog.name)
+
+    image dogImage = "dogs/[dog.name].png"
+    
+    ds "Great choice!"
+    jump new_day
+
 
 label new_day:
     $ days += 1 
+    
+    if len(day_done) > 5:
+        jump end_true
+
     scene outsideHouse
 
     if days == 1:

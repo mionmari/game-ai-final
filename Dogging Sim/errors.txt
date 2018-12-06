@@ -2,21 +2,25 @@
 errors listed below, and try again.
 
 
-File "game/start.rpy", line 82: expected ':' not found.
-    else if days == 2:
-         ^
+File "game/start.rpy", line 124: expected statement.
+    "Duke":
+          ^
 
-File "game/start.rpy", line 84: expected statement.
-    else if days == 3:
-         ^
+File "game/start.rpy", line 135: expected statement.
+    "Sausage":
+             ^
 
-File "game/start.rpy", line 86: expected statement.
-    else if days == 4:
-         ^
+File "game/start.rpy", line 146: expected statement.
+    "Teddy":
+           ^
 
-File "game/start.rpy", line 88: expected statement.
-    else if days == 5:
-         ^
+File "game/start.rpy", line 157: expected statement.
+    "Daisy":
+           ^
+
+File "game/start.rpy", line 168: expected statement.
+    "Show me the other dogs again":
+                                  ^
 
 Ren'Py Version: Ren'Py 7.1.1.929
-Thu Dec 06 16:18:25 2018
+Thu Dec 06 17:28:58 2018
