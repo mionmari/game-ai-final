@@ -1,10 +1,14 @@
 label end_true:
     scene dogShelter
     p "Well, it's been a good five days, but I guess it's time to go back to the shelter."
+    show dogImage
     d "Arf?"
+    hide dogImage
     "You make your way back to the Dogging Sim."
     p "I'm sorry, but I've run into a HUGE problem with [dog.name]."
+    show dogImage
     d "{i}Yolemn yip.{/i}"
+    hide dogImage
     ds "I'm terribly sorry to hear that. What appears to have been the issue?"
     p "I just... LOVE [dog.name] SOOOOO MUCHHHH I CAN'T CONTAIN MYSELF!!!!"
     "You reach down and rub [possPronoun] hair all over."
@@ -24,7 +28,9 @@ label end_good:
     p "Hey, [dog.name], can we talk for a second?"
     "[dog.name] tilts [objPronoun] head at you and sticks [possPronoun] ears out upright."
     p "We haven't had a perfect time together. That's for sure."
+    show dogImage
     d "{i}Sniffs{/i}"
+    hide dogImage
     p "But I know that's as much my fault as it is yours! We'll learn to love each other, work around each other, and be there for each other!"
     ds "How heartwarming! I take it your week went well?"
     p "It went amazingly. It's been crazy, but also some of the most fun times I've ever had in my life."
