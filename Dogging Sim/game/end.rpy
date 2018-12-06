@@ -20,7 +20,7 @@ label end_true:
     p "I wouldn't trade [objPronoun] for the world!!"
     "You got the true ending!!! [dog.name] absolutely loves you."
     "We hope you continue to have a good time together from now on!"
-    return
+return
 
 label end_good:
     scene dogShelter
