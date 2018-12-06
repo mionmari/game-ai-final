@@ -72,9 +72,9 @@ label park_fetch_start:
             d "{i}Loud and adorable chewing noises{/i}"
             hide dogImage
         
-        "You wanted to get some exercise in, but you also feel a sort of spiritual connection to [possPronoun]."
+        "You wanted to get some exercise in, but you also feel a sort of spiritual connection to [objPronoun]."
         menu:
-            "Admonish [dog.name] and take it away from [possPronoun].":
+            "Admonish [dog.name] and take it away from [objPronoun].":
                 "[dog.name] starts growling when you try to grab it back."
 
                 if dog.traits.gluttony >= 4:
@@ -82,7 +82,7 @@ label park_fetch_start:
                 else:
                     p "Bad [personPronoun]! We need this to play fetch!"
 
-                "With a little bit of stern talking and some force, you manage to pry it away from [possPronoun]."
+                "With a little bit of stern talking and some force, you manage to pry it away from [objPronoun]."
                 "[subjPronoun_upper] looks at the ground silently."
                 $ owner.traits.discipline += 1
                 $ if owner.traits.discipline > 5: owner.traits.discipline = 5

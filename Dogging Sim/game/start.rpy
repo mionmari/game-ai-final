@@ -10,7 +10,6 @@ define poss = {"Male": "his", "Female": "her", "Nonbinary": "their" }
 define refl = {"Male": "himself", "Female": "herself", "Nonbinary": "themself" }
 define person = {"Male": "Boy", "Female": "Girl", "Nonbinary": "They" }
 
-
 # INITIALIZE PYTHON
 # $ = ONE-LINE PYTHON STATEMENT
 init python:
@@ -67,6 +66,7 @@ label start:
     # This is their image
     image dogImage = "dogs/[dog.name].png"
 
+    $ days = 0
     $ day_done = []
     if len(day_done) < 5:
         jump new_day
@@ -74,8 +74,21 @@ label start:
         jump end_true
 
 label new_day:
+    $ days += 1 
     scene outsideHouse
-    "What do you want to do today?"
+
+    if days == 1:
+        "Today's my first day with [dog.name]. Maybe I should try to get [dog.name] to be more comfortable with me."
+    elif days == 2:
+        "Today's my second day with [dog.name]. I think I should try to get to know [dog.name] a little better."
+    elif days == 3:
+        "Today's my third day with [dog.name]. I feel like I know more about [dog.name] now."
+    elif days == 4:
+        "Today's my fourth day with [dog.name]. I only have 2 days left with [dog.name]. I should try to get [dog.name] to like to me more."
+    elif days == 5:
+        "Today's my last day with [dog.name]. I'll be going to the dog shelter tomorrow. I need to make today count!"
+
+    "What should I do today?"
     menu:
         "Go to the park." if not "park" in day_done:
             $ day_done.append("park")
@@ -90,10 +103,6 @@ label new_day:
             $ day_done.append("home")
             jump home_start
         "Nothing else!":
-            "nice demo end - dog [dog.traits.training]"
-            "kindness [owner.traits.kindness]"
-            "loyalty [owner.traits.loyalty]"
-            "patience [owner.traits.patience]"
-            "discipline [owner.traits.discipline]"
+            "end: dog [dog.traits.training], kindness [owner.traits.kindness], loyalty [owner.traits.loyalty], patience [owner.traits.patience], discipline [owner.traits.discipline]"
             jump end_true
 

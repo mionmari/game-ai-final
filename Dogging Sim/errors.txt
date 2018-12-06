@@ -2,9 +2,21 @@
 errors listed below, and try again.
 
 
-File "game/start.rpy", line 64: expected 'image_name_component' not found.
-    show "[dog.name].png"
+File "game/start.rpy", line 82: expected ':' not found.
+    else if days == 2:
+         ^
+
+File "game/start.rpy", line 84: expected statement.
+    else if days == 3:
+         ^
+
+File "game/start.rpy", line 86: expected statement.
+    else if days == 4:
+         ^
+
+File "game/start.rpy", line 88: expected statement.
+    else if days == 5:
          ^
 
 Ren'Py Version: Ren'Py 7.1.1.929
-Tue Dec 04 23:50:34 2018
+Thu Dec 06 16:18:25 2018
