@@ -1,4 +1,5 @@
 label end_true:
+    scene dogShelter
     p "Well, it's been a good five days, but I guess it's time to go back to the shelter."
     show dogImage
     d "Arf?"
@@ -22,6 +23,7 @@ label end_true:
     return
 
 label end_good:
+    scene dogShelter
     "The next day, at the Dogging Sim."
     p "Hey, [dog.name], can we talk for a second?"
     "[dog.name] tilts [objPronoun] head at you and sticks [possPronoun] ears out upright."
@@ -38,6 +40,7 @@ label end_good:
     return
 
 label end_bad:
+    scene dogShelter
     "The next day, you manage to drag [dog.name] back to the Dogging Sim."
     p "Excuse me!!"
     if dog.traits.passAggress >= 3:

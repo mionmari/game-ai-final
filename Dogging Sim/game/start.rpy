@@ -10,6 +10,7 @@ define poss = {"Male": "his", "Female": "her", "Nonbinary": "their" }
 define refl = {"Male": "himself", "Female": "herself", "Nonbinary": "themself" }
 define person = {"Male": "Boy", "Female": "Girl", "Nonbinary": "They" }
 
+
 # INITIALIZE PYTHON
 # $ = ONE-LINE PYTHON STATEMENT
 init python:
@@ -25,7 +26,7 @@ init python:
     dog = dogs[0]
     d = Character(dog.name)
     owner = Owner()
-    
+
     # Evaluate pronouns
     objPronoun = obj[dog.sex]
     subjPronoun = subj[dog.sex]
@@ -34,11 +35,25 @@ init python:
     possPronoun_upper = possPronoun.capitalize()
     reflPronoun = refl[dog.sex]
     personPronoun = person[dog.sex]
-    
+
+
+
 # NEEDS A START LABEL
 label start:
+    
+    # Load all background images
+    image dogShelter = "scenes/dog shelter.png"
+    image dogPark = "scenes/dog park.png"
+    image home = "scenes/home.png"
+    image petStore = "scenes/pet store.png"
+    image petCoo = "scenes/petcoo.png"
+    image outsideHouse = "scenes/outside house.png"
+    image walkPath = "scenes/walk path.png"
+    image shopping = "scenes/shopping.png"
+
     # BACKGROUND SCENE / DOG PARK.PNG
-    scene dog park
+    # scene dog park
+    scene dogShelter
 
     "Dogs. Perfect, fuzzy little bundles of joy and happiness. Why not adopt a dog?"
     "Maybe you're feeling lonely. Maybe you want someone to play fetch with. Maybe you want someone to guard your door."
@@ -48,6 +63,10 @@ label start:
     ds "If, after those five days are up, it doesn't work out, then you are free to bring them back!"
     ds "But, if all goes well, you'll gain a lifelong friend to stand by your side and love you no matter what."
 
+    # A dog was picked
+    # This is their image
+    image dogImage = "dogs/[dog.name].png"
+
     $ day_done = []
     if len(day_done) < 5:
         jump new_day
@@ -55,6 +74,7 @@ label start:
         jump end_true
 
 label new_day:
+    scene outsideHouse
     "What do you want to do today?"
     menu:
         "Go to the park." if not "park" in day_done:

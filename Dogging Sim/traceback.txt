@@ -1,27 +1,31 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While loading <'Image' u'images/dog park.png'>:
-  File "game/shopping.rpy", line 25, in script
-    label shopping_menu_start:
-IOError: Couldn't find file 'images/dog park.png'.
+While loading <'Image' u'scenes/dog park.jpg'>:
+  File "game/park.rpy", line 16, in script
+    "What better way to bond with [dog.name] than taking [objPronoun] to the park? There’s one pretty close to your house!"
+  File "renpy/common/000window.rpy", line 98, in _window_auto_callback
+    _window_show()
+  File "renpy/common/000window.rpy", line 60, in _window_show
+    renpy.with_statement(trans)
+IOError: Couldn't find file 'scenes/dog park.jpg'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/shopping.rpy", line 25, in script
-    label shopping_menu_start:
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\ast.py", line 678, in execute
-    renpy.exports.say(who, what, interact=self.interact, *args, **kwargs)
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\exports.py", line 1204, in say
-    who(what, *args, **kwargs)
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\character.py", line 1031, in __call__
-    self.do_display(who, what, cb_args=self.cb_args, **display_args)
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\character.py", line 823, in do_display
-    **display_args)
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\character.py", line 572, in display_say
-    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\ui.py", line 289, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "game/park.rpy", line 16, in script
+    "What better way to bond with [dog.name] than taking [objPronoun] to the park? There’s one pretty close to your house!"
+  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\ast.py", line 644, in execute
+    statement_name("say")
+  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\ast.py", line 45, in statement_name
+    i(name)
+  File "renpy/common/000window.rpy", line 98, in _window_auto_callback
+    _window_show()
+  File "renpy/common/000window.rpy", line 60, in _window_show
+    renpy.with_statement(trans)
+  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\exports.py", line 1456, in with_statement
+    return renpy.game.interface.do_with(trans, paired, clear=clear)
+  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\display\core.py", line 2217, in do_with
+    clear=clear)
   File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\display\core.py", line 2662, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
   File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\display\core.py", line 3148, in interact_core
@@ -32,6 +36,10 @@ Full traceback:
   File "render.pyx", line 235, in renpy.display.render.render
   File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\display\layout.py", line 719, in render
     surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 147, in renpy.display.render.render
+  File "render.pyx", line 235, in renpy.display.render.render
+  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\display\transition.py", line 360, in render
+    bottom = render(self.old_widget, width, height, st, at)
   File "render.pyx", line 147, in renpy.display.render.render
   File "render.pyx", line 235, in renpy.display.render.render
   File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\display\layout.py", line 719, in render
@@ -58,9 +66,9 @@ Full traceback:
     surf = renpy.display.pgrender.load_image(renpy.loader.load(self.filename), self.filename)
   File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\loader.py", line 576, in load
     raise IOError("Couldn't find file '%s'." % name)
-IOError: Couldn't find file 'images/dog park.png'.
+IOError: Couldn't find file 'scenes/dog park.jpg'.
 
 Windows-8-6.2.9200
 Ren'Py 7.1.1.929
 Dogging Sim 1.0
-Wed Dec 05 12:43:59 2018
+Wed Dec 05 11:02:21 2018

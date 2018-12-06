@@ -3,6 +3,7 @@
 
 # WALK INTRO
 label walk_start:
+    scene walkPath
     $ walk_done = []
     $ cream = Character("Cream")
 
@@ -16,13 +17,17 @@ label walk_start:
         elif dog.traits.energy >= 4:
             "[dog.name] is too excited and keeps moving around."
         else:
+            show dogImage
             d "Ruff!"
+            hide dogImage
             "[dog.name] looks up at your imposing figure, and drops to the ground, putting [possPronoun] tail between [possPronoun] legs."
         menu:
             "Calmy put the collar on.":
                 if dog.traits.passAggress >= 4:
                     "You slowly attach the collar onto [dog.name]."
+                    show dogImage
                     d "Bark! Bark! Bark!"
+                    hide dogImage
                     p "Ssssh... It's fine, trust me."
                 elif dog.traits.energy >= 4:
                     p "Hey, hey [dog.name] look at me! Yes, that's it."
@@ -44,7 +49,9 @@ label walk_start:
     else:
         "[dog.name] waits patiently and politely for you to finish putting the leash on."
         p "Oooh, good [personPronoun]!"
+        show dogImage
         d "Arf!"
+        hide dogImage
 
     jump walk_menu_start
 
@@ -88,13 +95,17 @@ label walk_crepe_strawberry:
             cream "That's fine. Dogs can eat strawberries and peanut butter. I'll cut the strawberries extra thin for [objPronoun]!"
             p "Thank you!"
             "You feed a couple slices of peanut butter-covered strawberries to [dog.name]. [possPronoun_upper] tail wags happily."
+            show dogImage
             d "Yip!"
+            hide dogImage
             $ owner.traits.kindness += 0.5
             $ if owner.traits.kindness > 5: owner.traits.kindness = 5
         "No.":
             cream "Ooh, then I'd feel sorry for [objPronoun]. Here, let me get [objPronoun] a treat, so you can eat together!"
             "Cream reaches behind the counter and pulls out a nice-looking treat."
+            show dogImage
             d "Woof! Woof!"
+            hide dogImage
             $ owner.traits.discipline += 1
             $ if owner.traits.discipline > 5: owner.traits.discipline = 5
     "You continue walking with your delicious, fruity crepe in hand. [dog.name] also seems highly satisfied."
@@ -108,14 +119,18 @@ label walk_crepe_cheese:
             p "Oh, thanks for the tip..."
             cream "Here, I'll give you a couple pieces of salmon. I think it's a beautiful thing when owner and doggo eat together."
             "You share a couple bits of salmon with [dog.name]."
+            show dogImage
             d "Yip!"
+            hide dogImage
             p "Delicious, isn't it? Thanks, Cream!"
             $ owner.traits.kindness += 0.5
             $ if owner.traits.kindness > 5: owner.traits.kindness = 5
         "No.":
             cream "Ooh, that's probably for the best; don't feed dogs too much cheese! Here, let me get [objPronoun] a treat, so you can eat together!"
             "Cream reaches behind the counter and pulls out a nice-looking treat."
+            show dogImage
             d "Woof! Woof!"
+            hide dogImage
             $ owner.traits.discipline += 1
             $ if owner.traits.discipline > 5: owner.traits.discipline = 5
     "You continue walking with your filling, warm lunchtime crepe in hand. [dog.name] also seems happy."  
@@ -139,7 +154,9 @@ label walk_crepe_chocolate:
         "No.":
             cream "Good. [subjPronoun_upper] can't eat that stuff, you know! I feel bad for [objPronoun]. Be careful not to drop any."
             "Cream reaches behind the counter and pulls out a nice-looking treat."
+            show dogImage
             d "Woof! Woof!"
+            hide dogImage
             "You continue walking with your sweet crepe in hand."
             $ owner.traits.discipline += 1
             $ if owner.traits.discipline > 5: owner.traits.discipline = 5
@@ -152,20 +169,28 @@ label walk_wander:
     if dog.traits.energy <= 1:
         "[dog.name] slows down in the middle of the walk, panting a little."
         p "Aww... you're a little out of shape, aren't you?"
+        show dogImage
         d "Whiiiine..."
+        hide dogImage
         p "We'll get there. Both you and I."
     elif dog.traits.energy >= 4:
         "[dog.name] pulls you along a little faster than you're used to walking."
         p "Whoah there, [personPronoun]! You've got some energy in you!"
+        show dogImage
         d "Ruff!"
+        hide dogImage
         p "You rascal!! You wanna race?"
         "You make your way to a local park and begin jogging through it, [dog.name] right beside you."
         p "Phew.... I can barely keep up!!"
+        show dogImage
         d "Ruff! Ruff!"
+        hide dogImage
         "You spend some time running around, in perfect tandem, with [dog.name]. In fact, you start breathing heavily a little before [subjPronoun] does."
         "As the sun makes its way across the sky, you slow down gracefully into a walk."
         p "Huff.... that was fun, [dog.name]. Let's do that again sometime."
+        show dogImage
         d "{i}Pants happily{/i}"
+        hide dogImage
     else:
         "You make your way around the neighborhood, pointing out your favorite locations along the way."
         "[dog.name] appears to be enjoying [reflPronoun]. It's a nice, calming walk the whole way through."
@@ -178,6 +203,8 @@ label walk_wander:
 label walk_end:
     "It's been a long day, and both of you have done a lot of good walking."
     p "You know, [dog.name], all things considered, I'm glad you pulled me out of bed to take a walk with you today."
+    show dogImage
     d "Woof!"
+    hide dogImage
     
     jump new_day

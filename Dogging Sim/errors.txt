@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/shopping.rpy", line 97: expected menuitem
-    $ dog.traits.training += 0.5
-    ^
+File "game/start.rpy", line 64: expected 'image_name_component' not found.
+    show "[dog.name].png"
+         ^
 
 Ren'Py Version: Ren'Py 7.1.1.929
-Tue Dec 04 23:07:02 2018
+Tue Dec 04 23:50:34 2018
