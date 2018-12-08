@@ -34,7 +34,7 @@ label end_determiner:
     if trueCount >= 4 and dog.traits.training >= 4:
         jump end_true
     elif trueCount >= 2 and dog.traits.training >= 2:
-        jump end_true
+        jump end_good
     else:
         jump end_bad
     
