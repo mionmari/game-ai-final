@@ -2,9 +2,21 @@
 errors listed below, and try again.
 
 
-File "game/start.rpy", line 64: expected 'image_name_component' not found.
-    show "[dog.name].png"
-         ^
+File "game/start.rpy", line 227: choice menuitem expects a non-empty block.
+    "Nothing else!":
+                    ^
+
+File "game/start.rpy", line 228: expected statement.
+    <<<<<<< Updated upstream
+                            ^
+
+File "game/start.rpy", line 232: expected statement.
+    =======
+          ^
+
+File "game/start.rpy", line 239: expected statement.
+    >>>>>>> Stashed changes
+                           ^
 
 Ren'Py Version: Ren'Py 7.1.1.929
-Tue Dec 04 23:50:34 2018
+Fri Dec 07 23:56:55 2018
