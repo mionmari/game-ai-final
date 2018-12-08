@@ -219,6 +219,7 @@ label home_tv:
                     $ if owner.traits.patience > 5: owner.traits.patience = 5
         "Rowdy Pup: How to get your dog to behave":
             "The show's host keps droning on and on about dog facts."
+            "[dog.name] keeps brushing against you, looking at you expectantly."
             menu:
                 "Play with [dog.name] instead.":
                     p "[dog.name] is more important! I can watch this show whenever I want."

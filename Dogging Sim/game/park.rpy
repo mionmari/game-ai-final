@@ -378,15 +378,18 @@ label park_meet_pepper:
 
 label park_end:
     "That's probably good enough for now. You got some good walking in, and you learned more about your new friend."
+    
+    # Don't meet all dogs
+    if dog.traits.jealousy >= 4 and len(park_met) < 3:        
+        "[dog.name] looks a bit relieved that you haven't tried to meet all the dogs at the park."
+        $ owner.traits.loyalty += 1
+        $ if owner.traits.loyalty > 5: owner.traits.loyalty = 5
+
     p "Thanks for spending some time with me, [dog.name]. It was fun."
     show dogImage
     d "Arf!"
     hide dogImage
     "[dog.name] tilts [possPronoun] head at you and sits down by your feet."
 
-    # Don't meet all dogs
-    if dog.traits.jealousy >= 4 and len(park_met) == 3:
-        $ owner.traits.loyalty += 1
-        $ if owner.traits.loyalty > 5: owner.traits.loyalty = 5
 
     jump new_day
