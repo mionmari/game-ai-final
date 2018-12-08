@@ -2,21 +2,10 @@
 errors listed below, and try again.
 
 
-File "game/start.rpy", line 227: choice menuitem expects a non-empty block.
-    "Nothing else!":
-                    ^
-
-File "game/start.rpy", line 228: expected statement.
-    <<<<<<< Updated upstream
-                            ^
-
-File "game/start.rpy", line 232: expected statement.
-    =======
-          ^
-
-File "game/start.rpy", line 239: expected statement.
-    >>>>>>> Stashed changes
-                           ^
+File "game/endetermination.rpy", line 35: invalid syntax
+            if owner.traits.kindness <= 2 || owner.traits.patience <= 2:
+                                            ^
+    
 
 Ren'Py Version: Ren'Py 7.1.1.929
-Fri Dec 07 23:56:55 2018
+Sat Dec 08 00:18:27 2018
