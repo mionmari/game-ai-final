@@ -43,9 +43,12 @@ init python:
 
 label end_determiner:
     
+    scene dogShelter
     $results = checkFlaws(dog)
     $success = results.count(1)
     $flaws = results.count(1) + results.count(-1)
+
+    "[dog.name]'s training level: [dog.traits.training] \nYour traits: kindness [owner.traits.kindness], loyalty [owner.traits.loyalty], patience [owner.traits.patience], discipline [owner.traits.discipline]"
 
     if success == flaws and dog.traits.training >= 4:
         jump end_true
