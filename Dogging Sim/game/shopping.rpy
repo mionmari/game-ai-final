@@ -72,7 +72,7 @@ label shopping_petcoo:
                 p "It'll be alright buddy, let's make our way inside."
 
                 jump shopping_petcoo_menu
-            "Go to a different store:":
+            "Go to a different store.":
                 $ owner.traits.kindness += 0.5
                 $ if owner.traits.kindness > 5: owner.traits.kindness = 5
                 p "It's okay, come on. Let's get to a different shop!"

@@ -30,7 +30,8 @@ init python:
 
 # NEEDS A START LABEL
 label start:
-    
+    $day_done = []
+
     # Load all background images
     image dogShelter = "scenes/dog shelter.png"
     image dogPark = "scenes/dog park.png"
@@ -232,9 +233,10 @@ label action_menu:
             jump home_start
         "Return to dog shelter.":
             "Are you sure you want to return [dog.name] to the shelter?"
-            $days_remaining = 5 - days
-            "You still have [days_remaining] other days to spend time with [objPronoun]."
+            $days_remaining = (5 - days) + 1
+            "You still have [days_remaining] day(s) to spend time with [objPronoun]."
             menu:
+                "[dog.name]'s training level: [dog.traits.training] \nYour traits: kindness [owner.traits.kindness], loyalty [owner.traits.loyalty], patience [owner.traits.patience], discipline [owner.traits.discipline]"
                 "Yes":
                     jump end_determiner
                 "No":
