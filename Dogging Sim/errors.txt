@@ -2,25 +2,21 @@
 errors listed below, and try again.
 
 
-File "game/start.rpy", line 124: expected statement.
-    "Duke":
+File "game/start.rpy", line 227: choice menuitem expects a non-empty block.
+    "Nothing else!":
+                    ^
+
+File "game/start.rpy", line 228: expected statement.
+    <<<<<<< Updated upstream
+                            ^
+
+File "game/start.rpy", line 232: expected statement.
+    =======
           ^
 
-File "game/start.rpy", line 135: expected statement.
-    "Sausage":
-             ^
-
-File "game/start.rpy", line 146: expected statement.
-    "Teddy":
-           ^
-
-File "game/start.rpy", line 157: expected statement.
-    "Daisy":
-           ^
-
-File "game/start.rpy", line 168: expected statement.
-    "Show me the other dogs again":
-                                  ^
+File "game/start.rpy", line 239: expected statement.
+    >>>>>>> Stashed changes
+                           ^
 
 Ren'Py Version: Ren'Py 7.1.1.929
-Thu Dec 06 17:28:58 2018
+Fri Dec 07 23:56:55 2018

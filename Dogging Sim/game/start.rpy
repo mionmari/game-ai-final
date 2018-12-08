@@ -225,15 +225,9 @@ label new_day:
             $ day_done.append("home")
             jump home_start
         "Nothing else!":
-<<<<<<< Updated upstream
-            "end: dog [dog.traits.training], kindness [owner.traits.kindness], loyalty [owner.traits.loyalty], patience [owner.traits.patience], discipline [owner.traits.discipline]"
-            jump end_true
-
-=======
             "nice demo end - dog [dog.traits.training]"
             "kindness [owner.traits.kindness]"
             "loyalty [owner.traits.loyalty]"
             "patience [owner.traits.patience]"
             "discipline [owner.traits.discipline]"
             jump end_determiner
->>>>>>> Stashed changes
