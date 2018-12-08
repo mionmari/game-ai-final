@@ -1,39 +1,55 @@
 init python:
     def checkFlaws(dog):
-        results = [True, True, True, True, True]
+        results = [1, 1, 1, 1, 1]
 
         # Dog is shy
         if dog.traits.social <= 2:
             if owner.traits.kindness <= 2 or owner.traits.patience <= 2:
-                results[0] = False 
+                results[0] = 0
+        # Doesn't exhibit this flaw
+        else: results[0] = -1 
+        
         # Dog is aggressive
         if dog.traits.passAggress >= 4:
             if owner.traits.patience <= 4 or owner.traits.kindness <= 2 or owner.traits.discipline <= 2:
-                results[1] = False
+                results[1] = 0
+        # Doesn't exhibit this flaw
+        else: results[1] = -1 
+        
         # Dog is susceptible to jealousy
         if dog.traits.jealousy >= 4:
             if owner.traits.loyalty <= 4 or owner.traits.kindness <= 2 or owner.traits.discipline <= 2:
-                results[2] = False
+                results[2] = 0
+        # Doesn't exhibit this flaw
+        else: results[2] = -1 
+        
         # Dog is gluttonous
         if dog.traits.gluttony >= 4:
             if owner.traits.discipline <= 2 or owner.traits.kindness <= 2:
-                results[3] = False
+                results[3] = 0
+        # Doesn't exhibit this flaw
+        else: results[3] = -1 
+        
         # Dog has low energy
         if dog.traits.energy <= 2:
             if owner.traits.discipline <= 2 or owner.traits.patience <= 2:
-                results[4] = False
+                results[4] = 0
+        # Doesn't exhibit this flaw
+        else: results[4] = -1 
 
         return results
+        
 
 
 label end_determiner:
     
     $results = checkFlaws(dog)
-    $trueCount = results.count(True)
+    $success = results.count(1)
+    $flaws = results.count(1) + results.count(-1)
 
-    if trueCount >= 4 and dog.traits.training >= 4:
+    if success == flaws and dog.traits.training >= 4:
         jump end_true
-    elif trueCount >= 2 and dog.traits.training >= 2:
+    elif success / flaws >= 0.5 and dog.traits.training >= 2:
         jump end_good
     else:
         jump end_bad
