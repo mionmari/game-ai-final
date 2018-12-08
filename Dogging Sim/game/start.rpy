@@ -194,7 +194,7 @@ label new_day:
     $ days += 1 
     
     if len(day_done) > 5:
-        jump end_true
+        jump end_determiner
 
     scene outsideHouse
 
