@@ -30,7 +30,8 @@ init python:
 
 # NEEDS A START LABEL
 label start:
-    
+    $day_done = []
+
     # Load all background images
     image dogShelter = "scenes/dog shelter.png"
     image dogPark = "scenes/dog park.png"
@@ -186,7 +187,8 @@ label dog_picked:
 
     image dogImage = "dogs/[dog.name].png"
     
-    ds "Great choice!"
+    ds "Great choice! I hope you and [dog.name] get along well! See you in 5 days."
+
     jump new_day
 
 
@@ -208,7 +210,13 @@ label new_day:
         "Today's my fourth day with [dog.name]. I only have 2 days left with [dog.name]. I should try to get [dog.name] to like to me more."
     elif days == 5:
         "Today's my last day with [dog.name]. I'll be going to the dog shelter tomorrow. I need to make today count!"
+        "Should I go somewhere that [dog.name] likes or somewhere that trains [dog.name] well?"
+        $day_done = []
 
+    jump action_menu
+
+label action_menu:
+    
     "What should I do today?"
     menu:
         "Go to the park." if not "park" in day_done:
@@ -223,10 +231,14 @@ label new_day:
         "Stay at home." if not "home" in day_done:
             $ day_done.append("home")
             jump home_start
-        "Nothing else!":
-            "nice demo end - dog [dog.traits.training]"
-            "kindness [owner.traits.kindness]"
-            "loyalty [owner.traits.loyalty]"
-            "patience [owner.traits.patience]"
-            "discipline [owner.traits.discipline]"
-            jump end_determiner
+        "Return to dog shelter.":
+            "Are you sure you want to return [dog.name] to the shelter?"
+            $days_remaining = (5 - days) + 1
+            "You still have [days_remaining] day(s) to spend time with [objPronoun]."
+            menu:
+                "[dog.name]'s training level: [dog.traits.training] \nYour traits: kindness [owner.traits.kindness], loyalty [owner.traits.loyalty], patience [owner.traits.patience], discipline [owner.traits.discipline]"
+                "Yes":
+                    jump end_determiner
+                "No":
+                    jump action_menu
+

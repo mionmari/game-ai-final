@@ -135,7 +135,7 @@ label park_fetch_throw_1:
         "Lightly toss the ball in front of you.":
             "Probably best to start out light!"
             if dog.traits.passAggress >= 4:
-                "[dog.name] dashes towards the ball, still gnawing at it until you take it away from [subjPronoun]."
+                "[dog.name] dashes towards the ball, still gnawing at it until you take it away from [objPronoun]."
                 p "Thanks?"
             elif dog.traits.energy >= 2:
                 "[dog.name] bolts out immediately from beneath you. [subjPronoun_upper] makes [possPronoun] way there in no time at all, leaping onto the ball."
@@ -188,7 +188,7 @@ label park_fetch_throw_2:
         "Go for a light throw.":
             "[dog.name] might be tired. Let's give them an easy throw."            
             if dog.traits.passAggress >= 4:
-                "[dog.name] lunges towards the ball and pounces on it, but allows you to take the ball from [subjPronoun]."
+                "[dog.name] lunges towards the ball and pounces on it, but allows you to take the ball from [objPronoun]."
                 p "An improvement."
             elif dog.traits.energy >= 4:
                 p "Fet-"
@@ -378,15 +378,18 @@ label park_meet_pepper:
 
 label park_end:
     "That's probably good enough for now. You got some good walking in, and you learned more about your new friend."
+    
+    # Don't meet all dogs
+    if dog.traits.jealousy >= 4 and len(park_met) < 3:        
+        "[dog.name] looks a bit relieved that you haven't tried to meet all the dogs at the park."
+        $ owner.traits.loyalty += 1
+        $ if owner.traits.loyalty > 5: owner.traits.loyalty = 5
+
     p "Thanks for spending some time with me, [dog.name]. It was fun."
     show dogImage
     d "Arf!"
     hide dogImage
     "[dog.name] tilts [possPronoun] head at you and sits down by your feet."
 
-    # Don't meet other dogs
-    if dog.traits.jealousy >= 3 and len(park_met) == 0:
-        $ owner.traits.loyalty += 1
-        $ if owner.traits.loyalty > 5: owner.traits.loyalty = 5
 
     jump new_day
