@@ -28,7 +28,6 @@ init python:
     days = 0
     day_done = []
 
-
 # NEEDS A START LABEL
 label start:
     
