@@ -100,6 +100,8 @@ label walk_crepe_strawberry:
             hide dogImage
             $ owner.traits.kindness += 1
             $ if owner.traits.kindness > 5: owner.traits.kindness = 5
+            $ owner.traits.loyalty += 1
+            $ if owner.traits.loyalty > 5: owner.traits.loyalty = 5
         "No.":
             cream "Ooh, then I'd feel sorry for [objPronoun]. Here, let me get [objPronoun] a treat, so you can eat together!"
             "Cream reaches behind the counter and pulls out a nice-looking treat."
@@ -125,6 +127,8 @@ label walk_crepe_cheese:
             p "Delicious, isn't it? Thanks, Cream!"
             $ owner.traits.kindness += 1
             $ if owner.traits.kindness > 5: owner.traits.kindness = 5
+            $ owner.traits.loyalty += 1
+            $ if owner.traits.loyalty > 5: owner.traits.loyalty = 5
         "No.":
             cream "Ooh, that's probably for the best; don't feed dogs too much cheese! Here, let me get [objPronoun] a treat, so you can eat together!"
             "Cream reaches behind the counter and pulls out a nice-looking treat."
@@ -151,6 +155,8 @@ label walk_crepe_chocolate:
             "Cream stares daggers at you, and slowly hands over your crepe. As you walk, you feel the weight of your sins crawling down your back."
             $ owner.traits.kindness += 1
             $ if owner.traits.kindness > 5: owner.traits.kindness = 5
+            $ owner.traits.loyalty += 1
+            $ if owner.traits.loyalty > 5: owner.traits.loyalty = 5
         "No.":
             cream "Good. [subjPronoun_upper] can't eat that stuff, you know! I feel bad for [objPronoun]. Be careful not to drop any."
             "Cream reaches behind the counter and pulls out a nice-looking treat."
