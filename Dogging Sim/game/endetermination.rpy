@@ -11,14 +11,14 @@ init python:
         
         # Dog is aggressive
         if dog.traits.passAggress >= 4:
-            if owner.traits.patience <= 4 or owner.traits.kindness <= 2 or owner.traits.discipline <= 2:
+            if owner.traits.patience <= 3 or owner.traits.kindness <= 2 or owner.traits.discipline <= 2:
                 results[1] = 0
         # Doesn't exhibit this flaw
         else: results[1] = -1 
         
         # Dog is susceptible to jealousy
         if dog.traits.jealousy >= 4:
-            if owner.traits.loyalty <= 4 or owner.traits.kindness <= 2 or owner.traits.discipline <= 2:
+            if owner.traits.loyalty <= 3 or owner.traits.kindness <= 2 or owner.traits.discipline <= 2:
                 results[2] = 0
         # Doesn't exhibit this flaw
         else: results[2] = -1 
@@ -30,8 +30,8 @@ init python:
         # Doesn't exhibit this flaw
         else: results[3] = -1 
         
-        # Dog has low energy
-        if dog.traits.energy <= 2:
+        # Dog has abnormal energy
+        if dog.traits.energy <= 1 or dog.traits.energy >= 5:
             if owner.traits.discipline <= 2 or owner.traits.patience <= 2:
                 results[4] = 0
         # Doesn't exhibit this flaw
@@ -47,9 +47,14 @@ label end_determiner:
     $success = results.count(1)
     $flaws = success + results.count(0)
 
-    if success == flaws and training >= 4:
+    if flaws == 0:
+        $successPercent = 1
+    else:
+        $successPercent = success / flaws
+
+    if successPercent == 1 and training >= 4:
         jump end_true
-    elif success / flaws >= 0.5 and training >= 2:
+    elif successPercent >= 0.5 and training >= 2:
         jump end_good
     else:
         jump end_bad

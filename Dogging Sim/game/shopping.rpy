@@ -63,7 +63,7 @@ label shopping_petcoo:
         
         menu:
             "Coax [dog.name] to go inside Petcoo.":
-                $ owner.traits.patience += 0.5
+                $ owner.traits.patience += 1
                 $ if owner.traits.patience > 5: owner.traits.patience = 5
                 p "Ssssh, hey it's alright now."
                 show dogImage
@@ -73,7 +73,7 @@ label shopping_petcoo:
 
                 jump shopping_petcoo_menu
             "Go to a different store.":
-                $ owner.traits.kindness += 0.5
+                $ owner.traits.kindness += 1
                 $ if owner.traits.kindness > 5: owner.traits.kindness = 5
                 p "It's okay, come on. Let's get to a different shop!"
                 jump shopping_menu
@@ -86,7 +86,7 @@ label shopping_petcoo_menu:
     menu:
         "A brand new squeaky chew toy." if not "chew" in shopping_petcoo_done:
             $ shopping_petcoo_done.append("chew")
-            $ owner.traits.kindness += 0.5
+            $ owner.traits.kindness += 1
             $ if owner.traits.kindness > 5: owner.traits.kindness = 5
             if dog.traits.passAggress >= 3:
                 "[dog.name] gnashes viciously into the chew toy!"
@@ -129,7 +129,7 @@ label shopping_petcoo_menu:
                                 $ if owner.traits.discipline > 5: owner.traits.discipline = 5
                             "Trade the toy for a treat.": 
                                 "[dog.name] proudly returns the toy."
-                                $ owner.traits.kindness += 0.5
+                                $ owner.traits.kindness += 1
                                 $ if owner.traits.kindness > 5: owner.traits.kindness = 5
                 $ training += 0.5
                 $ if training > 5: training = 5
@@ -152,7 +152,7 @@ label shopping_petcoo_menu:
                         "You pick up the treat that fell on the floor."
                         petcoo_employee "Careful not to feed [objPronoun] too much... They can really get attached to treats."
                         p "I'll keep that in mind."            
-                        $ owner.traits.kindness += 0.5
+                        $ owner.traits.kindness += 1
                         $ if owner.traits.kindness > 5: owner.traits.kindness = 5
                 $ training += 0.5
                 $ if training > 5: training = 5
@@ -259,15 +259,15 @@ label shopping_yummy_menu:
                         show dogImage
                         d "Woof?"
                         hide dogImage
-                        $ owner.traits.discipline += 0.5
+                        $ owner.traits.discipline += 1
                         $ if owner.traits.discipline > 5: owner.traits.discipline = 5
                     "Let [dog.name] sleep. [subjPronoun_upper] looks exhausted.":
                         yummy_employee "Aww, what a sweet child!! Here, if you'd like it, I'll give you a special discount."
                         "The lady takes out a camera and takes a picture of [dog.name] sleeping."
                         "After a little while, [dog.name] eventually comes to."
-                        $ owner.traits.kindness += 0.5
+                        $ owner.traits.kindness += 1
                         $ if owner.traits.kindness > 5: owner.traits.kindness = 5
-                        $ owner.traits.patience += 0.5
+                        $ owner.traits.patience += 1
                         $ if owner.traits.patience > 5: owner.traits.patience = 5
                 $ training += 0.5
                 $ if training > 5: training = 5
@@ -284,13 +284,11 @@ label shopping_yummy_menu:
                             show dogImage
                             d "Yip!"
                             hide dogImage
-                            $ owner.traits.patience += 0.5
+                            $ owner.traits.patience += 1
                             $ if owner.traits.patience > 5: owner.traits.patience = 5
                         "Remove [dog.name] from bed.":
                             "You quickly scoop up [dog.name] and take her outside before [subjPronoun] can do [possPronoun] business."
-                            $ training += 0.5
-                            $ if training > 5: training = 5
-                            $ owner.traits.discipline += 0.5
+                            $ owner.traits.discipline += 1
                             $ if owner.traits.discipline > 5: owner.traits.discipline = 5
                     p "Phew, that was a close one."
 
@@ -315,13 +313,13 @@ label shopping_yummy_menu:
                         show dogImage
                         d "Woof!"
                         hide dogImage
-                    $ owner.traits.kindness += 0.5
+                    $ owner.traits.kindness += 1
                     $ if owner.traits.kindness > 5: owner.traits.kindness = 5
                 "Nope, [dog.name] has eaten too much today.":
                     p "Thanks, but no thanks. [dog.name] ate way too much already."
                     "[dog.name] flashes you a look of betrayal."
                     yummy_employee "Aww, okay. Maybe next time."
-                    $ owner.traits.discipline += 0.5
+                    $ owner.traits.discipline += 1
                     $ if owner.traits.discipline > 5: owner.traits.discipline = 5
 
         "Nothing else interests you here at Yummy Bone.":

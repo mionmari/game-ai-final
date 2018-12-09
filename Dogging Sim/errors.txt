@@ -2,10 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/start.rpy", line 24: invalid syntax
-            global dogs = json.load(json_data, object_hook=as_dog)
-                         ^
-    
+File "game/endetermination.rpy", line 53: expected ':' not found.
+    else
+        ^
 
 Ren'Py Version: Ren'Py 7.1.1.929
-Sun Dec 09 11:25:26 2018
+Sun Dec 09 12:11:58 2018

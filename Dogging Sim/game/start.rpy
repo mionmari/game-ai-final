@@ -240,7 +240,7 @@ label action_menu:
             $days_remaining = (5 - days) + 1
             "You still have [days_remaining] day(s) to spend time with [objPronoun]."
             menu:
-                "[dog.name]'s training level: [dog.traits.training] \nYour traits: kindness [owner.traits.kindness], loyalty [owner.traits.loyalty], patience [owner.traits.patience], discipline [owner.traits.discipline]"
+                "[dog.name]'s training level: [training] \nYour traits: kindness [owner.traits.kindness], loyalty [owner.traits.loyalty], patience [owner.traits.patience], discipline [owner.traits.discipline]"
                 "Yes":
                     jump end_determiner
                 "No":
