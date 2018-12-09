@@ -2,9 +2,10 @@
 errors listed below, and try again.
 
 
-File "game/start.rpy", line 212: expected statement.
-    day_done = []
-             ^
+File "game/start.rpy", line 24: invalid syntax
+            global dogs = json.load(json_data, object_hook=as_dog)
+                         ^
+    
 
 Ren'Py Version: Ren'Py 7.1.1.929
-Sat Dec 08 11:38:31 2018
+Sun Dec 09 11:25:26 2018

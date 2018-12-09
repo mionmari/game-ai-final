@@ -48,8 +48,8 @@ label home_menu:
             jump home_end
 
 label home_cup:
-    $ dog.traits.training += 0.5
-    $ if dog.traits.training > 5: dog.traits.training = 5
+    $ training += 0.5
+    $ if training > 5: training = 5
     "You remember a cute dog video you saw earlier. You gather three cups from the kitchen cabinet, and put them upside-down on the counter."
     "[dog.name] looks at you curiously, and sniffs the cups."
     p "Now watch carefully!"
@@ -98,8 +98,8 @@ label home_cup:
                 jump home_cup_lose
 
 label home_cup_win:
-    $ dog.traits.training += 0.5
-    $ if dog.traits.training > 5: dog.traits.training = 5
+    $ training += 0.5
+    $ if training > 5: training = 5
     "[dog.name] chooses the correct cup!"
     p "Good [personPronoun]! That's amazing!"
     show dogImage
@@ -117,8 +117,8 @@ label home_cup_lose:
     jump home_menu
 
 label home_tug:
-    $ dog.traits.training += 0.5
-    $ if dog.traits.training > 5: dog.traits.training = 5
+    $ training += 0.5
+    $ if training > 5: training = 5
     "You get out some rope and tie a couple knots in it."
     p "[dog.name]? Come here!"
     "You hold out the rope next to [possPronoun] mouth."
@@ -164,8 +164,8 @@ label home_tug:
                 "You begin to feel a little bad for [objPronoun]. You loosen your grip, and the rope flies out of your hands."
                 "[dog.name] stares at you intensely, saliva dripping from [possPronoun] jaw, grinning slightly."
                 p "{i}Sigh...{/i} Great work."
-                $ dog.traits.training += 0.5
-                $ if dog.traits.training > 5: dog.traits.training = 5     
+                $ training += 0.5
+                $ if training > 5: training = 5     
             elif dog.traits.energy <= 1:
                 "The rope immediately flies out of [dog.name]'s mouth."
                 p "Yeah, fair. Gotcha."
@@ -178,8 +178,8 @@ label home_tug:
                 hide dogImage
                 if r.random() < 0.5:
                     "Your hand slips, and you fall forward towards [dog.name]!"
-                    $ dog.traits.training += 0.5
-                    $ if dog.traits.training > 5: dog.traits.training = 5   
+                    $ training += 0.5
+                    $ if training > 5: training = 5   
                 else:
                     "You pull hard enough, and [dog.name] gets pulled towards you!"
                 "You collapse into a single, heartwarming pile."

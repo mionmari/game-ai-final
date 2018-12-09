@@ -11,7 +11,7 @@ label walk_start:
     p "But... let's get a leash on you first, just in case."
     "You walk towards [dog.name] with the leash."
 
-    if dog.traits.training <= 2 or dog.traits.social <= 2 or dog.traits.passAggress >= 4 or dog.traits.energy >= 4:
+    if training <= 2 or dog.traits.social <= 2 or dog.traits.passAggress >= 4 or dog.traits.energy >= 4:
         if dog.traits.passAggress >= 4:
             "[dog.name] starts hissing at you."
         elif dog.traits.energy >= 4:
@@ -163,8 +163,8 @@ label walk_crepe_chocolate:
     jump walk_menu
 
 label walk_wander:
-    $ dog.traits.training += 1
-    $ if dog.traits.training > 5: dog.traits.training = 5
+    $ training += 1
+    $ if training > 5: training = 5
     "It's a nice, warm day out. From time to time, the sun peeks out from behind the clouds."
     if dog.traits.energy <= 1:
         "[dog.name] slows down in the middle of the walk, panting a little."

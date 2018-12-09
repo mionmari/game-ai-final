@@ -118,8 +118,8 @@ label park_fetch_start:
     jump park_fetch_throw_1
 
 label park_fetch_throw_1:
-    $ dog.traits.training += 0.5
-    $ if dog.traits.training > 5: dog.traits.training = 5
+    $ training += 0.5
+    $ if training > 5: training = 5
     "You get up and look down at [dog.name]."
     p "Let's give it a shot!"
 
@@ -176,8 +176,8 @@ label park_fetch_throw_1:
     jump park_menu
 
 label park_fetch_throw_2:
-    $ dog.traits.training += 0.5
-    $ if dog.traits.training > 5: dog.traits.training = 5
+    $ training += 0.5
+    $ if training > 5: training = 5
     "We've still got time. Let's play more!"
     p "Hey, [dog.name], come here!"
 
