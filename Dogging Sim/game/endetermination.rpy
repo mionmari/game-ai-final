@@ -47,9 +47,14 @@ label end_determiner:
     $success = results.count(1)
     $flaws = success + results.count(0)
 
-    if success == flaws and training >= 4:
+    if flaws == 0:
+        $successPercent = 1
+    else:
+        $successPercent = success / flaws
+
+    if successPercent == 1 and training >= 4:
         jump end_true
-    elif success / flaws >= 0.5 and training >= 2:
+    elif successPercent >= 0.5 and training >= 2:
         jump end_good
     else:
         jump end_bad
