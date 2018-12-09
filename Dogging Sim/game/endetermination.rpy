@@ -45,11 +45,11 @@ label end_determiner:
     
     $results = checkFlaws(dog)
     $success = results.count(1)
-    $flaws = results.count(1) + results.count(-1)
+    $flaws = success + results.count(0)
 
-    if success == flaws and dog.traits.training >= 4:
+    if success == flaws and training >= 4:
         jump end_true
-    elif success / flaws >= 0.5 and dog.traits.training >= 2:
+    elif success / flaws >= 0.5 and training >= 2:
         jump end_good
     else:
         jump end_bad
@@ -61,7 +61,7 @@ label end_determiner:
         # else: 
         #     jump end_good
 
-    # elif dog.traits.training >= 2:
+    # elif training >= 2:
         # if (owner.traits.kindness >= dog.traits.kindness and owner.traits.loyalty >= dog.traits.kindness and owner.traits.patience >= dog.traits.patience and owner.traits.discipline >= dog.traits.discipline): 
         #     jump end_good
         # else: 

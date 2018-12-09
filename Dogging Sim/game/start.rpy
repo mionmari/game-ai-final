@@ -22,15 +22,18 @@ init python:
     with open(renpy.loader.transfn("resources/dogs.json")) as json_data:
         dogs = json.load(json_data, object_hook=as_dog)
 
-    # Intialize owner
+    # Intialize variables
     owner = Owner()
-    
     days = 0
     day_done = []
+    training = 0
 
 # NEEDS A START LABEL
 label start:
+    $owner = Owner()
+    $days = 0
     $day_done = []
+    $training = 0
 
     # Load all background images
     image dogShelter = "scenes/dog shelter.png"
@@ -184,6 +187,7 @@ label dog_picked:
         reflPronoun = refl[dog.sex]
         personPronoun = person[dog.sex]
         d = Character(dog.name)
+        training = dog.traits.training
 
     image dogImage = "dogs/[dog.name].png"
     
@@ -195,7 +199,7 @@ label dog_picked:
 label new_day:
     $ days += 1 
     
-    if len(day_done) > 5:
+    if days > 5:
         jump end_determiner
 
     scene outsideHouse

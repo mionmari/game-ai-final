@@ -101,8 +101,8 @@ label shopping_petcoo_menu:
                         p "No, [dog.name]. That's not good."                        
                         $ owner.traits.patience += 1
                         $ if owner.traits.patience > 5: owner.traits.patience = 5
-                $ dog.traits.training += 0.5
-                $ if dog.traits.training > 5: dog.traits.training = 5
+                $ training += 0.5
+                $ if training > 5: training = 5
             elif dog.traits.energy >= 4:
                 "[dog.name] bounces around excitedly as you give [objPronoun] the toy."
                 show dogImage
@@ -131,8 +131,8 @@ label shopping_petcoo_menu:
                                 "[dog.name] proudly returns the toy."
                                 $ owner.traits.kindness += 0.5
                                 $ if owner.traits.kindness > 5: owner.traits.kindness = 5
-                $ dog.traits.training += 0.5
-                $ if dog.traits.training > 5: dog.traits.training = 5
+                $ training += 0.5
+                $ if training > 5: training = 5
 
             else:
                 "[dog.name] sniffs the chew toy and plays with it a little. [subjPronoun_upper] doesn't seem entirely impressed, though."
@@ -154,8 +154,8 @@ label shopping_petcoo_menu:
                         p "I'll keep that in mind."            
                         $ owner.traits.kindness += 0.5
                         $ if owner.traits.kindness > 5: owner.traits.kindness = 5
-                $ dog.traits.training += 0.5
-                $ if dog.traits.training > 5: dog.traits.training = 5
+                $ training += 0.5
+                $ if training > 5: training = 5
             else:
                 "[dog.name] seems to love the new treats a lot!!!"
                 show dogImage
@@ -191,8 +191,8 @@ label shopping_petcoo_menu:
                         "[dog.name] looks content."
                         $ owner.traits.loyalty += 1
                         $ if owner.traits.loyalty > 5: owner.traits.loyalty = 5
-                $ dog.traits.training += 0.5
-                $ if dog.traits.training > 5: dog.traits.training = 5
+                $ training += 0.5
+                $ if training > 5: training = 5
              else:
                 if dog.traits.passAggress >= 4:                    
                     "[dog.name] looks up and down at the puppy."
@@ -269,11 +269,11 @@ label shopping_yummy_menu:
                         $ if owner.traits.kindness > 5: owner.traits.kindness = 5
                         $ owner.traits.patience += 0.5
                         $ if owner.traits.patience > 5: owner.traits.patience = 5
-                $ dog.traits.training += 0.5
-                $ if dog.traits.training > 5: dog.traits.training = 5
+                $ training += 0.5
+                $ if training > 5: training = 5
             else:
                 "It seems like [subjPronoun] really likes it!"
-                if dog.traits.training < 3:
+                if training < 3:
                     "[dog.name] has a suspicious glimmer in [possPronoun] eyes. You have a weird feeling that [dog.name] might do something bad."
                     menu:
                         "Ignore. [dog.name] is just being playful.":
@@ -288,8 +288,8 @@ label shopping_yummy_menu:
                             $ if owner.traits.patience > 5: owner.traits.patience = 5
                         "Remove [dog.name] from bed.":
                             "You quickly scoop up [dog.name] and take her outside before [subjPronoun] can do [possPronoun] business."
-                            $ dog.traits.training += 0.5
-                            $ if dog.traits.training > 5: dog.traits.training = 5
+                            $ training += 0.5
+                            $ if training > 5: training = 5
                             $ owner.traits.discipline += 0.5
                             $ if owner.traits.discipline > 5: owner.traits.discipline = 5
                     p "Phew, that was a close one."
