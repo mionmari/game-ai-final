@@ -118,7 +118,7 @@ label park_fetch_start:
     jump park_fetch_throw_1
 
 label park_fetch_throw_1:
-    $ training += 0.5
+    $ training += 1
     $ if training > 5: training = 5
     "You get up and look down at [dog.name]."
     p "Let's give it a shot!"
@@ -176,7 +176,7 @@ label park_fetch_throw_1:
     jump park_menu
 
 label park_fetch_throw_2:
-    $ training += 0.5
+    $ training += 1
     $ if training > 5: training = 5
     "We've still got time. Let's play more!"
     p "Hey, [dog.name], come here!"
@@ -197,12 +197,12 @@ label park_fetch_throw_2:
             elif dog.traits.energy >= 2:
                 "[dog.name] makes another runs towards the ball, but at a noticeably slower pace. [subjPronoun_upper] slowly makes [possPronoun] way back towards you and plops the ball at your feet."
                 p "Thanks, [dog.name]!"
-                b "Woof!"
+                d "Woof!"
                 "[dog.name] stretches out [possPronoun] front paws and lies down on the grass."
             else:
                 "The ball rolls to a halt. With [possPronoun] tail still wagging, [dog.name] looks at the ball and then back at you."
                 p "You can do it, [dog.name]!"
-                b "Arf!"
+                d "Arf!"
                 "[dog.name] lets out a yawn and curls up into a ball. [subjPronoun_upper] looks ready to take nap."
                 p "Oh.. huh.."
                 "You walk over to pick up the ball, feeling a bit tired yourself."

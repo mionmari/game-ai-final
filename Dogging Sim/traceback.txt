@@ -1,26 +1,22 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/start.rpy", line 119, in script
-    hide lionCard
-  File "game/start.rpy", line 119, in <module>
-    hide lionCard
-NameError: name 'dogs' is not defined
+  File "game/park.rpy", line 200, in script
+    b "Woof!"
+Exception: Sayer 'b' is not defined.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/start.rpy", line 119, in script
-    hide lionCard
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\ast.py", line 882, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\python.py", line 1913, in py_exec_bytecode
-    exec bytecode in globals, locals
-  File "game/start.rpy", line 119, in <module>
-    hide lionCard
-NameError: name 'dogs' is not defined
+  File "game/park.rpy", line 200, in script
+    b "Woof!"
+  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\ast.py", line 650, in execute
+    who = eval_who(self.who, self.who_fast)
+  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\ast.py", line 560, in eval_who
+    raise Exception("Sayer '%s' is not defined." % who.encode("utf-8"))
+Exception: Sayer 'b' is not defined.
 
 Windows-8-6.2.9200
 Ren'Py 7.1.1.929
 Dogging Sim 1.0
-Sun Dec 09 11:30:53 2018
+Sun Dec 09 12:46:57 2018
