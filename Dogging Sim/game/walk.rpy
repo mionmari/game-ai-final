@@ -6,6 +6,7 @@ label walk_start:
     scene walkPath
     $ walk_done = []
     $ cream = Character("Cream")
+    image creamImg = "images/npcs/cream.png"
 
     p "Let's go for a little walk today, [dog.name]. Come see the neighborhood!"
     p "But... let's get a leash on you first, just in case."
@@ -79,7 +80,9 @@ label walk_menu:
 
 label walk_crepe:
     "You make it to your favorite crepe stand."
+    show creamImg
     cream "Welcome to Cream's Scrumptious Crepes! Ooh, it's you again! And I see you have a furry friend with you. What would you like today?"
+    hide creamImg
     menu:
         "Strawberry peanut butter crepe":
             jump walk_crepe_strawberry
@@ -89,10 +92,14 @@ label walk_crepe:
             jump walk_crepe_chocolate
 
 label walk_crepe_strawberry:
+    show creamImg
     cream "One strawberry peanut butter crepe coming right up! Now will you be sharing some with your dog today?"
+    hide creamImg
     menu:
         "Yes.":
+            show creamImg
             cream "That's fine. Dogs can eat strawberries and peanut butter. I'll cut the strawberries extra thin for [objPronoun]!"
+            hide creamImg
             p "Thank you!"
             "You feed a couple slices of peanut butter-covered strawberries to [dog.name]. [possPronoun_upper] tail wags happily."
             show dogImage
@@ -103,7 +110,9 @@ label walk_crepe_strawberry:
             $ owner.traits.loyalty += 1
             $ if owner.traits.loyalty > 5: owner.traits.loyalty = 5
         "No.":
+            show creamImg
             cream "Ooh, then I'd feel sorry for [objPronoun]. Here, let me get [objPronoun] a treat, so you can eat together!"
+            hide creamImg
             "Cream reaches behind the counter and pulls out a nice-looking treat."
             show dogImage
             d "Woof! Woof!"
@@ -114,12 +123,18 @@ label walk_crepe_strawberry:
     jump walk_menu
 
 label walk_crepe_cheese:
+    show creamImg
     cream "One cheesy salmon crepe coming right up! Now will you be sharing some with your dog today?"
+    hide creamImg
     menu:
         "Yes.":
+            show creamImg
             cream "That's fine, but be careful! Dogs can eat salmon, but can only eat cheese in moderation!!"
+            hide creamImg
             p "Oh, thanks for the tip..."
+            show creamImg
             cream "Here, I'll give you a couple pieces of salmon. I think it's a beautiful thing when owner and doggo eat together."
+            hide creamImg
             "You share a couple bits of salmon with [dog.name]."
             show dogImage
             d "Yip!"
@@ -130,7 +145,9 @@ label walk_crepe_cheese:
             $ owner.traits.loyalty += 1
             $ if owner.traits.loyalty > 5: owner.traits.loyalty = 5
         "No.":
+            show creamImg
             cream "Ooh, that's probably for the best; don't feed dogs too much cheese! Here, let me get [objPronoun] a treat, so you can eat together!"
+            hide creamImg
             "Cream reaches behind the counter and pulls out a nice-looking treat."
             show dogImage
             d "Woof! Woof!"
@@ -141,16 +158,20 @@ label walk_crepe_cheese:
     jump walk_menu
 
 label walk_crepe_chocolate:
+    show creamImg
     cream "One chocolate-macadamia ice cream crepe coming right up! Now will you be sharing some with your dog today?"
+    hide creamImg
     menu:
         "Yes.":
             "Cream walks towards you with an ice cream scoop brandished in their right fist."
+            show creamImg
             cream ".excuse me."
             cream "..you're gonna."
             cream ".feed your dog.."
             cream ",,.,.,...,,a chocolate, macademia,,,, ice cream crepe."
-            cream "DON'T YOU KNOW THAT CHOCOLATE CONTAINS THEOBROMINE, WHICH CAN BE HIGHLY TOXIC TO DOGS? THAT'S JUST COMMON SENSE! SO ARE MACADAMIA NUTS AND ICE CREAM. DO YOU WANT [objPronoun] TO HAVE HORRIFYING DIARRHEA ALL OVER YOUR BATHROOM FLOOR? DO YOU WANT [objPronoun] TO DIE? YOU ABSOLUTE MONSTER."
+            cream "DON'T YOU KNOW THAT CHOCOLATE CONTAINS THEOBROMINE, WHICH CAN BE HIGHLY TOXIC TO DOGS? THAT'S JUST COMMON SENSE! SO ARE MACADAMIA NUTS AND ICE CREAM. DO YOU WANT TO HAVE HORRIFYING DIARRHEA ALL OVER YOUR BATHROOM FLOOR? DO YOU WANT THE POOR PUP TO DIE? YOU MONSTER."
             cream "Please don't even joke about this kind of stuff. It's not funny!!"
+            hide creamImg
             p "I... I got it, Cream. I'm sorry."
             "Cream stares daggers at you, and slowly hands over your crepe. As you walk, you feel the weight of your sins crawling down your back."
             $ owner.traits.kindness += 1
@@ -158,7 +179,9 @@ label walk_crepe_chocolate:
             $ owner.traits.loyalty += 1
             $ if owner.traits.loyalty > 5: owner.traits.loyalty = 5
         "No.":
+            show creamImg
             cream "Good. [subjPronoun_upper] can't eat that stuff, you know! I feel bad for [objPronoun]. Be careful not to drop any."
+            hide creamImg
             "Cream reaches behind the counter and pulls out a nice-looking treat."
             show dogImage
             d "Woof! Woof!"

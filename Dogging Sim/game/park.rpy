@@ -13,6 +13,12 @@ label park_start:
         pepper = Character("Pepper")
         trucker = Character("Trucker")
 
+    image cocoaImg = "images/npcs/cocoa.png"
+    image bloggerImg = "images/npcs/blogger.png"
+    image trainerImg = "images/npcs/trainer.png"
+    image pepperImg = "images/npcs/pepper.png"
+    image truckerImg = "images/npcs/trucker.png"
+
     "What better way to bond with [dog.name] than taking [objPronoun] to the park? There’s one pretty close to your house!"
     if dog.traits.social <= 2:
         "Along the way, [dog.name] puts [possPronoun] nose in the air and silently whips [possPronoun] head left and right. [possPronoun] ears are pointed straight up."
@@ -264,13 +270,18 @@ label park_meet_menu:
             jump park_meet_pepper
 
 label park_meet_cocoa:
+    show bloggerImg
     blogger "Hey there! This is my dog Cocoa! Isn't he simply adorable?"
+    hide bloggerImg
+
+    show cocoaImg
     "A corgi with a darker brown coat looks up at you with shiny eyes, tail wagging contentedly behind him."
     cocoa "Yip!!"
     p "Nice to meet you. This is [dog.name]."
     "Cocoa rolls over onto his back, exposing his incredibly fluffy belly. It looks soft and luscious and beautiful."
     cocoa "Woof!!"
     "You feel your hand drawn towards his stomach."
+    hide cocoaImg
 
     if dog.traits.passAggress >= 4:
         show dogImage
@@ -279,17 +290,27 @@ label park_meet_cocoa:
         "[dog.name] jumps out and tries to bite Cocoa!"
         p "Whoah!!!! [dog.name]!!!!!!!!!!"
         "You manage to pull [objPronoun] back before [subjPronoun] gets there."
+
+        show bloggerImg
+        show cocoaImg at right
         blogger "Hey, watch it! You gotta train your dog before you go to the park!"
         "Cocoa whimpers and cowers behind the blogger, who scowls at you. He picks up Cocoa and walks away."
+        hide bloggerImg
+        hide cocoaImg
     
     elif dog.traits.social >= 4 and dog.traits.social > dog.traits.jealousy:
             "[dog.name] sniffs curiously at Cocoa. Cocoa turns his head to the side, and stands up."
+            show cocoaImg
             cocoa "Yip!"
-            show dogImage
+            show dogImage at left
             d "Yip!"
-            hide dogImage
             "They walk in a circle around each other and begin sniffing each other's butts."
+            hide dogImage
+            hide cocoaImg
+
+            show bloggerImg
             blogger "Wow, they really seem to like each other. Cocoa doesn't have many genuine friends, so that's nice!"
+            hide bloggerImg
             "They spend some time playing with each other. It's a very wholesome time!"
     else:
         menu:
@@ -300,7 +321,11 @@ label park_meet_cocoa:
                     d "Whiiiiine..."
                     hide dogImage
                     "[dog.name] looks at you, ears flat against [possPronoun] head, and lowers [possPronoun] body to the ground."
+
+                    show bloggerImg
                     blogger "Hey, your dog doesn't seem to like that. Some dogs are just naturally jealous of Cocoa's beauty! Sorry, babe!"
+                    hide bloggerImg
+
                     "The blogger gives you a poop-eating grin, picks up Cocoa, and walks away."
                     $ owner.traits.discipline += 1
                     $ if owner.traits.discipline > 5: owner.traits.discipline = 5
@@ -316,7 +341,11 @@ label park_meet_cocoa:
                 d "Arf?"
                 hide dogImage
                 "[dog.name] looks very confused, but when you place [possPronoun] paw on Cocoa's belly, [subjPronoun] seems to enjoy it alot."
+
+                show bloggerImg
                 blogger "Dogs petting other DOGS???!!! I'm posting this right now!"
+                hide bloggerImg
+
                 $ owner.traits.kindness += 1
                 $ if owner.traits.kindness > 5: owner.traits.kindness = 5
 
@@ -326,10 +355,14 @@ label park_meet_cocoa:
 
 label park_meet_roxy:
     "A dog trainer lightly tosses a frisbee into the air in front of you. In a flash, a golden retriever leaps straight up into the air."
+    show trainerImg
     trainer "Good girl!"
+    hide trainerImg
     "The dog catches the frisbee in midair, flips its body around, and lands gracefully. It hands off the frisbee proudly and recieves a treat."
     p "Sorry to bother you, but what an amazing trick that was! How did you get her to do that?"
+    show trainerImg
     trainer "Thank you. My name is Ashe Trainem, and this is Roxy. It takes a lot of practice, but with time, you can train any dog new tricks!"
+    hide trainerImg
 
     if dog.traits.passAggress >= 4:
         show dogImage
@@ -338,15 +371,22 @@ label park_meet_roxy:
         "[dog.name] jumps out and tries to bite Roxy!"
         p "Whoah!!!! [dog.name]!!!!!!!!!!"
         "Roxy leaps away nimbly, running a circle around [dog.name]."
+
+        show trainerImg
         trainer "Hey, you should train your dog before taking [objPronoun] to the park, you know! I offer training services for only 500 an hour."
+        hide trainerImg
         p "Sorry, but that's a little out of my price range! I can't do $500 an hour!"
+        show trainerImg
         trainer "$500? Ohohoho!! Oh no, I meant $500,000, of course. What a silly joke."
+        hide trainerImg
         "You walk away."
     else:
         "Roxy walks up to [dog.name] and carefully sniffs at [objPronoun]."
         if dog.traits.social <= 2:
             "[dog.name] hides behind your legs."
+            show trainerImg
             trainer "Awww, is someone a little shy? Maybe you should encourage [dog.name] a bit more."
+            hide trainerImg
             menu:
                 "Lure [dog.name] out with a treat.":
                     $ owner.traits.kindness += 1
@@ -364,7 +404,9 @@ label park_meet_roxy:
                     $ if owner.traits.patience > 5: owner.traits.patience = 5
 
         "[dog.name] looks at Roxy, tilting [possPronoun] head to the side."
+        show trainerImg
         trainer "Roxy's really good at making friends. I trained her to do that as well!"
+        hide trainerImg
         "You watch as Roxy and [dog.name] slowly warm up to each other. They seem to be getting along just fine!"
 
     $ park_met.append("roxy")
@@ -373,10 +415,17 @@ label park_meet_roxy:
 label park_meet_pepper:
     "You approach a large brown and white bulldog with a spiked collar around its neck. There are practically no other dogs around."
     "As you draw closer, the dog drops its chew toy and grows."
+    show pepperImg
     pepper "{b}GRRRRRR....{/b}"
+    hide pepperImg
+    show truckerImg
     trucker "Whoa there, Pepper, old girl! Easy there!"
+    hide truckerImg
+
     "A large, tattooed gentleman tugs on her leash and turns towards you."
+    show truckerImg
     trucker "Careful there! Pepper here's been trained as a guard dog, and isn't very good at calming down."
+    hide truckerImg
     p "I can tell. Best of luck to you!"
     $ park_met.append("pepper")
     jump park_menu

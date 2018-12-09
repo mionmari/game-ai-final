@@ -13,6 +13,10 @@ label shopping_start:
         yummy_employee = Character("Yummy Bone Employee")
         grocery_employee = Character("OK-Mart Employee")
         puppy = Character("Curious Puppy")
+    image petcooeImg = "images/npcs/petcoo_employee.png"
+    image yummyeImg = "images/npcs/yummy_employee.png"
+    image groceryeImg = "images/npcs/grocery_employee.png"
+    image puppyImg = "images/npcs/puppy.png"
 
     "You decide to do a little shopping today for some doggy goods. You don't really have anything better to do!"
     p "Wanna pick up some stuff? Come with me, I wanna see how you like them."
@@ -54,11 +58,15 @@ label shopping_menu:
 label shopping_petcoo:
     scene petcoo
     "You walk into PetCoo and are immediately greeted by a harmony of zealous employees."
+    show petcooeImg
     petcoo_employee "Hey, welcome to PetCoo!!! How can I help you today?? Are you looking for something in particular? Your dog is so cute!!"
+    hide petcooeImg
     if dog.traits.social <= 2:
         "[dog.name] gets scared and bolts out the doorway!"
         p "Hey! It's okay, [personPronoun]!"
+        show petcooeImg
         petcoo_employee "Oh my god, I'm so sorry! It's my first day here, and-"
+        hide petcooeImg
         "You are pulled out the door by the leash. [dog.name] makes it a little bit down the block before [subjPronoun] hides behind a trash can, shivering."
         
         menu:
@@ -93,7 +101,9 @@ label shopping_petcoo_menu:
                 menu:
                     "Sternly scold [dog.name]":
                         p "No!!! Bad [personPronoun]!"
+                        show petcooeImg
                         petcoo_employee "Um..."
+                        hide petcooeImg
                         "Looks like you have to buy the chew toy now."
                         $ owner.traits.discipline += 1
                         $ if owner.traits.discipline > 5: owner.traits.discipline = 5
@@ -140,7 +150,9 @@ label shopping_petcoo_menu:
         "Free samples of some super expensive dog treats." if not "treats" in shopping_petcoo_done:
             $ shopping_petcoo_done.append("treats")
             
+            show petcooeImg
             petcoo_employee "Hey there, wanna try some treats? ...for your dog of course!"
+            hide petcooeImg
             if dog.traits.gluttony >= 4:
                 "[dog.name] tries to knock the treat out of your hand."
                 menu:
@@ -150,7 +162,9 @@ label shopping_petcoo_menu:
                         $ if owner.traits.discipline > 5: owner.traits.discipline = 5
                     "Don't":
                         "You pick up the treat that fell on the floor."
+                        show petcooeImg
                         petcoo_employee "Careful not to feed [objPronoun] too much... They can really get attached to treats."
+                        hide petcooeImg
                         p "I'll keep that in mind."            
                         $ owner.traits.kindness += 1
                         $ if owner.traits.kindness > 5: owner.traits.kindness = 5
@@ -167,10 +181,12 @@ label shopping_petcoo_menu:
              show dogImage
              d "Woof?" 
              hide dogImage
+             show puppyImg
              "A small puppy comes close to the glass. It stares curiously at [dog.name]."
+             hide puppyImg
              p "Wow, I think this one likes you, [dog.name]."
-             "[dog.name] looks completely disinterested and tries to pull you away from the glass."   
              if dog.traits.jealousy >= 4:
+                "[dog.name] looks completely disinterested and tries to pull you away from the glass."   
                 menu:
                     "Continue interacting with puppy.":
                         p "Hmm, what was that puppy? Oh yes, see [dog.name] doesn't like to meet new dogs."
@@ -196,19 +212,25 @@ label shopping_petcoo_menu:
              else:
                 if dog.traits.passAggress >= 4:                    
                     "[dog.name] looks up and down at the puppy."
-                    puppy "Arf?"
+                    show puppyImg
+                    puppy "Arf?"                    
+                    hide puppyImg
                     show dogImage
                     d "{i} Hiss! {/i}"
                     hide dogImage
+                    show puppyImg
                     puppy "{b} *whimper* {/b}"
+                    hide puppyImg
                     "You pull [dog.name] away before [subjPronoun] alerts the other employees."
                     p "Sigh... [dog.name] when will you learn?"
                 else:
                     "[dog.name] looks pretty interested in the puppy."
                     show dogImage
                     d "Bark! Bark!"
-                    hide dogImage
+                    show puppyImg at right
                     puppy "Arf!"
+                    hide puppyImg
+                    hide dogImage
                     "[dog.name] runs around in a circle and wags [possPronoun] tail playfully."
                     "You and [dog.name] feel warm and fuzzy inside."
         "Nothing else interests you here at PetCoo.":
@@ -219,17 +241,26 @@ label shopping_petcoo_menu:
 label shopping_yummy:
     scene petStore
     "You walk into Yummy Bone and are greeted by an elderly woman at the counter."
+    show yummyeImg
     yummy_employee "Welcome to the store, dearie!! What would you like?"
-    p "Oh, I'm just browsing-"
+    hide yummyeImg
+    p "Oh, I'm just browsing-"    
+    show yummyeImg
     yummy_employee "Not you, the dog! Come here, dearie."
+    hide yummyeImg
+
     if dog.traits.social <= 2:
         "[dog.name] seems apprehensive of the woman, until she walks over and holds out a treat in her hand."
         "[dog.name] licks the treat out of the employee's hand."
+        show yummyeImg
         yummy_employee "You sometimes have to treat them very, very gently. Now you can both browse comfortably!"
+        hide yummyeImg
         jump shopping_yummy_menu
     else:
         "The woman reaches down and pets [dog.name]."
+        show yummyeImg
         yummy_employee "Let me know if you need anything!"
+        hide yummyeImg
         jump shopping_yummy_menu
 
 label shopping_yummy_menu:
@@ -262,7 +293,9 @@ label shopping_yummy_menu:
                         $ owner.traits.discipline += 1
                         $ if owner.traits.discipline > 5: owner.traits.discipline = 5
                     "Let [dog.name] sleep. [subjPronoun_upper] looks exhausted.":
+                        show yummyeImg
                         yummy_employee "Aww, what a sweet child!! Here, if you'd like it, I'll give you a special discount."
+                        show yummyeImg
                         "The lady takes out a camera and takes a picture of [dog.name] sleeping."
                         "After a little while, [dog.name] eventually comes to."
                         $ owner.traits.kindness += 1
@@ -294,18 +327,24 @@ label shopping_yummy_menu:
 
         "Yummy Bone™ dog food." if not "food" in shopping_yummy_done:
             $ shopping_yummy_done.append("food")
+            show yummyeImg
             yummy_employee "Ooh! Yes, we do sell your favorite dog food brands, but we also sell our own organic dog mix! Want to try a sample?"
+            hide yummyeImg
             "[dog.name] looks at you expectantly."
             menu:
                 "Sure, we'd like to try!":
                     p "Definitely!"
                     if dog.traits.gluttony >= 4:
                         "As soon as the employee finishes pouring out the sample, [dog.name] has already eaten all of it."
+                        show yummyeImg
                         yummy_employee "Aww, do you want more?"
+                        hide yummyeImg
                         show dogImage
                         d "Arf!"
                         hide dogImage
+                        show yummyeImg
                         yummy_employee "Sorry, this is all we're allowed to give per customer... But since you're so sweet, I'll give you a little extra {b} *wink* {\b}."
+                        hide yummyeImg
                         "[dog.name] runs around in circles."
                     else:
                         "[dog.name] patiently waits for the employee to finish pouring before starting to eat."
@@ -318,7 +357,9 @@ label shopping_yummy_menu:
                 "Nope, [dog.name] has eaten too much today.":
                     p "Thanks, but no thanks. [dog.name] ate way too much already."
                     "[dog.name] flashes you a look of betrayal."
+                    show yummyeImg
                     yummy_employee "Aww, okay. Maybe next time."
+                    hide yummyeImg
                     $ owner.traits.discipline += 1
                     $ if owner.traits.discipline > 5: owner.traits.discipline = 5
 
@@ -329,12 +370,16 @@ label shopping_yummy_menu:
 
 label shopping_grocery:
     "You get a little ways into the store before an employee notices."
+    show groceryeImg
     grocery_employee "Excuse me!! No pets in the store, please! It's company policy- we have a lot of food items out in the open."
+    hide groceryeImg
     if dog.traits.gluttony >= 4:
         "[dog.name] appears to smell something good in the store, and tries to push [possPronoun] way in."
         p "I'm sorry!!"
         "You manage to shove [dog.name] back out the door with a little effort."
+        show groceryeImg
         grocery_employee "It's... it's no problem."
+        hide groceryeImg
     else:
         p "Oh, I never knew that..."
         "You learn a lot about where you can go with dogs when you actually have one with you."
