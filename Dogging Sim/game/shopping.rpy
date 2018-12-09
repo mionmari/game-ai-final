@@ -101,7 +101,7 @@ label shopping_petcoo_menu:
                         p "No, [dog.name]. That's not good."                        
                         $ owner.traits.patience += 1
                         $ if owner.traits.patience > 5: owner.traits.patience = 5
-                $ training += 1
+                $ training += 0.5
                 $ if training > 5: training = 5
             elif dog.traits.energy >= 4:
                 "[dog.name] bounces around excitedly as you give [objPronoun] the toy."
@@ -131,7 +131,7 @@ label shopping_petcoo_menu:
                                 "[dog.name] proudly returns the toy."
                                 $ owner.traits.kindness += 1
                                 $ if owner.traits.kindness > 5: owner.traits.kindness = 5
-                $ training += 1
+                $ training += 0.5
                 $ if training > 5: training = 5
 
             else:
@@ -154,7 +154,7 @@ label shopping_petcoo_menu:
                         p "I'll keep that in mind."            
                         $ owner.traits.kindness += 1
                         $ if owner.traits.kindness > 5: owner.traits.kindness = 5
-                $ training += 1
+                $ training += 0.5
                 $ if training > 5: training = 5
             else:
                 "[dog.name] seems to love the new treats a lot!!!"
@@ -191,7 +191,7 @@ label shopping_petcoo_menu:
                         "[dog.name] looks content."
                         $ owner.traits.loyalty += 1
                         $ if owner.traits.loyalty > 5: owner.traits.loyalty = 5
-                $ training += 1
+                $ training += 0.5
                 $ if training > 5: training = 5
              else:
                 if dog.traits.passAggress >= 4:                    
@@ -269,7 +269,7 @@ label shopping_yummy_menu:
                         $ if owner.traits.kindness > 5: owner.traits.kindness = 5
                         $ owner.traits.patience += 1
                         $ if owner.traits.patience > 5: owner.traits.patience = 5
-                $ training += 1
+                $ training += 0.5
                 $ if training > 5: training = 5
             else:
                 "It seems like [subjPronoun] really likes it!"
@@ -288,8 +288,6 @@ label shopping_yummy_menu:
                             $ if owner.traits.patience > 5: owner.traits.patience = 5
                         "Remove [dog.name] from bed.":
                             "You quickly scoop up [dog.name] and take her outside before [subjPronoun] can do [possPronoun] business."
-                            $ training += 1
-                            $ if training > 5: training = 5
                             $ owner.traits.discipline += 1
                             $ if owner.traits.discipline > 5: owner.traits.discipline = 5
                     p "Phew, that was a close one."
