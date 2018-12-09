@@ -181,7 +181,12 @@ label park_fetch_throw_2:
     "We've still got time. Let's play more!"
     p "Hey, [dog.name], come here!"
 
-    if dog.traits.energy >= 3:
+    if dog.traits.passAggress >= 4:
+        "[dog.name] snarls at the ball in your hand."
+        show dogImage
+        d "{b}Rrrrr...{/b}"
+        hide dogImage
+    elif dog.traits.energy >= 3:
         "[dog.name] bounces up and down, wagging [possPronoun] tail vigorously."
 
     menu:

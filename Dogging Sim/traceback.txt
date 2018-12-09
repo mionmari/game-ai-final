@@ -1,22 +1,38 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/park.rpy", line 200, in script
-    b "Woof!"
-Exception: Sayer 'b' is not defined.
+  File "game/start.rpy", line 16, in script
+    init python:
+  File "game/start.rpy", line 23, in <module>
+    dogs = json.load(json_data, object_hook=as_dog)
+  File "game/dog.rpy", line 31, in as_dog
+    return Dog (dct['name'], dct['sex'], dct['breed'], DogTraits(dct['traits']))
+  File "game/dog.rpy", line 12, in __init__
+    self.kindness = dct['kindness']
+KeyError: u'kindness'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/park.rpy", line 200, in script
-    b "Woof!"
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\ast.py", line 650, in execute
-    who = eval_who(self.who, self.who_fast)
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\ast.py", line 560, in eval_who
-    raise Exception("Sayer '%s' is not defined." % who.encode("utf-8"))
-Exception: Sayer 'b' is not defined.
+  File "game/start.rpy", line 16, in script
+    init python:
+  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\ast.py", line 882, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\python.py", line 1913, in py_exec_bytecode
+    exec bytecode in globals, locals
+  File "game/start.rpy", line 23, in <module>
+    dogs = json.load(json_data, object_hook=as_dog)
+  File "/home/tom/ab/x64lucid-deps/install/lib/python2.7/json/__init__.py", line 290, in load
+  File "/home/tom/ab/x64lucid-deps/install/lib/python2.7/json/__init__.py", line 351, in loads
+  File "/home/tom/ab/x64lucid-deps/install/lib/python2.7/json/decoder.py", line 366, in decode
+  File "/home/tom/ab/x64lucid-deps/install/lib/python2.7/json/decoder.py", line 382, in raw_decode
+  File "game/dog.rpy", line 31, in as_dog
+    return Dog (dct['name'], dct['sex'], dct['breed'], DogTraits(dct['traits']))
+  File "game/dog.rpy", line 12, in __init__
+    self.kindness = dct['kindness']
+KeyError: u'kindness'
 
 Windows-8-6.2.9200
 Ren'Py 7.1.1.929
 Dogging Sim 1.0
-Sun Dec 09 12:46:57 2018
+Sun Dec 09 13:28:07 2018

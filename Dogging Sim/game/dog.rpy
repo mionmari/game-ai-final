@@ -9,10 +9,6 @@ init python:
             self.gluttony = dct['gluttony']
             self.energy = dct['energy']
             self.training = dct['training']
-            self.kindness = dct['kindness']
-            self.loyalty = dct['loyalty']
-            self.patience = dct['patience']
-            self.discipline = dct['discipline']
 
     class Dog:
         def __init__ (self, name, sex, breed, traits):
