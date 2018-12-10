@@ -295,7 +295,7 @@ label shopping_yummy_menu:
                     "Let [dog.name] sleep. [subjPronoun_upper] looks exhausted.":
                         show yummyeImg
                         yummy_employee "Aww, what a sweet child!! Here, if you'd like it, I'll give you a special discount."
-                        show yummyeImg
+                        hide yummyeImg
                         "The lady takes out a camera and takes a picture of [dog.name] sleeping."
                         "After a little while, [dog.name] eventually comes to."
                         $ owner.traits.kindness += 1

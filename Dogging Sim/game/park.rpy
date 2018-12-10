@@ -139,6 +139,10 @@ label park_fetch_throw_1:
 
     menu:
         "Lightly toss the ball in front of you.":
+            $ owner.traits.kindness += 0.5
+            $ if owner.traits.kindness > 5: owner.traits.kindness = 5
+            $ owner.traits.loyalty += 0.5
+            $ if owner.traits.loyalty > 5: owner.traits.loyalty = 5
             "Probably best to start out light!"
             if dog.traits.passAggress >= 4:
                 "[dog.name] dashes towards the ball, still gnawing at it until you take it away from [objPronoun]."
@@ -153,6 +157,10 @@ label park_fetch_throw_1:
                 p "Come on! Bring it back, [personPronoun]!"
                 "[subjPronoun_upper] stares at you again and puts [possPronoun] jaw loosely around the ball. [subjPronoun_upper] trots over to you, drops the ball, and drops to the floor [possPronoun]SELF."
         "Chuck it a good distance forward.":
+            $ owner.traits.patience += 0.5
+            $ if owner.traits.patience > 5: owner.traits.patience = 5
+            $ owner.traits.discipline += 0.5
+            $ if owner.traits.discipline > 5: owner.traits.discipline = 5
             "Let's get this exercise!"
             if dog.traits.passAggress >= 4:
                 "[dog.name] senses your energy. You throw the ball as hard as you can and [subjPronoun] darts off, kicking up dirt as [subjPronoun] goes."
@@ -197,6 +205,10 @@ label park_fetch_throw_2:
 
     menu:
         "Go for a light throw.":
+            $ owner.traits.kindness += 0.5
+            $ if owner.traits.kindness > 5: owner.traits.kindness = 5
+            $ owner.traits.loyalty += 0.5
+            $ if owner.traits.loyalty > 5: owner.traits.loyalty = 5
             "[dog.name] might be tired. Let's give them an easy throw."            
             if dog.traits.passAggress >= 4:
                 "[dog.name] lunges towards the ball and pounces on it, but allows you to take the ball from [objPronoun]."
@@ -218,6 +230,10 @@ label park_fetch_throw_2:
                 p "Oh.. huh.."
                 "You walk over to pick up the ball, feeling a bit tired yourself."
         "Wind up for a pitch.":
+            $ owner.traits.patience += 0.5
+            $ if owner.traits.patience > 5: owner.traits.patience = 5
+            $ owner.traits.discipline += 0.5
+            $ if owner.traits.discipline > 5: owner.traits.discipline = 5
             "[dog.name] still seems to be full of energy. [subjPronoun_upper] can handle a far throw."
             if dog.traits.passAggress >= 4:
                 "[dog.name] eyes the ball in your hand, ready to pounce at any moment."
@@ -436,7 +452,7 @@ label park_end:
     # Don't meet all dogs
     if dog.traits.jealousy >= 4 and len(park_met) < 3:        
         "[dog.name] looks a bit relieved that you haven't tried to meet all the dogs at the park."
-        $ owner.traits.loyalty += 1
+        $ owner.traits.loyalty += 0.5
         $ if owner.traits.loyalty > 5: owner.traits.loyalty = 5
 
     p "Thanks for spending some time with me, [dog.name]. It was fun."

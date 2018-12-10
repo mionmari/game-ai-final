@@ -4,35 +4,35 @@ init python:
 
         # Dog is shy
         if dog.traits.social <= 2:
-            if owner.traits.kindness <= 2 or owner.traits.patience <= 2:
+            if owner.traits.kindness < 3 or owner.traits.patience < 3:
                 results[0] = 0
         # Doesn't exhibit this flaw
         else: results[0] = -1 
         
         # Dog is aggressive
         if dog.traits.passAggress >= 4:
-            if owner.traits.patience <= 3 or owner.traits.kindness <= 2 or owner.traits.discipline <= 2:
+            if owner.traits.patience < 4 or owner.traits.kindness < 3 or owner.traits.discipline < 3:
                 results[1] = 0
         # Doesn't exhibit this flaw
         else: results[1] = -1 
         
         # Dog is susceptible to jealousy
         if dog.traits.jealousy >= 4:
-            if owner.traits.loyalty <= 3 or owner.traits.kindness <= 2 or owner.traits.discipline <= 2:
+            if owner.traits.loyalty < 4 or owner.traits.kindness < 3 or owner.traits.discipline < 3:
                 results[2] = 0
         # Doesn't exhibit this flaw
         else: results[2] = -1 
         
         # Dog is gluttonous
         if dog.traits.gluttony >= 4:
-            if owner.traits.discipline <= 2 or owner.traits.kindness <= 2:
+            if owner.traits.discipline < 3 or owner.traits.kindness < 3:
                 results[3] = 0
         # Doesn't exhibit this flaw
         else: results[3] = -1 
         
         # Dog has abnormal energy
         if dog.traits.energy <= 1 or dog.traits.energy >= 5:
-            if owner.traits.discipline <= 2 or owner.traits.patience <= 2:
+            if owner.traits.discipline < 3 or owner.traits.patience < 3:
                 results[4] = 0
         # Doesn't exhibit this flaw
         else: results[4] = -1 

@@ -69,7 +69,7 @@ label home_cup:
         "Switch the cups around slowly.":
             $ owner.traits.kindness += 0.5
             $ if owner.traits.kindness > 5: owner.traits.kindness = 5
-            $ owner.traits.loyalty += 0.75
+            $ owner.traits.loyalty += 0.5
             $ if owner.traits.loyalty > 5: owner.traits.loyalty = 5
             "You slowly move the cup to the middle, then swap the outer cups, staring at [dog.name] the entire time."
             if dog.traits.energy >= 3:
@@ -81,9 +81,9 @@ label home_cup:
             else:
                 jump home_cup_lose
         "Switch the cups around incredibly quickly.":
-            $ owner.traits.patience += 0.75
+            $ owner.traits.patience += 0.5
             $ if owner.traits.patience > 5: owner.traits.patience = 5
-            $ owner.traits.discipline += 0.75
+            $ owner.traits.discipline += 0.5
             $ if owner.traits.discipline > 5: owner.traits.discipline = 5
             "You shift the cups around rapidly, throwing in a flourish and a cup flip."
             if dog.traits.energy <= 2:
@@ -98,7 +98,7 @@ label home_cup:
                 jump home_cup_lose
 
 label home_cup_win:
-    $ training += 0.5
+    $ training += 0.25
     $ if training > 5: training = 5
     "[dog.name] chooses the correct cup!"
     p "Good [personPronoun]! That's amazing!"
@@ -132,9 +132,9 @@ label home_tug:
     p "Alright, let's do it!!"
     menu:
         "Tug the rope gently.":
-            $ owner.traits.kindness += 0.75
+            $ owner.traits.kindness += 0.5
             $ if owner.traits.kindness > 5: owner.traits.kindness = 5
-            $ owner.traits.loyalty += 0.75
+            $ owner.traits.loyalty += 0.5
             $ if owner.traits.loyalty > 5: owner.traits.loyalty = 5
             if dog.traits.passAggress >= 4:
                 "[dog.name] notices you trying to take [possPronoun] rope away from [objPronoun]. [subjPronoun_upper] grabs the rope and runs away!"
@@ -152,9 +152,9 @@ label home_tug:
                 hide dogImage
                 "You give [dog.name] a nice little treat."
         "Tug the rope hard.":
-            $ owner.traits.patience += 0.75
+            $ owner.traits.patience += 0.5
             $ if owner.traits.patience > 5: owner.traits.patience = 5
-            $ owner.traits.discipline += 0.75
+            $ owner.traits.discipline += 0.5
             $ if owner.traits.discipline > 5: owner.traits.discipline = 5
             if dog.traits.passAggress >= 4:
                 "[dog.name] notices you trying to take [possPronoun] rope away from [objPronoun]. [subjPronoun_upper] pulls back with all [possPronoun] might, digging [possPronoun] feet into the ground."
@@ -164,7 +164,7 @@ label home_tug:
                 "You begin to feel a little bad for [objPronoun]. You loosen your grip, and the rope flies out of your hands."
                 "[dog.name] stares at you intensely, saliva dripping from [possPronoun] jaw, grinning slightly."
                 p "{i}Sigh...{/i} Great work."
-                $ training += 0.5
+                $ training += 0.25
                 $ if training > 5: training = 5     
             elif dog.traits.energy <= 1:
                 "The rope immediately flies out of [dog.name]'s mouth."
@@ -178,7 +178,7 @@ label home_tug:
                 hide dogImage
                 if r.random() < 0.5:
                     "Your hand slips, and you fall forward towards [dog.name]!"
-                    $ training += 0.5
+                    $ training += 0.25
                     $ if training > 5: training = 5   
                 else:
                     "You pull hard enough, and [dog.name] gets pulled towards you!"
@@ -202,9 +202,9 @@ label home_tv:
                 "Play with [dog.name] instead.":
                     p "[dog.name] is more important! I can watch this show whenever I want."
                     "You and [dog.name] have a good time together."
-                    $ owner.traits.kindness += 1
+                    $ owner.traits.kindness += 0.5
                     $ if owner.traits.kindness > 5: owner.traits.kindness = 5
-                    $ owner.traits.loyalty += 1
+                    $ owner.traits.loyalty += 0.5
                     $ if owner.traits.loyalty > 5: owner.traits.loyalty = 5
                 "Keep watching.":
                     p "Not now, [dog.name]. I gotta pay attention."
@@ -224,9 +224,9 @@ label home_tv:
                 "Play with [dog.name] instead.":
                     p "[dog.name] is more important! I can watch this show whenever I want."
                     "You and [dog.name] have a good time together."
-                    $ owner.traits.kindness += 1
+                    $ owner.traits.kindness += 0.5
                     $ if owner.traits.kindness > 5: owner.traits.kindness = 5
-                    $ owner.traits.loyalty += 1
+                    $ owner.traits.loyalty += 0.5
                     $ if owner.traits.loyalty > 5: owner.traits.loyalty = 5
                 "Keep watching.":
                     p "Not now, [dog.name]. I gotta pay attention."
