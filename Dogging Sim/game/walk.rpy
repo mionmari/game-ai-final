@@ -3,6 +3,7 @@
 
 # WALK INTRO
 label walk_start:
+    play music "Bike_Sharing_to_Paradise.mp3" fadeout 1
     scene walkPath
     $ walk_done = []
     $ cream = Character("Cream")

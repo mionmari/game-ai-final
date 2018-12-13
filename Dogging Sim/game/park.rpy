@@ -3,6 +3,7 @@
 
 # PARK INTRO
 label park_start:
+    play music "C_Major_Prelude.mp3" fadeout 1
     scene dogPark
     python:
         park_fetched = 0

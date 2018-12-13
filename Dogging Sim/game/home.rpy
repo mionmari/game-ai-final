@@ -3,6 +3,7 @@
 
 # HOME INTRO
 label home_start:
+    play music "Boardroom_Theme.mp3" fadeout 1
     scene home
     $home_done = []
 

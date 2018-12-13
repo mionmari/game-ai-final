@@ -30,6 +30,7 @@ init python:
 
 # NEEDS A START LABEL
 label start:
+    play music "Gymnopedie_no1.mp3" fadeout 1
     $owner = Owner()
     $days = 0
     $day_done = []

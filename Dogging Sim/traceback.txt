@@ -1,38 +1,48 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/start.rpy", line 16, in script
-    init python:
-  File "game/start.rpy", line 23, in <module>
-    dogs = json.load(json_data, object_hook=as_dog)
-  File "game/dog.rpy", line 31, in as_dog
-    return Dog (dct['name'], dct['sex'], dct['breed'], DogTraits(dct['traits']))
-  File "game/dog.rpy", line 12, in __init__
-    self.kindness = dct['kindness']
-KeyError: u'kindness'
+  File "game/end.rpy", line 45, in script
+    scene dogShelter
+  File "renpy/common/000window.rpy", line 95, in _window_auto_callback
+    _window_hide()
+  File "renpy/common/000window.rpy", line 85, in _window_hide
+    renpy.with_statement(trans)
+IOError: Couldn't find file 'E_Minor_Prelude'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/start.rpy", line 16, in script
-    init python:
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\ast.py", line 882, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "C:\Users\Kirsten Pilla\Documents\renpy-7.1.1-sdk\renpy\python.py", line 1913, in py_exec_bytecode
-    exec bytecode in globals, locals
-  File "game/start.rpy", line 23, in <module>
-    dogs = json.load(json_data, object_hook=as_dog)
-  File "/home/tom/ab/x64lucid-deps/install/lib/python2.7/json/__init__.py", line 290, in load
-  File "/home/tom/ab/x64lucid-deps/install/lib/python2.7/json/__init__.py", line 351, in loads
-  File "/home/tom/ab/x64lucid-deps/install/lib/python2.7/json/decoder.py", line 366, in decode
-  File "/home/tom/ab/x64lucid-deps/install/lib/python2.7/json/decoder.py", line 382, in raw_decode
-  File "game/dog.rpy", line 31, in as_dog
-    return Dog (dct['name'], dct['sex'], dct['breed'], DogTraits(dct['traits']))
-  File "game/dog.rpy", line 12, in __init__
-    self.kindness = dct['kindness']
-KeyError: u'kindness'
+  File "game/end.rpy", line 45, in script
+    scene dogShelter
+  File "D:\others\COGS\GAME AI\renpy-7.1.1-sdk\renpy\ast.py", line 1237, in execute
+    statement_name("scene")
+  File "D:\others\COGS\GAME AI\renpy-7.1.1-sdk\renpy\ast.py", line 45, in statement_name
+    i(name)
+  File "renpy/common/000window.rpy", line 95, in _window_auto_callback
+    _window_hide()
+  File "renpy/common/000window.rpy", line 85, in _window_hide
+    renpy.with_statement(trans)
+  File "D:\others\COGS\GAME AI\renpy-7.1.1-sdk\renpy\exports.py", line 1456, in with_statement
+    return renpy.game.interface.do_with(trans, paired, clear=clear)
+  File "D:\others\COGS\GAME AI\renpy-7.1.1-sdk\renpy\display\core.py", line 2217, in do_with
+    clear=clear)
+  File "D:\others\COGS\GAME AI\renpy-7.1.1-sdk\renpy\display\core.py", line 2662, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
+  File "D:\others\COGS\GAME AI\renpy-7.1.1-sdk\renpy\display\core.py", line 3334, in interact_core
+    renpy.audio.audio.periodic()
+  File "D:\others\COGS\GAME AI\renpy-7.1.1-sdk\renpy\audio\audio.py", line 993, in periodic_thread_main
+    periodic_pass()
+  File "D:\others\COGS\GAME AI\renpy-7.1.1-sdk\renpy\audio\audio.py", line 937, in periodic_pass
+    c.periodic()
+  File "D:\others\COGS\GAME AI\renpy-7.1.1-sdk\renpy\audio\audio.py", line 419, in periodic
+    topf = load(self.file_prefix + filename + self.file_suffix)
+  File "D:\others\COGS\GAME AI\renpy-7.1.1-sdk\renpy\audio\audio.py", line 71, in load
+    rv = renpy.loader.load(fn)
+  File "D:\others\COGS\GAME AI\renpy-7.1.1-sdk\renpy\loader.py", line 576, in load
+    raise IOError("Couldn't find file '%s'." % name)
+IOError: Couldn't find file 'E_Minor_Prelude'.
 
 Windows-8-6.2.9200
 Ren'Py 7.1.1.929
 Dogging Sim 1.0
-Sun Dec 09 13:28:07 2018
+Wed Dec 12 23:35:02 2018

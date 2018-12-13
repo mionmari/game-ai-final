@@ -4,6 +4,7 @@
 
 # SHOPPING INTRO
 label shopping_start:
+    play music "Road_to_Moscow.mp3" fadeout 1
     scene shopping
     python:
         shopping_done = []

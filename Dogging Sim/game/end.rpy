@@ -1,4 +1,5 @@
 label end_true:
+    play music "Good_For_The_Soul.mp3" 
     scene dogShelter
     p "Well, it's been a good five days, but I guess it's time to go back to the shelter."
     show dogImage
@@ -23,6 +24,7 @@ label end_true:
 return
 
 label end_good:
+    play music "Clouds.mp3"
     scene dogShelter
     "The next day, at the Dogging Sim."
     p "Hey, [dog.name], can we talk for a second?"
@@ -40,6 +42,7 @@ label end_good:
     return
 
 label end_bad:
+    play music "E_Minor_Prelude.mp3"
     scene dogShelter
     "The next day, you manage to drag [dog.name] back to the Dogging Sim."
     p "Excuse me!!"

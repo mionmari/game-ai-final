@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/endetermination.rpy", line 53: expected ':' not found.
-    else
-        ^
+File "game/shopping.rpy", line 8: Line is indented, but the preceding play music statement statement does not expect a block. Please check this line's indentation.
+    scene shopping
+    ^
 
 Ren'Py Version: Ren'Py 7.1.1.929
-Sun Dec 09 12:11:58 2018
+Wed Dec 12 23:31:48 2018
