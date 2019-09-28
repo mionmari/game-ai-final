@@ -1,5 +1,5 @@
 # Dogging Sim
-Team Members: Zhangliang Ma, Kirsten Pilla, Brandon Rao
+Team Members: Zhangliang Ma, Kirsten Pilla, Mei Rao
 *Dogging Sim* is a Dog Dating Simulator made with Ren'Py (Python visual novel engine).
 Source images found on Google Images. Music found on Youtube.
 
